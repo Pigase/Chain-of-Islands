@@ -1,0 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "New Weapon", menuName = "Items/Weapon")]
+public class WeaponItem : Item
+{
+    [Header("WeaponItem Properties")]
+    public WeaponType  weaponType;
+
+    public WeaponItem()
+    {
+        itemType = ItemType.Weapon;
+    }
+}

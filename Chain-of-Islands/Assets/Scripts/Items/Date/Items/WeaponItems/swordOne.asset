@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2a1566c80f40344ba937b6a96f52618, type: 3}
+  m_Name: swordOne
+  m_EditorClassIdentifier: 
+  itemId: swordOne
+  itemName: "\u043C\u0435\u04471"
+  icon: {fileID: 0}
+  worldPrefab: {fileID: 0}
+  maxStackSize: 1
+  itemType: 1
+  weaponType: 0
