@@ -39,7 +39,7 @@ public class Joystick : MonoBehaviour
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             // Вектор от центра большого джойстика к позиции мыши
-            Vector2 directionVector = mouseWorldPos - _bigJoystickPosition;
+            Vector2 directionVector = mouseWorldPos - (Vector2)_bigJoystick.transform.position;
 
             // Гипотенуза - длина вектора направления
             float hypotenuse = directionVector.magnitude;
@@ -47,7 +47,7 @@ public class Joystick : MonoBehaviour
             if (hypotenuse > _radius)
             {
                 // Если вышли за радиус - ограничиваем позицию
-                Vector2 limitedPos = _bigJoystickPosition + directionVector.normalized * _radius;
+                Vector2 limitedPos = (Vector2)_bigJoystick.transform.position + directionVector.normalized * _radius;
                 _smallJoystick.transform.position = limitedPos;
                 _directionToMove = directionVector.normalized; // Нормализованный вектор направления
             }

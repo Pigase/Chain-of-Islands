@@ -22,6 +22,6 @@ public class Player : MonoBehaviour
         _moveDirectionPlayer = _joystick.FindingDirection();
 
         // Передаем направление в Mover для перемещения объекта
-        _mover.MoveObject(_speedPlayer, _moveDirectionPlayer);
+        _mover.MoveObjectInDerection(_speedPlayer, _moveDirectionPlayer);
     }
 }

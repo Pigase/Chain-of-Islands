@@ -4,22 +4,29 @@ using UnityEngine;
 
 public class Mover
 {
-    private GameObject _ObjectToMove; // Ссылка на GameObject для перемещения
+    private GameObject _targetObject; // Ссылка на GameObject для перемещения
 
     // Конструктор - сохраняем ссылку на объект для перемещения
-    public Mover(GameObject _gameObject)
+    public Mover(GameObject _targetGameObject)
     {
-        _ObjectToMove = _gameObject;
+        _targetObject = _targetGameObject;
     }
 
     // Основной метод перемещения объекта
-    public void MoveObject(float _speedMoving, Vector2 _moveDirection)
+    public void MoveObjectInDerection(float _speedMoving, Vector2 _moveDirection)
     {
         // Проверяем, что направление не нулевое
         if (_moveDirection != Vector2.zero)
         {
             // Перемещаем объект в направлении _moveDirection со скоростью _speedMoving
-            _ObjectToMove.transform.position += (Vector3)_moveDirection * _speedMoving * Time.deltaTime;
+            _targetObject.transform.position += (Vector3)_moveDirection * _speedMoving * Time.deltaTime;
         }
+    }
+
+    public void MoveObjectToPoint(float _speedMoving, Vector2 _pointToMove)
+    {
+
+            _targetObject.transform.position = Vector3.MoveTowards(_targetObject.transform.position, (Vector3)_pointToMove, _speedMoving * Time.deltaTime);
+
     }
 }
