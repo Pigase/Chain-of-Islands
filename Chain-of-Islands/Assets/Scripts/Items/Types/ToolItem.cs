@@ -8,8 +8,4 @@ public class ToolItem : Item
     [Header("ToolItem Properties")]
     public ToolType toolType;
 
-    public ToolItem()
-    {
-        itemType = ItemType.Tool;
-    }
 }

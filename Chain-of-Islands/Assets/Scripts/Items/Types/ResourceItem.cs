@@ -7,9 +7,6 @@ public class ResourceItem : Item
 {
     [Header("Resource Properties")]
     public ResourceType resourceType;
+    public int maxStackSize;
 
-    public ResourceItem()
-    {
-        itemType = ItemType.Resource;
-    }
 }

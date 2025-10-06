@@ -8,8 +8,4 @@ public class ArmorItem : Item
     [Header("Armor Properties")]
     public ArmorType armorType;
 
-    public ArmorItem()
-    {
-        itemType = ItemType.Armor;
-    }
 }

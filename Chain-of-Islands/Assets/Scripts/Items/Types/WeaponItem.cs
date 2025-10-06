@@ -8,8 +8,4 @@ public class WeaponItem : Item
     [Header("WeaponItem Properties")]
     public WeaponType  weaponType;
 
-    public WeaponItem()
-    {
-        itemType = ItemType.Weapon;
-    }
 }

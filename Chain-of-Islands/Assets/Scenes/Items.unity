@@ -370,7 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b330f1e187d144897177dabdedc928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: woodTwo
+  _itemId: swordTwo
+  _itemTwoId: pickTwo
 --- !u!1 &1387154877
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,6 +583,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3f5a410fb767a9349989fabdb219b6e3, type: 2}
   - {fileID: 11400000, guid: 836d61da710a5034984ce1ddf26d7941, type: 2}
   - {fileID: 11400000, guid: 45e6077d4b6712b4aadbc38da3468231, type: 2}
+  - {fileID: 11400000, guid: 4b283f727f00ee54a9fe1911744e1c47, type: 2}
+  - {fileID: 11400000, guid: f2513b3c169bb2344a75be7557118f18, type: 2}
+  - {fileID: 11400000, guid: b152d121d36a35d41a822b6a0b632148, type: 2}
+  - {fileID: 11400000, guid: a53dc67c63af61045b31aa3b713819c2, type: 2}
+  - {fileID: 11400000, guid: 5114c862d4cc0f94a99af2408771f514, type: 2}
+  - {fileID: 11400000, guid: fcc5bbb6c2df4c14b8c60f63c7a1a2fa, type: 2}
+  - {fileID: 11400000, guid: feb04d065fe990e40862821473645de9, type: 2}
+  - {fileID: 11400000, guid: 6d0e778baf831734fbaafe9a12864eeb, type: 2}
+  - {fileID: 11400000, guid: a6c39c039e564fb4486ce4252a437630, type: 2}
 --- !u!4 &1940517493
 Transform:
   m_ObjectHideFlags: 0
