@@ -405,6 +405,8 @@ GameObject:
   m_Component:
   - component: {fileID: 198477787}
   - component: {fileID: 198477788}
+  - component: {fileID: 198477789}
+  - component: {fileID: 198477790}
   m_Layer: 0
   m_Name: PlayerVisual
   m_TagString: Untagged
@@ -468,7 +470,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7883476129098776410, guid: 6817ec0fe38b6ae4a898d5d770ab1169, type: 3}
+  m_Sprite: {fileID: 578425461, guid: 9236f25f8280a6d46b0caf3a5ec79e98, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -479,6 +481,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!95 &198477789
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198477786}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a591fa990e2b764a93d880fdb6a5fba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &198477790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198477786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4fb60d0148d62746967d89f208deb32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &205367898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -983,7 +1018,7 @@ GameObject:
   - component: {fileID: 653858151}
   - component: {fileID: 653858152}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1311,6 +1346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _joystick: {fileID: 629767237}
+  _playerVisual: {fileID: 198477790}
   _speedPlayer: 5
 --- !u!4 &1220451668
 Transform:
@@ -1325,8 +1361,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2005062612}
   - {fileID: 198477787}
+  - {fileID: 2005062612}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1220451670
@@ -1361,8 +1397,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0896842, y: 0.04867005}
-  m_Size: {x: 0.45199168, y: 0.10423888}
+  m_Offset: {x: 0.03035991, y: -0.016138045}
+  m_Size: {x: 0.45099685, y: 0.12019296}
   m_Direction: 1
 --- !u!50 &1220451671
 Rigidbody2D:
