@@ -9,13 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8d9953401e3044438e2104b4959565e, type: 3}
-  m_Name: leatherTwo
+  m_Script: {fileID: 11500000, guid: d27b0202d29c1234e8a59fc8b936f028, type: 3}
+  m_Name: Recipe
   m_EditorClassIdentifier: 
-  itemId: leatherTwo
-  itemName: "\u043A\u043E\u0436\u04302"
-  maxStackSize: 0
-  icon: {fileID: 0}
-  worldPrefab: {fileID: 0}
-  canBeUsedInCrafting: 0
-  canBeUsedInBuilding: 0
+  recipeId: ironSword
+  recipeName: ironSword
+  ingredients:
+  - itemId: wool
+    amount: 2
+  - itemId: grass
+    amount: 2
+  result:
+    itemId: swordOne
+    amount: 1
+  requiredStation: 0

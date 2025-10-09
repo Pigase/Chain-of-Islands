@@ -5,21 +5,34 @@ using UnityEngine;
 public class Examination : MonoBehaviour
 {
     [SerializeField] private string _itemId;
-    [SerializeField] private string _itemTwoId;
+    [SerializeField] private string craftRecipeId;
+    [SerializeField] private Dictionary<string, int> testInventory = new Dictionary<string, int>();
 
+    [Tooltip("items ID")]
+    [SerializeField] private List<ItemStack> playerInventary;
+
+    private CraftingSystem craftingSystem;
+    private ItemDataBase itemDataBase;
+
+    private void Start()
+    {
+        craftingSystem = GameManager.GetSystem<CraftingSystem>();
+        itemDataBase = GameManager.GetSystem<ItemDataBase>();
+        for (int i = 0; i < playerInventary.Count; i++)
+        {
+            testInventory.Add(playerInventary[i].itemId, playerInventary[i].amount);
+        }
+    }
     public void Exam()
     {
-        if(ItemDataBase.Instance == null)
-        {
-            Debug.LogError("DataBase not initilizathion");
-            return;
-        }
+        itemDataBase.TestFindItem(_itemId); // ItemDataBase
 
-        ItemDataBase.Instance.TestFindItem(_itemId);
-        Item itemOne = ItemDataBase.Instance.GetItem(_itemId);
-        Item itemTwo = ItemDataBase.Instance.GetItem(_itemTwoId);
+        bool canCraft = craftingSystem.CanCraftRecipe(craftRecipeId, testInventory);
+        craftingSystem.CraftItem(craftRecipeId, testInventory);
 
-        Debug.Log($"предмет {itemOne.itemName} с id: {itemOne} типа : {itemOne.GetItemType()}");
-        Debug.Log($"предмет {itemTwo.itemName} с id: {itemTwo} типа : {itemTwo.GetItemType()}");
+        //if (canCraft)
+        //{
+        //    CraftingSystem.instance.CraftItem(craftRecipeId, testInventory);
+        //}
     }
 }

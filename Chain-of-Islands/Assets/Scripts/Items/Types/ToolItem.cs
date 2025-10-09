@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Tool", menuName = "Items/Tool")]
-public class ToolItem : Item
+public class ToolItem : Item, IPickupable
 {
-    [Header("ToolItem Properties")]
-    public ToolType toolType;
+    public override ItemType ItemType => ItemType.Tool;
 
+    [Header("ToolItem Properties")]
+    public int tier;
 }

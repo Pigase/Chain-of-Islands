@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class ItemDataBase : MonoBehaviour
 {
@@ -10,21 +9,9 @@ public class ItemDataBase : MonoBehaviour
 
     private Dictionary<string, Item> itemsMap;
 
-    public static ItemDataBase Instance { get; private set; }
-
-    private void Awake()
+    public void Initialize()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-            InitializeDatabase();
-            DontDestroyOnLoad(gameObject);    
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
+        InitializeDatabase(); 
     }
 
     private void InitializeDatabase()
@@ -105,7 +92,7 @@ public class ItemDataBase : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning($"Не удалось найти предмет с ID: {foundItem.itemId} для выдачи игроку.");
+                Debug.LogWarning($"Не удалось найти предмет с ID: {itemIdToTest} для выдачи игроку.");
             }
         }
         catch (System.Exception ex)
@@ -114,5 +101,5 @@ public class ItemDataBase : MonoBehaviour
         }
         
     }
-    
+        
 }

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Resource", menuName = "Items/Resource")]
-public class ResourceItem : Item
+public class ResourceItem : Item, IPickupable
 {
+    public override ItemType ItemType => ItemType.Resource;
+
     [Header("Resource Properties")]
-    public ResourceType resourceType;
-    public int maxStackSize;
+    public bool canBeUsedInCrafting;
+    public bool canBeUsedInBuilding;
 
 }
