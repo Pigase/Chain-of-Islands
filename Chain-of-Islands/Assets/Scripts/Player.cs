@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Joystick _joystick; // Ссылка на компонент джойстика
-    [SerializeField] private PlayerVisual _playerVisual;
+    [SerializeField] private PlayerVisualStateMachine _playerVisualStateMachine;
     [SerializeField] private float _speedPlayer;
 
 
@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
         // Передаем направление в Mover для перемещения объекта
         _mover.MoveObjectInDerection(_speedPlayer, _moveDirectionPlayer);
 
-        _playerVisual.IsRunning(_moveDirectionPlayer);
+        //Передаем направление в PlayerVisualStateMachine дял верного отображение спрайтов и выбора состояния
+        _playerVisualStateMachine.ChooseState(_moveDirectionPlayer);
     }
 }
