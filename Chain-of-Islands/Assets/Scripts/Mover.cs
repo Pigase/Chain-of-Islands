@@ -11,7 +11,7 @@ public class Mover
     {
         _targetObject = _targetGameObject;
     }
-
+        
     // Основной метод перемещения объекта
     public void MoveObjectInDerection(float _speedMoving, Vector2 _moveDirection)
     {
