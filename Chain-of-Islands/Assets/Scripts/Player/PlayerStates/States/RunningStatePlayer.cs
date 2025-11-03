@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RunningState : PlayerState
+public class RunningStatePlayer : PlayerState
 {
     // Хеш параметра аниматора (должен совпадать с именем в Animator Controller)
     private static readonly int IsRunningHash = Animator.StringToHash("isRunning");
     private PlayerVisualStateMachine _context;
     private Animator _animator;
 
-    public RunningState(PlayerVisualStateMachine context, Animator animator)
+    public RunningStatePlayer(PlayerVisualStateMachine context, Animator animator)
     {
         _context = context;
         _animator = animator;

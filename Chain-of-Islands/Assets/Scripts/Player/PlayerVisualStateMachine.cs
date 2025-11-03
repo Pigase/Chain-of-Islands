@@ -9,8 +9,8 @@ public class PlayerVisualStateMachine : MonoBehaviour
     private PlayerState _currentState; // “екущее активное состо€ние
 
     // —осто€ни€ - свойства дл€ безопасного доступа извне
-    public IdleState Idle { get; private set; }
-    public RunningState Running { get; private set; }
+    public IdleStatePlayer Idle { get; private set; }
+    public RunningStatePlayer Running { get; private set; }
 
     private void Awake()
     {
@@ -21,8 +21,8 @@ public class PlayerVisualStateMachine : MonoBehaviour
             Debug.LogError("Animator component is missing!", this);
 
         // »нициализаци€ состо€ний с передачей зависимостей
-        Idle = new IdleState(this, _animator);
-        Running = new RunningState(this, _animator);
+        Idle = new IdleStatePlayer(this, _animator);
+        Running = new RunningStatePlayer(this, _animator);
 
         // Ќачальное состо€ние - персонаж начинает в покое
         ChangeState(Idle);
