@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4221605479549830765}
   - component: {fileID: 5810967726228133283}
   - component: {fileID: 8697942641757218730}
+  - component: {fileID: -636116711653146129}
   m_Layer: 0
   m_Name: bush with berries 1
   m_TagString: Untagged
@@ -120,3 +121,19 @@ CapsuleCollider2D:
   m_Offset: {x: -0.009313339, y: 0.053432733}
   m_Size: {x: 1.1527553, y: 0.2463481}
   m_Direction: 1
+--- !u!114 &-636116711653146129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8166707121627417110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa0352a4d56abd42ad2fc69deb72448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 1.2298343, y: 0.3137424, z: 4}
+  m_Center: {x: -0.00020682812, y: 0.052550018, z: 0}
+  m_Area: 1
+  m_AffectedAgents: ffffffff

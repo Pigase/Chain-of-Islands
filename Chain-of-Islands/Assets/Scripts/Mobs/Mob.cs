@@ -5,7 +5,7 @@ using UnityEngine;
 public class Mob : MonoBehaviour
 {
     [SerializeField] private float _speedMob;
-    [SerializeField] private BrainMovmentInArea _brainMovmentInArea;
+    [SerializeField] private MobAI _mobAI;
 
     private Vector2 _moveDirectionPlayer;
     private Mover _mover;
@@ -16,8 +16,8 @@ public class Mob : MonoBehaviour
     }
     private void Update()
     {
-        _moveDirectionPlayer=_brainMovmentInArea.ChooseTargetInArea(gameObject);
+        //_moveDirectionPlayer=_mobAI.ChooseTargetInArea(gameObject);
 
-        _mover.MoveObjectToPoint(_speedMob, _moveDirectionPlayer);
+        //_mover.MoveObjectToPoint(_speedMob, _moveDirectionPlayer);
     }
 }
