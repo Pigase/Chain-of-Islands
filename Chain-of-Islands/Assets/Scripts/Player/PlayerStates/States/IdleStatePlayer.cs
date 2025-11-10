@@ -18,7 +18,7 @@ public class IdleStatePlayer : PlayerState
     public void Enter()
     {
         _animator.SetBool(IsRunningHash, false); // Выключаем анимацию бега
-        Debug.Log("Вошел в состояние покоя");
+        Debug.Log("Игрок вошел в состояние покоя");
     }
 
     public void Update(Vector2 moveDirection)
@@ -33,6 +33,6 @@ public class IdleStatePlayer : PlayerState
 
     public void Exit()
     {
-        Debug.Log("Вышел из состояния покоя");
+        Debug.Log("Игрок вышел из состояния покоя");
     }
 }
