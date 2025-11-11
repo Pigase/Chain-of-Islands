@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8d9953401e3044438e2104b4959565e, type: 3}
-  m_Name: boardsTwo
+  m_Name: grass
   m_EditorClassIdentifier: 
-  itemId: boardsTwo
-  itemName: "\u0434\u043E\u0441\u043A\u04382"
+  itemId: grass
+  itemName: "\u0442\u0440\u0430\u0432\u0430"
   maxStackSize: 34
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 32470113181a757478bb9a489001b2ce, type: 3}
   worldPrefab: {fileID: 0}
   canBeUsedInCrafting: 1
-  canBeUsedInBuilding: 1
+  canBeUsedInBuilding: 0

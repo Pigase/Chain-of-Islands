@@ -8,7 +8,7 @@ public class Inventory: MonoBehaviour
     public List<InventorySlot> slots = new List<InventorySlot>();
     public int maxSlots = 5;
 
-    private void Start()
+    private void Awake()
     {
         for(int i = 0; i < maxSlots; i++)
         {
