@@ -29,7 +29,6 @@ public class RoamingStateMob : MobState
         _animator.SetBool(IsRoamingHash, true);
         _roamPosition = GetRoamPosition();
         _navMeshAgent.SetDestination(_roamPosition);
-        Debug.Log(_roamPosition);
         Debug.Log("Моб вошел в состояние скитания");
     }
 
