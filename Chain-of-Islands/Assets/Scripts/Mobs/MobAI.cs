@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static Mob;
 
 public class MobAI : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private MobConfig _config;
 
     private Vector3 _startPosition;
 
@@ -15,6 +17,7 @@ public class MobAI : MonoBehaviour
 
     public IdleStateMob Idle { get; private set; }
     public RoamingStateMob Roaming { get; private set; }
+    public ChasingStateMob Chasing { get; private set; }
 
     private void Awake()
     {
@@ -28,11 +31,12 @@ public class MobAI : MonoBehaviour
             Debug.LogError("Animator component is missing!", this);
 
         // »нициализаци€ состо€ний с передачей зависимостей
-        Idle = new IdleStateMob(this, _animator);
-        Roaming = new RoamingStateMob(this, _animator, _navMeshAgent, _startPosition);
+        Idle = new IdleStateMob(this, _animator, _config);
+        Roaming = new RoamingStateMob(this, _animator, _navMeshAgent, _startPosition, _config);
+        Chasing = new ChasingStateMob(this, _animator, _navMeshAgent, _config);
 
         // Ќачальное состо€ние - моб начинает в покое
-        ChangeState(Roaming);
+        ChangeState(Idle);
     }
 
     // √лавный метод дл€ обновлени€ логики состо€ний

@@ -133,7 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a861ef06deda1b24bb00d226fcb09ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedMob: 0
   _mobAI: {fileID: 7586755305311512650}
 --- !u!114 &7586755305311512650
 MonoBehaviour:
@@ -149,6 +148,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 687323686849903273}
   _spriteRenderer: {fileID: 6947964870771507360}
+  _config:
+    speedRoaming: 1.5
+    speedChasing: 2.5
+    chaseStartDistance: 3
+    chaseExitDistance: 5
+    minRoamDistance: 2
+    maxRoamDistance: 7
+    idleTime: 2
+    stoppingDistance: 0.5
 --- !u!1 &8017645045086665064
 GameObject:
   m_ObjectHideFlags: 0

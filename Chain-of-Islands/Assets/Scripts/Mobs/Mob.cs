@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Mob : MonoBehaviour
 {
-    [SerializeField] private float _speedMob;
     [SerializeField] private MobAI _mobAI;
 
     private void Update()
     {
-        _mobAI.ChooseState();
+        if (_mobAI != null)
+        {
+            _mobAI.ChooseState();
+        }
     }
 }
