@@ -10,8 +10,8 @@ public class MobConfig
     public float speedChasing = 2.5f;
 
     [Header("Chasing Settings")]
-    public float chaseStartDistance = 2f;
-    public float chaseExitDistance = 5f;
+    public float chaseStartDistance = 3f;
+    public float chaseExitDistance = 6f;
 
     [Header("Roaming Settings")]
     public float minRoamDistance = 2f;
@@ -19,6 +19,9 @@ public class MobConfig
 
     [Header("Idle Settings")]
     public float idleTime = 2f;
+
+    [Header("Atacking Settings")]
+    public float atackDistance = 1f;
 
     [Header("Agent Settings")]
     public float stoppingDistance = 0.5f;

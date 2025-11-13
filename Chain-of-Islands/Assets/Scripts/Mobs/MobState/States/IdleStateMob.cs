@@ -14,6 +14,8 @@ public class IdleStateMob : MobState
     private readonly MobConfig _config;
     private readonly Animator _animator;
 
+    private float _distanceToPlayer;
+
     private MobAI _context;
     private GameObject _player;
 
@@ -29,42 +31,26 @@ public class IdleStateMob : MobState
     {
         _animator.SetBool(IsIdleHash, true);
         _enterTime = Time.time; // Запоминаем время входа
-
-        Debug.Log("Моб вошел в состояние покоя");
     }
 
     public void Update(Vector3 currentPosition)
     {
-        float distanceToPlayer;
+        _distanceToPlayer = PlayerService.FindDistanceToPlayer(currentPosition);
 
-        // Проверить, нашли ли объект, и затем использовать
-        if (_player == null)
-        {
-            Debug.LogWarning("Объект с тегом 'Player' не найден!");
-            distanceToPlayer = Mathf.Infinity;
-        }
-        else
-        {
-            distanceToPlayer = Vector3.Distance(currentPosition, _player.transform.position);
-        }
-
-        CheckState(distanceToPlayer);
+        CheckState();
     }
 
     public void Exit()
     {
         _animator.SetBool(IsIdleHash, false);
-
-        Debug.Log("Моб вышел из состояния покоя");
     }
 
-    private void CheckState(float distanceToPlayer)
+    private void CheckState()
     {
         // Проверить, нашли ли объект, и затем использовать
         if (_player != null)
         {
-            Debug.Log("Расстояние до игрока: " + distanceToPlayer);
-            if (distanceToPlayer < _config.chaseStartDistance)
+            if (_distanceToPlayer < _config.chaseStartDistance)
             {
                 _context.ChangeState(_context.Chasing);
             }

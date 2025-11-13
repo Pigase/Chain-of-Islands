@@ -8,6 +8,8 @@ public class ChasingStateMob : MobState
     // Хеш параметра аниматора (должен совпадать с именем в Animator Controller)
     private static readonly int IsChasingHash = Animator.StringToHash("isChasing");
 
+    private float _distanceToPlayer;
+
     private readonly MobConfig _config;
     private readonly Animator _animator;
 
@@ -28,8 +30,6 @@ public class ChasingStateMob : MobState
     {
         _animator.SetBool(IsChasingHash, true);
         _navMeshAgent.speed = _config.speedChasing;
-
-        Debug.Log("Моб вошел в состояние погони");
     }
 
     public void Update(Vector3 currentPosition)
@@ -42,11 +42,11 @@ public class ChasingStateMob : MobState
             return;
         }
 
-        float distanceToPlayer = Vector3.Distance(currentPosition, _player.transform.position);
+        _distanceToPlayer = PlayerService.FindDistanceToPlayer(currentPosition);
 
         Chase();
         CheckDirection();
-        CheckState(distanceToPlayer);
+        CheckState();
     }
 
     public void Exit()
@@ -59,8 +59,6 @@ public class ChasingStateMob : MobState
         }
 
         _animator.SetBool(IsChasingHash, false);
-
-        Debug.Log("Моб вышел из состояния погони");
     }
 
     private void Chase()
@@ -75,13 +73,17 @@ public class ChasingStateMob : MobState
         _context.FlipSprite(new Vector2(movementDirection.x, movementDirection.y));
     }
 
-    private void CheckState(float distanceToPlayer)
+    private void CheckState()
     {
 
-        Debug.Log("Расстояние до игрока: " + distanceToPlayer);
-        if (distanceToPlayer >= _config.chaseExitDistance)
+        Debug.Log("Расстояние до игрока: " + _distanceToPlayer);
+        if (_distanceToPlayer >= _config.chaseExitDistance)
         {
             _context.ChangeState(_context.Roaming);
+        }
+        if(_distanceToPlayer <= _config.atackDistance)
+        {
+            _context.ChangeState(_context.Atacking);
         }
     }
 }

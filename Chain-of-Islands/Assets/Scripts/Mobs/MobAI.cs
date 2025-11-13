@@ -13,11 +13,12 @@ public class MobAI : MonoBehaviour
     private Vector3 _startPosition;
 
     private NavMeshAgent _navMeshAgent;
-    private MobState _currentState; // Текущее активное состояние
+    private MobState _currentState;
 
     public IdleStateMob Idle { get; private set; }
     public RoamingStateMob Roaming { get; private set; }
     public ChasingStateMob Chasing { get; private set; }
+    public AtackingStateMob Atacking { get; private set; }
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class MobAI : MonoBehaviour
         Idle = new IdleStateMob(this, _animator, _config);
         Roaming = new RoamingStateMob(this, _animator, _navMeshAgent, _startPosition, _config);
         Chasing = new ChasingStateMob(this, _animator, _navMeshAgent, _config);
+        Atacking = new AtackingStateMob(this, _animator, _config);
 
         // Начальное состояние - моб начинает в покое
         ChangeState(Idle);

@@ -13,6 +13,8 @@ public class RoamingStateMob : MobState
     private Vector3 _roamPosition;
     private Vector3 _startPosition;
 
+    private float _distanceToPlayer;
+
     private readonly MobConfig _config;
     private readonly Animator _animator;
 
@@ -37,30 +39,17 @@ public class RoamingStateMob : MobState
         _roamPosition = GetRoamPosition();
         _navMeshAgent.SetDestination(_roamPosition);
         _navMeshAgent.speed = _config.speedRoaming;
-
-        Debug.Log("Моб вошел в состояние скитания");
     }
 
     public void Update(Vector3 currentPosition)
     {
-        float distanceToPlayer;
-
-        // Проверить, нашли ли объект, и затем использовать
-        if (_player == null)
-        {
-            Debug.LogWarning("Объект с тегом 'Player' не найден!");
-            distanceToPlayer = Mathf.Infinity;
-        }
-        else
-        {
-            distanceToPlayer = Vector3.Distance(currentPosition, _player.transform.position);
-        }
+        _distanceToPlayer = PlayerService.FindDistanceToPlayer(currentPosition);
 
         // Проверяем расстояние до цели
         float distanceToTarget = Vector3.Distance(currentPosition, _roamPosition);
 
         CheckDirection();
-        CheckState(distanceToTarget, distanceToPlayer);
+        CheckState(distanceToTarget);
     }
 
     public void Exit()
@@ -73,8 +62,6 @@ public class RoamingStateMob : MobState
         }
 
         _animator.SetBool(IsRoamingHash, false);
-
-        Debug.Log("Моб вышел из состояния скитания");
     }
 
     private void CheckDirection()
@@ -84,13 +71,13 @@ public class RoamingStateMob : MobState
         _context.FlipSprite(new Vector2(movementDirection.x, movementDirection.y));
     }
 
-    private void CheckState(float distanceToTarget, float distanceToPlayer)
+    private void CheckState(float distanceToTarget)
     {
         // Проверить, нашли ли объект, и затем использовать
         if (_player != null)
         {
             //Debug.Log("Расстояние до игрока: " + distanceToPlayer);
-            if (distanceToPlayer < _config.chaseStartDistance)
+            if (_distanceToPlayer < _config.chaseStartDistance)
             {
                 _context.ChangeState(_context.Chasing);
             }
