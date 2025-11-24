@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnerMobs : MonoBehaviour
 {
     [SerializeField] private Mob _prafabMobToSpawn;
-    [SerializeField] private int _poolCount = 4;
+    [SerializeField] private int _poolCount = 5;
     [SerializeField] private bool _autoExpande = true;
 
     [SerializeField] private SpawnMobToPoint[] _pointsToSpawnMobs;

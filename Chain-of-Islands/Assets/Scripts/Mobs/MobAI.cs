@@ -7,7 +7,6 @@ using static Mob;
 public class MobAI : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private MobConfig _config;
 
     private Vector3 _startPosition;
@@ -22,8 +21,6 @@ public class MobAI : MonoBehaviour
 
     private void Awake()
     {
-        _startPosition = transform.position;
-
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.updateRotation = false;
         _navMeshAgent.updateUpAxis = false;
@@ -33,11 +30,18 @@ public class MobAI : MonoBehaviour
 
         // Инициализация состояний с передачей зависимостей
         Idle = new IdleStateMob(this, _animator, _config);
-        Roaming = new RoamingStateMob(this, _animator, _navMeshAgent, _startPosition, _config);
         Chasing = new ChasingStateMob(this, _animator, _navMeshAgent, _config);
         Atacking = new AtackingStateMob(this, _animator, _config);
 
         // Начальное состояние - моб начинает в покое
+        ChangeState(Idle);
+    }
+    private void Start()
+    {
+        _startPosition = transform.position; // Уже установлена из пула!
+        Debug.Log(_startPosition); // Покажет правильную позицию спавна
+
+        Roaming = new RoamingStateMob(this, _animator, _navMeshAgent, _startPosition, _config);
         ChangeState(Idle);
     }
 
@@ -62,15 +66,14 @@ public class MobAI : MonoBehaviour
     // Визуальный метод - поворот спрайта в зависимости от направления
     public void FlipSprite(Vector2 moveDirection)
     {
-        if (_spriteRenderer == null)
-        {
-            Debug.LogWarning("SpriteRenderer is missing on mob!", this);
-            return;
-        }
-
         if (moveDirection.x != 0)
         {
-            _spriteRenderer.flipX = moveDirection.x < 0; // true = смотрит влево
+            // Переворачиваем весь объект по оси X
+            transform.localScale = new Vector3(
+                moveDirection.x < 0 ? -1 : 1,  // X scale
+                transform.localScale.y,         // Y scale оставляем как есть
+                transform.localScale.z          // Z scale оставляем как есть
+            );
         }
     }
 }

@@ -44,14 +44,15 @@ public class PoolMono<T> where T : MonoBehaviour
         this.pool.Add(createdObject);
         return createdObject;
     }
-    public bool HasFreeElement(out T element)
+    public bool HasFreeElement(out T element, bool activateImmediately = false)
     {
         foreach (var mono in pool)
         {
             if (!mono.gameObject.activeInHierarchy)
             {
                 element = mono;
-                mono.gameObject.SetActive(true);
+                if (activateImmediately)
+                    mono.gameObject.SetActive(true);
                 return true;
             }
         }
@@ -61,7 +62,7 @@ public class PoolMono<T> where T : MonoBehaviour
 
     public T GetFreeElement()
     {
-        if (this.HasFreeElement(out var element))
+        if (this.HasFreeElement(out var element, true))
         {
             return element;
         }
@@ -70,5 +71,28 @@ public class PoolMono<T> where T : MonoBehaviour
             return this.CreateObject(true);
         }
         throw new Exception($"There is no free elements in pool of type {typeof(T)}");
+    }
+
+    public T GetFreeElement(Vector3 position)
+    {
+        if (this.HasFreeElement(out var element, false)) // НЕ активируем сразу
+        {
+            element.transform.position = position; // Устанавливаем позицию ДО активации
+            element.gameObject.SetActive(true); // Теперь активируем
+            return element;
+        }
+        if (autoExpand)
+        {
+            var newElement = this.CreateObject(false); // Создаем неактивным
+            newElement.transform.position = position; // Устанавливаем позицию
+            newElement.gameObject.SetActive(true); // Активируем
+            return newElement;
+        }
+        throw new Exception($"There is no free elements in pool of type {typeof(T)}");
+    }
+
+    public T GetFreeElement(Transform spawnPoint)
+    {
+        return GetFreeElement(spawnPoint.position);
     }
 }

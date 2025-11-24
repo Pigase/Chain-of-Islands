@@ -75,7 +75,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7901005621848070842}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.61
+  m_Radius: 0.29
   m_Speed: 1.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 687323686849903273}
-  _spriteRenderer: {fileID: 6947964870771507360}
   _config:
     speedRoaming: 1.5
     speedChasing: 2.5
@@ -189,7 +188,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -251,7 +250,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -286,6 +285,7 @@ GameObject:
   - component: {fileID: 5770636884775119088}
   - component: {fileID: 6947964870771507360}
   - component: {fileID: 687323686849903273}
+  - component: {fileID: 8726274494938664480}
   m_Layer: 0
   m_Name: Mob1Visual
   m_TagString: Untagged
@@ -381,3 +381,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8726274494938664480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8017645045086665064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c998c19afec9949a4e8598613e4d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetObject: {fileID: 7901005621848070842}

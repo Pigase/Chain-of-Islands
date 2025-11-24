@@ -20,7 +20,6 @@ public class SpawnMobToPoint : MonoBehaviour
         _isSpawned = true;
         yield return new WaitForSeconds(_spawnTime); // ∆дем
 
-        Mob mob = poolPrefabMobToSpawn.GetFreeElement();
-        mob.transform.position = transform.position;
+        Mob mob = poolPrefabMobToSpawn.GetFreeElement(transform.position);
     }
 }
