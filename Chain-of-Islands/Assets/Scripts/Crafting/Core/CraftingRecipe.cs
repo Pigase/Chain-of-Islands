@@ -22,7 +22,7 @@ public class CraftingRecipe : ScriptableObject
 
     [Header("Требования")]
     [Tooltip("Какая станция нужна для крафта")]
-    public CraftingStation requiredStation;
+    public Station requiredStation;
 
     public bool IsValid()
     {
@@ -34,7 +34,7 @@ public class CraftingRecipe : ScriptableObject
         foreach (var ingredient in ingredients)
         {
             if (string.IsNullOrEmpty(ingredient.itemId)) return false;
-            if (ingredient.amount <= 0) return false;
+            if (ingredient.amount < 0) return false;
         }
 
         return true;

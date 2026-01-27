@@ -10,16 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d27b0202d29c1234e8a59fc8b936f028, type: 3}
-  m_Name: Recipe
+  m_Name: Recipe 1
   m_EditorClassIdentifier: 
-  recipeId: ironSword
-  recipeName: ironSword
+  recipeId: faf
+  recipeName: faf
   ingredients:
-  - itemId: boardsTwo
+  - itemId: axe
     amount: 2
-  - itemId: grass
+  - itemId: axe
+    amount: 2
+  - itemId: axe
+    amount: 2
+  - itemId: axe
     amount: 2
   result:
-    itemId: sword
-    amount: 1
+    itemId: grass
+    amount: 2
   requiredStation: {fileID: 11400000, guid: 6aba698cc564f04419f875e1c8a89206, type: 2}

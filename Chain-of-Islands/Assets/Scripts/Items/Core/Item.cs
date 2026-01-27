@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,5 +15,10 @@ public abstract class Item : ScriptableObject
 
     [Header("Visuals")]
     public Sprite icon;
-    public GameObject worldPrefab;
+    public Sprite worldPrefabIcon;
+
+    [Header("Description")]
+    public string description;
+
+    public abstract Type GetItemType();
 }

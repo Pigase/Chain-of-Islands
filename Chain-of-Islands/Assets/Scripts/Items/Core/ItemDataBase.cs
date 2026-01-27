@@ -6,7 +6,7 @@ public class ItemDataBase : MonoBehaviour
 {
     [Header("Все предметы игры")]
     [SerializeField] private List<Item> allItems = new List<Item>();
-
+    
     private Dictionary<string, Item> itemsMap;
 
     public void Initialize()
