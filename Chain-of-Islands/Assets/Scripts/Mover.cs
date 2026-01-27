@@ -11,15 +11,14 @@ public class Mover
     {
         _targetObject = _targetGameObject;
     }
-        
+
     // Основной метод перемещения объекта
-    public void MoveObjectInDerection(float _speedMoving, Vector2 _moveDirection)
+    public void MoveObjectInDerection(float speedMoving, Vector2 moveDirection, Rigidbody2D rb)
     {
-        // Проверяем, что направление не нулевое
-        if (_moveDirection != Vector2.zero)
+        if (moveDirection != Vector2.zero)
         {
-            // Перемещаем объект в направлении _moveDirection со скоростью _speedMoving
-            _targetObject.transform.position += (Vector3)_moveDirection * _speedMoving * Time.deltaTime;
+            Vector2 newPosition = rb.position + moveDirection * speedMoving * Time.fixedDeltaTime;
+            rb.MovePosition(newPosition);
         }
     }
 

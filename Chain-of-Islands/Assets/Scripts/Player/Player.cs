@@ -11,11 +11,13 @@ public class Player : MonoBehaviour
 
     private Vector2 _moveDirectionPlayer; // Направление движения от джойстика
     private Mover _mover; // Кастомный класс для перемещения
+    private Rigidbody2D _rb;
 
     private void Awake()
     {
         // Создаем экземпляр Mover, передавая текущий GameObject
         _mover = new Mover(gameObject);
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -24,7 +26,7 @@ public class Player : MonoBehaviour
         _moveDirectionPlayer = _joystick.FindingDirection();
 
         // Передаем направление в Mover для перемещения объекта
-        _mover.MoveObjectInDerection(_speedPlayer, _moveDirectionPlayer);
+        _mover.MoveObjectInDerection(_speedPlayer, _moveDirectionPlayer, _rb);
 
         //Передаем направление в PlayerVisualStateMachine дял верного отображение спрайтов и выбора состояния
         _playerVisualStateMachine.ChooseState(_moveDirectionPlayer);

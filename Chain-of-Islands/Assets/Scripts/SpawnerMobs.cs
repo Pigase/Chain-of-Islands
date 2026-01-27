@@ -14,7 +14,7 @@ public class SpawnerMobs : MonoBehaviour
 
     private void Awake()
     {
-        _poolPrefabMobToSpawn = new PoolMono<Mob>(_prafabMobToSpawn, _poolCount);
+        _poolPrefabMobToSpawn = new PoolMono<Mob>(_prafabMobToSpawn, _poolCount, transform);
         _poolPrefabMobToSpawn.autoExpand = _autoExpande;
 
         ReSpawn();
