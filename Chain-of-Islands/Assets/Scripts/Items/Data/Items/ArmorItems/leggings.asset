@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: leggings
   itemName: "\u043F\u043E\u043D\u043E\u0436\u0438"
-  icon: {fileID: 0}
-  worldPrefab: {fileID: 0}
   maxStackSize: 1
-  itemType: 3
-  armorType: 2
+  icon: {fileID: 21300000, guid: b2e47434c0e9371458c9b3fd7441c3fe, type: 3}
+  worldPrefab: {fileID: 0}
+  description: leg
+  armor: 0
+  armorType: 3

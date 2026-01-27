@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: helmet
   itemName: "\u0448\u043B\u0435\u043C"
-  icon: {fileID: 0}
-  worldPrefab: {fileID: 0}
   maxStackSize: 1
-  itemType: 3
-  armorType: 0
+  icon: {fileID: 21300000, guid: de2ad5439aabdbc4ca412a5a88fa9240, type: 3}
+  worldPrefabIcon: {fileID: 21300000, guid: 98929c37b014c20409b44439881fa014, type: 3}
+  description: shlem
+  armor: 1
+  armorType: 1

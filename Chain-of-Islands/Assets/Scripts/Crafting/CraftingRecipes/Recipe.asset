@@ -15,11 +15,11 @@ MonoBehaviour:
   recipeId: ironSword
   recipeName: ironSword
   ingredients:
-  - itemId: wool
+  - itemId: boardsTwo
     amount: 2
   - itemId: grass
     amount: 2
   result:
-    itemId: swordOne
+    itemId: sword
     amount: 1
-  requiredStation: 0
+  requiredStation: {fileID: 11400000, guid: 6aba698cc564f04419f875e1c8a89206, type: 2}

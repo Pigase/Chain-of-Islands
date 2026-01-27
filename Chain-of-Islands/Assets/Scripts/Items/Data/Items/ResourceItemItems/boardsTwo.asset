@@ -17,5 +17,6 @@ MonoBehaviour:
   maxStackSize: 34
   icon: {fileID: 21300000, guid: 9bed1cbe7c78e8943ad4e8801916d1ed, type: 3}
   worldPrefab: {fileID: 0}
+  description: bbb
   canBeUsedInCrafting: 1
   canBeUsedInBuilding: 1
