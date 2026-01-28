@@ -54,7 +54,6 @@ public class AtackingStateMob : MobState
     {
         if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
-            Debug.Log("Расстояние до игрока: " + _distanceToPlayer);
             CheckDirection();
 
             _animator.Play(AtackingHash, 0, 0f); // Возвращаем к 0 времени

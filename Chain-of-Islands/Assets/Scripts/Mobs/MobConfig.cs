@@ -25,5 +25,6 @@ public class MobConfig
 
     [Header("Agent Settings")]
     public float stoppingDistance = 0.5f;
+    public float damageDealt = 5f;
 
 }

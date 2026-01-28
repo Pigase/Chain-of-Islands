@@ -39,7 +39,6 @@ public class MobAI : MonoBehaviour
     private void Start()
     {
         _startPosition = transform.position; // ”же установлена из пула!
-        Debug.Log(_startPosition); // ѕокажет правильную позицию спавна
 
         Roaming = new RoamingStateMob(this, _animator, _navMeshAgent, _startPosition, _config);
         ChangeState(Idle);
@@ -75,5 +74,10 @@ public class MobAI : MonoBehaviour
                 transform.localScale.z          // Z scale оставл€ем как есть
             );
         }
+    }
+
+    public float GetDamage()
+    {
+        return _config.damageDealt;
     }
 }

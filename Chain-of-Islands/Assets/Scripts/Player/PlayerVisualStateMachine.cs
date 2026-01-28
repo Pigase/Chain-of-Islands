@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerVisualStateMachine : MonoBehaviour
 {
+    [SerializeField] private Player _player;
+
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     private PlayerState _currentState; // “екущее активное состо€ние
@@ -26,6 +28,17 @@ public class PlayerVisualStateMachine : MonoBehaviour
 
         // Ќачальное состо€ние - персонаж начинает в покое
         ChangeState(Idle);
+    }
+
+    private void OnEnable()
+    {
+        _player.PlayerGetDamage += ShowDamage;
+    }
+
+    private void OnDisable()
+    {
+        _player.PlayerGetDamage -= ShowDamage;
+
     }
 
     // √лавный метод дл€ обновлени€ логики состо€ний
@@ -53,5 +66,19 @@ public class PlayerVisualStateMachine : MonoBehaviour
         {
             _spriteRenderer.flipX = moveDirection.x < 0; // true = смотрит влево
         }
+    }
+
+    private void ShowDamage(float timeInvulnerability)
+    {
+
+        StartCoroutine(Invulnerability(timeInvulnerability));
+    }
+
+    private IEnumerator Invulnerability(float secondsForShowDamge)
+    {
+        var sprite = GetComponent<SpriteRenderer>();
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(secondsForShowDamge);
+        sprite.color = Color.white;
     }
 }

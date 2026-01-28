@@ -75,8 +75,6 @@ public class ChasingStateMob : MobState
 
     private void CheckState()
     {
-
-        Debug.Log("Расстояние до игрока: " + _distanceToPlayer);
         if (_distanceToPlayer >= _config.chaseExitDistance)
         {
             _context.ChangeState(_context.Roaming);
