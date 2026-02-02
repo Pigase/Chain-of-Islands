@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [Header("Игровые системы")]
     public ItemDataBase itemDataBase;
     public CraftingSystem craftingSystem;
+    public WorldPool worldPool;
 
     private void Awake()
     {
@@ -29,7 +30,8 @@ public class GameManager : MonoBehaviour
     private void InitializeGame()
     {
         itemDataBase.Initialize();
-        craftingSystem.Initialize(itemDataBase);;
+        craftingSystem.Initialize(itemDataBase);
+        worldPool.Initialize();
 
         Debug.Log("Все системы инициализированы!");
     }
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
 
         if (typeof(T) == typeof(ItemDataBase)) return Instance.itemDataBase as T;
         if (typeof(T) == typeof(CraftingSystem)) return Instance.craftingSystem as T;
+        if (typeof(T) == typeof(WorldPool)) return Instance.worldPool as T;
 
         return null;
     }
