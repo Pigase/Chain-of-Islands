@@ -7,34 +7,30 @@ using Random = UnityEngine.Random;
 
 public class DropSystem : MonoBehaviour
 {
-    [SerializeField] private Object _object;
     [SerializeField] private Transform _itemDroppingPosition;
     [SerializeField] private HealthComponent healthComponent;
 
-    private ItemDataBase itemDate;
     private WorldPool _pool;
-    private List<ItemStack> itemDrop;
+    private List<StackDiscardedItems> itemDrop;
+
+    public event Func<List<StackDiscardedItems>> OnRequestedForInformation;
 
     private void Start()
     {
-        itemDate = GameManager.GetSystem<ItemDataBase>();
         _pool = GameManager.GetSystem<WorldPool>();
-
-        if(_object == null)
-            throw new ArgumentNullException(nameof(_object), "_object cannot be null");
-
-        itemDrop = _object.DispensingItems;
     }
 
+    private void RequestForInformation()
+    {
+        itemDrop = OnRequestedForInformation?.Invoke();
+
+        Drop();
+    }
     private void Drop()
     {
         for (int i = 0; i < itemDrop.Count; i++)
         {
-            Item item = itemDate.GetItem(itemDrop[i].itemId);
-            if(item != null)
-            {
-                DroppingItems(item, itemDrop[i].amount);
-            }
+            DroppingItems(itemDrop[i].Item, itemDrop[i].amount);
         }
     }
 
@@ -51,15 +47,20 @@ public class DropSystem : MonoBehaviour
     private void DropPosition(Transform itemDroppingPosition, ItemPrefab item, int radiusDrop)
     {
         item.transform.position = itemDroppingPosition.position;
+
+        Vector2 randomOffset = Random.insideUnitCircle * radiusDrop;
+        Vector3 dropPos = itemDroppingPosition.position + new Vector3(randomOffset.x, 1f, randomOffset.y);
+
+        item.transform.position = dropPos;
     }
 
     private void OnEnable()
     {
-        healthComponent.OnDeath += Drop;
+        healthComponent.OnDeath += RequestForInformation;
     }
 
     private void OnDisable()
     {
-        healthComponent.OnDeath -= Drop;
+        healthComponent.OnDeath -= RequestForInformation;
     }
 }

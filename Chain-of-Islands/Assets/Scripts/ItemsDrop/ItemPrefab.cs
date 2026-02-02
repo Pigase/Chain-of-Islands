@@ -34,18 +34,4 @@ public class ItemPrefab : MonoBehaviour
         _collider = GetComponent<Collider2D>();
         _rb = GetComponent<Rigidbody2D>();
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == ("Player"))
-        {
-            ItemUp();
-        }
-    }
-
-    private void ItemUp()
-    {
-        gameObject.SetActive(false);
-        OnItemPickedUp?.Invoke();
-    }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DropItemStack : MonoBehaviour
+public class DropHandler : MonoBehaviour
 {
-    
+
 }
