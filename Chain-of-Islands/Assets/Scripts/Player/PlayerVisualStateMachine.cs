@@ -64,7 +64,12 @@ public class PlayerVisualStateMachine : MonoBehaviour
     {
         if (moveDirection.x != 0)
         {
-            _spriteRenderer.flipX = moveDirection.x < 0; // true = смотрит влево
+            // Переворачиваем весь объект по оси X
+            _player.transform.localScale = new Vector3(
+                moveDirection.x < 0 ? -1 : 1,  // X scale
+                transform.localScale.y,         // Y scale оставляем как есть
+                transform.localScale.z          // Z scale оставляем как есть
+            );
         }
     }
 

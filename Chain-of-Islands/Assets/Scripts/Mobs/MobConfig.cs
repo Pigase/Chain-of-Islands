@@ -22,9 +22,9 @@ public class MobConfig
 
     [Header("Atacking Settings")]
     public float atackDistance = 1f;
+    public float damageDealt = 5f;
 
     [Header("Agent Settings")]
     public float stoppingDistance = 0.5f;
-    public float damageDealt = 5f;
 
 }

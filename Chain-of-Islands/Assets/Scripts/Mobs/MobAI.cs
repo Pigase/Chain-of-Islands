@@ -75,9 +75,4 @@ public class MobAI : MonoBehaviour
             );
         }
     }
-
-    public float GetDamage()
-    {
-        return _config.damageDealt;
-    }
 }

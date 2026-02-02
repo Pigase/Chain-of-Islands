@@ -10,9 +10,6 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerVisualStateMachine _playerVisualStateMachine;
     [SerializeField] private HealthComponent _health;
     [SerializeField] private float _speedPlayer;
-    [SerializeField] private float _timeInvulnerability;
-    [SerializeField] private bool _invulnerability = false;
-
 
     private Vector2 _moveDirectionPlayer; // Направление движения от джойстика
     private Mover _mover; // Кастомный класс для перемещения
@@ -49,31 +46,18 @@ public class Player : MonoBehaviour
         _playerVisualStateMachine.ChooseState(_moveDirectionPlayer);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnEnable()
     {
-        if (collision.gameObject.tag == "Mob")
-        {
-            if (collision.TryGetComponent<MobAI>(out var mobAI))
-            {
-                TakeDamage(mobAI.GetDamage());
-            }
-        }
+        _health.OnDamageTaken += TakeDamage;
     }
 
-    private void TakeDamage(float damage)
+    private void OnDisable()
     {
-        if (_invulnerability) return;
-
-        _invulnerability = true; // СРАЗУ устанавливаем флаг
-        _health.TakeDamage(damage);
-
-        PlayerGetDamage?.Invoke(_timeInvulnerability);
-        StartCoroutine(InvulnerabilityCooldown());
+        _health.OnDamageTaken -= TakeDamage;
     }
 
-    private IEnumerator InvulnerabilityCooldown()
+    private void TakeDamage(float damage, float timeInvulnerability)
     {
-        yield return new WaitForSeconds(_timeInvulnerability);
-        _invulnerability = false; // Сбрасываем через время
+        PlayerGetDamage?.Invoke(timeInvulnerability);
     }
 }
