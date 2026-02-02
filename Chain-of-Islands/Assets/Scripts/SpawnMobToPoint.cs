@@ -4,22 +4,42 @@ using UnityEngine;
 
 public class SpawnMobToPoint : MonoBehaviour
 {
-    [SerializeField] private float _spawnTime = 5f;
+    private float _respawnTime = 30f;
+    private Mob _currentMob;
+    private PoolMono<Mob> _pool;
+    private HealthComponent _currentMobHealth;
 
-    private PoolMono<Mob> _poolPrefabMobToSpawn;
-
-    private bool _isSpawned = false;
-    public bool IsSpawning => _isSpawned;
-    public void Spawn(PoolMono<Mob> poolPrefabMobToSpawn)
+    public void Initialize(PoolMono<Mob> pool, float respawnTime)
     {
-        StartCoroutine(SpawnCoroutine(poolPrefabMobToSpawn));
+        _respawnTime = respawnTime;
+        _pool = pool;
+        SpawnMob();
     }
 
-    private IEnumerator SpawnCoroutine(PoolMono<Mob> poolPrefabMobToSpawn)
+    private void SpawnMob()
     {
-        _isSpawned = true;
-        yield return new WaitForSeconds(_spawnTime); // ∆дем
+        _currentMob = _pool.GetFreeElement(transform.position);
+        _currentMobHealth = _currentMob.GetComponent<HealthComponent>();
+        _currentMobHealth.OnDeath += HandleMobDeath;
+    }
 
-        Mob mob = poolPrefabMobToSpawn.GetFreeElement(transform.position);
+    private void HandleMobDeath()
+    {
+        // —разу отписываемс€
+        if (_currentMobHealth != null)
+        {
+            _currentMobHealth.OnDeath -= HandleMobDeath;
+            _currentMobHealth = null;
+        }
+
+        StartCoroutine(RespawnTimer());
+    }
+
+    private IEnumerator RespawnTimer()
+    {
+        // ∆дем respawnTime
+        yield return new WaitForSeconds(_respawnTime);
+
+        SpawnMob(); // —павним нового моба
     }
 }

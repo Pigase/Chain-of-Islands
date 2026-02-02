@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnerMobs : MonoBehaviour
 {
     [SerializeField] private Mob _prafabMobToSpawn;
+    [SerializeField] private float _respawnTime = 30f;
     [SerializeField] private int _poolCount = 5;
     [SerializeField] private bool _autoExpande = true;
 
@@ -17,17 +18,10 @@ public class SpawnerMobs : MonoBehaviour
         _poolPrefabMobToSpawn = new PoolMono<Mob>(_prafabMobToSpawn, _poolCount, transform);
         _poolPrefabMobToSpawn.autoExpand = _autoExpande;
 
-        ReSpawn();
-    }
-
-    private void ReSpawn()
-    {
-        for (int i = 0; i < _pointsToSpawnMobs.Length; i++)
+        foreach (var point in _pointsToSpawnMobs)
         {
-            if(!_pointsToSpawnMobs[i].IsSpawning)
-            {
-                _pointsToSpawnMobs[i].Spawn(_poolPrefabMobToSpawn);
-            }
+            point.Initialize(_poolPrefabMobToSpawn, _respawnTime);
         }
+
     }
 }
