@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 4274946972073601273}
   - component: {fileID: 6761689375401815586}
   - component: {fileID: 92449134564164437}
+  - component: {fileID: -6369517644467485449}
+  - component: {fileID: 6404868763641992870}
+  - component: {fileID: 5659666120717230149}
   m_Layer: 0
   m_Name: Tree 1
   m_TagString: Untagged
@@ -137,3 +140,48 @@ MonoBehaviour:
   m_Center: {x: -0.0047546625, y: 0.094435275, z: 0}
   m_Area: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &-6369517644467485449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6248142391911617262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ae10fdc9ee4b74380a05ef68510b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _object: {fileID: 6404868763641992870}
+  _itemDroppingPosition: {fileID: 6026595471906900842}
+  healthComponent: {fileID: 5659666120717230149}
+--- !u!114 &6404868763641992870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6248142391911617262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8320abdd5915264c8cbdf3e819b6240, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dispensingItems:
+  - itemId: grass
+    amount: 2
+--- !u!114 &5659666120717230149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6248142391911617262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d25a99d400b6a1468fa335e1bbf07bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _currentHealth: 0
+  _timeInvulnerability: 0
