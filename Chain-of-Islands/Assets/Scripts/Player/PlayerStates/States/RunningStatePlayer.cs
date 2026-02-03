@@ -18,7 +18,6 @@ public class RunningStatePlayer : PlayerState
     public void Enter()
     {
         _animator.SetBool(IsRunningHash, true); // Включаем анимацию бега
-       // Debug.Log("Игрок вошел в состояние бега");
     }
 
     public void Update(Vector2 moveDirection)
@@ -34,6 +33,6 @@ public class RunningStatePlayer : PlayerState
 
     public void Exit()
     {
-       // Debug.Log("Игрок вышел из состояния бега");
+        _animator.SetBool(IsRunningHash, false); // Включаем анимацию бега
     }
 }

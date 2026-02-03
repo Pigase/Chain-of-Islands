@@ -5,19 +5,19 @@ using UnityEngine;
 public class PlayerVisualStateMachine : MonoBehaviour
 {
     [SerializeField] private Player _player;
+    [SerializeField] private ItemUseHandler _itemUseHandler;
 
     private Animator _animator;
-    private SpriteRenderer _spriteRenderer;
     private PlayerState _currentState; // Текущее активное состояние
 
     // Состояния - свойства для безопасного доступа извне
     public IdleStatePlayer Idle { get; private set; }
     public RunningStatePlayer Running { get; private set; }
+    public AttackStatePlayer Attack { get; private set; }
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (_animator == null)
             Debug.LogError("Animator component is missing!", this);
@@ -25,6 +25,7 @@ public class PlayerVisualStateMachine : MonoBehaviour
         // Инициализация состояний с передачей зависимостей
         Idle = new IdleStatePlayer(this, _animator);
         Running = new RunningStatePlayer(this, _animator);
+        Attack = new AttackStatePlayer(this, _animator);
 
         // Начальное состояние - персонаж начинает в покое
         ChangeState(Idle);
@@ -33,12 +34,13 @@ public class PlayerVisualStateMachine : MonoBehaviour
     private void OnEnable()
     {
         _player.PlayerGetDamage += ShowDamage;
+        _itemUseHandler.SwordAttack += PlayerAttack;
     }
 
     private void OnDisable()
     {
         _player.PlayerGetDamage -= ShowDamage;
-
+        _itemUseHandler.SwordAttack -= PlayerAttack;
     }
 
     // Главный метод для обновления логики состояний
@@ -77,6 +79,11 @@ public class PlayerVisualStateMachine : MonoBehaviour
     {
 
         StartCoroutine(Invulnerability(timeInvulnerability));
+    }
+
+    private void PlayerAttack()
+    {
+       // ChangeState(Attack);
     }
 
     private IEnumerator Invulnerability(float secondsForShowDamge)

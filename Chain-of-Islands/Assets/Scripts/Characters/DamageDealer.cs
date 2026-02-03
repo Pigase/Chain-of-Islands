@@ -5,6 +5,12 @@ using UnityEngine;
 public class DamageDealer : MonoBehaviour
 {
     [SerializeField] private float _damage;
+
+    public void SetDamage(float damage)
+    {
+        _damage = damage;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<DamageReceiver>(out var damageReceiver))

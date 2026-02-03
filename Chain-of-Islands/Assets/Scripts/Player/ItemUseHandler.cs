@@ -1,12 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class ItemUseHandler : MonoBehaviour
 {
     [SerializeField] private HealthComponent _health;
+    [SerializeField] private DamageDealer _damageDealer;
 
     private ItemDataBase _itemData;
+
+    public Action SwordAttack;
 
     private void Start()
     {
@@ -29,7 +34,8 @@ public class ItemUseHandler : MonoBehaviour
                 break;
 
             case WeaponItem weaponItem:
-                // Использование оружия
+
+                UseWeponItem(weaponItem);
 
                 break;
 
@@ -50,5 +56,31 @@ public class ItemUseHandler : MonoBehaviour
     private void UseRestorativeHealthItem(RestorativeHealthItem restorativeHealthItem)
     {
         _health.Heal(restorativeHealthItem.restorativeHealth);
+    }
+
+    private void UseWeponItem (WeaponItem weaponItem)
+    {
+        switch (weaponItem)
+        {
+            case Sword sword:
+
+                UseSword(sword);
+
+                break;
+
+            default:
+
+
+
+                break;
+        }
+    }
+
+    private void UseSword (Sword sword)
+    {
+
+        _damageDealer.SetDamage(sword.damage);
+        SwordAttack?.Invoke();
+
     }
 }

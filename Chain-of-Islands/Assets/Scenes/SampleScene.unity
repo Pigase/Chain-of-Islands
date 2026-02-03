@@ -461,6 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1220451666}
+  _itemUseHandler: {fileID: 1220451673}
 --- !u!1 &200151254
 GameObject:
   m_ObjectHideFlags: 0
@@ -2764,6 +2765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 1220451672}
+  _damageDealer: {fileID: 1454596193}
 --- !u!1 &1241045401
 GameObject:
   m_ObjectHideFlags: 0
