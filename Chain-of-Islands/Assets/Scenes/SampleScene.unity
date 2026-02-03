@@ -558,6 +558,7 @@ RectTransform:
   - {fileID: 1211848613}
   - {fileID: 863131983}
   - {fileID: 2016700856}
+  - {fileID: 296842307}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -632,6 +633,152 @@ CapsuleCollider2D:
   m_Offset: {x: 0.03035991, y: -0.016138045}
   m_Size: {x: 0.45099685, y: 0.12019296}
   m_Direction: 1
+--- !u!1 &296842306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 296842307}
+  - component: {fileID: 296842310}
+  - component: {fileID: 296842309}
+  - component: {fileID: 296842308}
+  - component: {fileID: 296842311}
+  m_Layer: 5
+  m_Name: Interaction Joystick
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &296842307
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296842306}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 200151258}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 511, y: -307}
+  m_SizeDelta: {x: 280, y: 280}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &296842308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296842306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 0.9843138, g: 0.7725491, b: 0.16470589, a: 0.46666667}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 296842309}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 296842311}
+        m_TargetAssemblyTypeName: InteractionJoystick, Assembly-CSharp
+        m_MethodName: UseItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &296842309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296842306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &296842310
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296842306}
+  m_CullTransparentMesh: 1
+--- !u!114 &296842311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296842306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ae1591350494d4098e1dcb15c95ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hotInventory: {fileID: 1373410095}
 --- !u!1 &299343976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,6 +1443,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f8d6781948f4f1740b0c9827a2b79926, type: 2}
   - {fileID: 11400000, guid: a53dc67c63af61045b31aa3b713819c2, type: 2}
   - {fileID: 11400000, guid: b152d121d36a35d41a822b6a0b632148, type: 2}
+  - {fileID: 11400000, guid: 5cd37ada102f09c4aa1ba46ec1eb1758, type: 2}
+  - {fileID: 11400000, guid: 955b6cf205a04984fa79bb38d8a2b34b, type: 2}
 --- !u!1 &629767235
 GameObject:
   m_ObjectHideFlags: 0
@@ -2467,6 +2616,7 @@ GameObject:
   - component: {fileID: 1220451671}
   - component: {fileID: 1220451666}
   - component: {fileID: 1220451672}
+  - component: {fileID: 1220451673}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2489,6 +2639,8 @@ MonoBehaviour:
   _joystick: {fileID: 629767237}
   _playerVisualStateMachine: {fileID: 198477790}
   _health: {fileID: 1220451672}
+  _interactionJoystick: {fileID: 296842311}
+  _itemUseHandler: {fileID: 1220451673}
   _speedPlayer: 5
 --- !u!4 &1220451668
 Transform:
@@ -2551,6 +2703,19 @@ MonoBehaviour:
   _maxHealth: 100
   _currentHealth: 0
   _timeInvulnerability: 1
+--- !u!114 &1220451673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220451665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75a4b2bac725e64281853377bdc28d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 1220451672}
 --- !u!1 &1241045401
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private Joystick _joystick; // Ссылка на компонент джойстика
     [SerializeField] private PlayerVisualStateMachine _playerVisualStateMachine;
     [SerializeField] private HealthComponent _health;
+    [SerializeField] private InteractionJoystick _interactionJoystick;
+    [SerializeField] private ItemUseHandler _itemUseHandler;
     [SerializeField] private float _speedPlayer;
 
     private Vector2 _moveDirectionPlayer; // Направление движения от джойстика
@@ -49,13 +52,19 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         _health.OnDamageTaken += TakeDamage;
+        _interactionJoystick.ButtonPressed += HandleItemUse;
     }
 
     private void OnDisable()
     {
         _health.OnDamageTaken -= TakeDamage;
+        _interactionJoystick.ButtonPressed -= HandleItemUse;
     }
 
+    private void HandleItemUse(InventorySlot slot)
+    {
+        _itemUseHandler.UseItem(slot);
+    }
     private void TakeDamage(float damage, float timeInvulnerability)
     {
         PlayerGetDamage?.Invoke(timeInvulnerability);
