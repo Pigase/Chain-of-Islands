@@ -9,7 +9,7 @@ public class DroppingZone : MonoBehaviour, IDropHandler
 {
     [SerializeField] private SlotInfoFinder _slotInfoFinder;
 
-    public event Action<int> OnItemDroppedInDroppZone;
+    public event Action<int> OnDroppedItemIndex;
     public event Action<Item,int> OnItemDropped;
 
     public void OnDrop(PointerEventData eventData)
@@ -23,7 +23,7 @@ public class DroppingZone : MonoBehaviour, IDropHandler
             Item item = _slotInfoFinder.ItemInSlot(droppItem);
             int itemCount = _slotInfoFinder.InventorySlotInUISlot(droppItem).itemCount;
 
-            OnItemDroppedInDroppZone?.Invoke(indexDroppItem);
+            OnDroppedItemIndex?.Invoke(indexDroppItem);
             OnItemDropped?.Invoke(item,itemCount);
         }
     }

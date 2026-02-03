@@ -8,8 +8,8 @@ public class Object : MonoBehaviour
     [Header("Выпадающие предметы")]
     [Tooltip("Предмет и его количество ")]
     [SerializeField] private List<StackDiscardedItems> dispensingItems = new List<StackDiscardedItems>();
+    [SerializeField] private WorldItemDrop _worldItemDrop;
 
-    [SerializeField] private DropSystem dropSystem;
     public List<StackDiscardedItems> DispensingItems => dispensingItems;
 
     private List<StackDiscardedItems> SetItemsInfo()
@@ -19,11 +19,11 @@ public class Object : MonoBehaviour
 
     private void OnEnable()
     {
-        dropSystem.OnRequestedForInformation += SetItemsInfo;
+        _worldItemDrop.OnRequestedForInformation += SetItemsInfo;
     }
 
     private void OnDisable()
     {
-        dropSystem.OnRequestedForInformation -= SetItemsInfo;
+        _worldItemDrop.OnRequestedForInformation -= SetItemsInfo;
     }
 }

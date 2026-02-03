@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [Header("Игровые системы")]
     public ItemDataBase itemDataBase;
     public CraftingSystem craftingSystem;
-    public WorldPool worldPool;
+    public SpawnItemWorldPrefab spawnItemWorldPrefab;
 
     private void Awake()
     {
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     {
         itemDataBase.Initialize();
         craftingSystem.Initialize(itemDataBase);
-        worldPool.Initialize();
+        spawnItemWorldPrefab.Initialize();
 
         Debug.Log("Все системы инициализированы!");
     }
@@ -39,11 +39,10 @@ public class GameManager : MonoBehaviour
     public static T GetSystem<T>() where T : Component
     {
         if (Instance == null) return null;
-
         if (typeof(T) == typeof(ItemDataBase)) return Instance.itemDataBase as T;
         if (typeof(T) == typeof(CraftingSystem)) return Instance.craftingSystem as T;
-        if (typeof(T) == typeof(WorldPool)) return Instance.worldPool as T;
-
+        if (typeof(T) == typeof(SpawnItemWorldPrefab)) return Instance.spawnItemWorldPrefab as T;
+        
         return null;
     }
 }
