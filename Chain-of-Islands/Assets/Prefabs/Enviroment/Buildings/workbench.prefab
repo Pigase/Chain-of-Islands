@@ -270,9 +270,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1528819123617815731}
   - component: {fileID: 4126050257120082884}
+  - component: {fileID: 1679308114102097691}
   m_Layer: 0
-  m_Name: workbench
-  m_TagString: Untagged
+  m_Name: Workbench
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -333,6 +334,19 @@ CircleCollider2D:
   m_Offset: {x: 1, y: -0.3}
   serializedVersion: 2
   m_Radius: 2.39
+--- !u!114 &1679308114102097691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4999444108991301342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68fa58214f970164f9e481f5e6732dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buildingStation: {fileID: 11400000, guid: 9ffc0f2833c16be43a51aec340a52bf8, type: 2}
 --- !u!1 &5778790962238812970
 GameObject:
   m_ObjectHideFlags: 0

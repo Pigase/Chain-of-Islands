@@ -6,6 +6,9 @@ using UnityEngine;
 public class Station : ScriptableObject
 {
     [Header("Basic Info")]
+    public string StationId;
+
+    [Header("Basic Info")]
     public string StationName;
 
     [Header("Description")]

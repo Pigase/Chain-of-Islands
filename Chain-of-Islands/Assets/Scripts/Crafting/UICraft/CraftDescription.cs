@@ -12,7 +12,7 @@ public class CraftDescription : MonoBehaviour
     [SerializeField] private RectTransform _content;
     [SerializeField] private TextMeshProUGUI _descriptionResult;
     [SerializeField] private IngridientSlot _prefabIngridientSlot;
-    [SerializeField] private Image _iconResult;
+    [SerializeField] private List<Image> _iconResult;
     [SerializeField] private CreateCraftSlots _createCraftSlots;
 
     private int _poolCount = 20;
@@ -48,22 +48,26 @@ public class CraftDescription : MonoBehaviour
 
         for (int i = 0; i < recipe.ingredients.Count; i++)
         {
-            var ingridientInfo = _itemData.GetItem(recipe.ingredients[i].itemId);
+            Item ingridientInfo = _itemData.GetItem(recipe.ingredients[i].itemId);
 
-            var ingridient = _pool.GetFreeElement();
+            IngridientSlot ingridient = _pool.GetFreeElement();
             ingridient.transform.SetParent(_content);
             ingridient.transform.localScale = Vector3.one;
             ingridient.icon.sprite = ingridientInfo.icon;
             _iconsByIngridients.Add(ingridient);
         }
 
-        var itemId = recipe.result.itemId;
-        var itemInfo = _itemData.GetItem(itemId);
+        string itemId = recipe.result.itemId;
+        Item itemInfo = _itemData.GetItem(itemId);
 
-        _iconResult.sprite = itemInfo.icon;
-        _descriptionResult.text = itemInfo.description;
+        for(int i = 0; i < _iconResult.Count; i++)
+        {
+            _iconResult[i].gameObject.SetActive(true);
+            _iconResult[i].sprite = itemInfo.icon;
+            _descriptionResult.text = itemInfo.description;
 
-        _lastIconCount = recipe.ingredients.Count;
+            _lastIconCount = recipe.ingredients.Count;
+        }
     }
 
     private void OnEnable()

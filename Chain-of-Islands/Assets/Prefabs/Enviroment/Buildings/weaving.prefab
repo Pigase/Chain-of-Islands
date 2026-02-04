@@ -257,9 +257,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5104406752324097293}
+  - component: {fileID: 1408267198322375318}
   m_Layer: 0
-  m_Name: weaving
-  m_TagString: Untagged
+  m_Name: Weaving
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -284,6 +285,19 @@ Transform:
   - {fileID: 8817087903203115150}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1408267198322375318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2597690027144624765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68fa58214f970164f9e481f5e6732dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buildingStation: {fileID: 11400000, guid: cb30225249a5c944085e481ee96928ba, type: 2}
 --- !u!1 &3441130229034504783
 GameObject:
   m_ObjectHideFlags: 0

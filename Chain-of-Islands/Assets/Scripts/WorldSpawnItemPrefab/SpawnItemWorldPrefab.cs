@@ -19,12 +19,15 @@ public class SpawnItemWorldPrefab : MonoBehaviour
 
     public void SpawnItem(Item item,int amount, Transform itemDroppingPosition, float radiusDrop)
     {
-        for (int i = 0; i < amount; i++)
+        if(item != null)
         {
-            Debug.Log("CreatePrefab");
-            var dropItem = _worldPool.GetFreeElement();
-            dropItem.SpriteRenderer.sprite = item.worldPrefabIcon;
-            DropPosition(itemDroppingPosition,dropItem,radiusDrop);
+            for (int i = 0; i < amount; i++)
+            {
+                Debug.Log("CreatePrefab");
+                var dropItem = _worldPool.GetFreeElement();
+                dropItem.SpriteRenderer.sprite = item.worldPrefabIcon;
+                DropPosition(itemDroppingPosition, dropItem, radiusDrop);
+            }
         }
     }
 

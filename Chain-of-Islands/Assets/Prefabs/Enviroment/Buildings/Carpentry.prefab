@@ -129,9 +129,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8254294967324534473}
+  - component: {fileID: -1548560035488652819}
   m_Layer: 0
   m_Name: Carpentry
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,6 +156,19 @@ Transform:
   - {fileID: 6185084893752004212}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1548560035488652819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515858163598483626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68fa58214f970164f9e481f5e6732dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buildingStation: {fileID: 11400000, guid: e1b7323a088a9a149afa28897610ff08, type: 2}
 --- !u!1 &3004215219731319511
 GameObject:
   m_ObjectHideFlags: 0

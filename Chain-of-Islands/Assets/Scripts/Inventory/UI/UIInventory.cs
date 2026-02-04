@@ -9,6 +9,8 @@ using static UnityEditor.Progress;
 public class UIInventory : MonoBehaviour
 {
     [SerializeField] private UIInventorySlot _slotPrefab;
+    [SerializeField] private UIInventorySlot _hotSlotPrefab;
+    [SerializeField] private UIInventorySlot _armorSlotPrefab;
     [SerializeField] private RectTransform InventaryContentPanel;
     [SerializeField] private RectTransform HotInventaryContentPanel;
     [SerializeField] private RectTransform ArmorInventaryContentPanel;
@@ -91,7 +93,7 @@ public class UIInventory : MonoBehaviour
     {
         for (int i = 0; i < slotsCount; i++)
         {
-            var slot = Instantiate(_slotPrefab, Vector3.zero, Quaternion.identity);
+            var slot = Instantiate(_hotSlotPrefab, Vector3.zero, Quaternion.identity);
             slot.transform.SetParent(HotInventaryContentPanel);
             slot.type = UIInventorySlot.SlotType.HotInventarySlot;
             slot.OnItemDropped += HandleItemDrop;
@@ -128,7 +130,7 @@ public class UIInventory : MonoBehaviour
 
         for (int i = 0; i < slotsToCreate; i++)
         {
-            var slot = Instantiate(_slotPrefab, Vector3.zero, Quaternion.identity);
+            var slot = Instantiate(_armorSlotPrefab, Vector3.zero, Quaternion.identity);
             slot.transform.SetParent(ArmorInventaryContentPanel);
             slot.type = UIInventorySlot.SlotType.ArmorSlot;
             slot.armorType = armorSlotsToCreate[i];

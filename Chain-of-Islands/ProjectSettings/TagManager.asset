@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Inventory
   - Mob
+  - Building
   layers:
   - Default
   - TransparentFX
