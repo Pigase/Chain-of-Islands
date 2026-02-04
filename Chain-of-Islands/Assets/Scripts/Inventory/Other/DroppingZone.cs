@@ -17,7 +17,7 @@ public class DroppingZone : MonoBehaviour, IDropHandler
         Debug.Log("Item In DropZone");
         var droppItem = eventData?.pointerDrag?.GetComponent<UIInventorySlot>();
 
-        if (droppItem != null)
+        if (droppItem != null && !_slotInfoFinder.IsEmptySlot(droppItem))
         {
             int indexDroppItem = _slotInfoFinder.SlotIndexFind(droppItem);
             Item item = _slotInfoFinder.ItemInSlot(droppItem);

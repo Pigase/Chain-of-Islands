@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 6868752077085360814}
   - component: {fileID: 9078089637646177358}
   - component: {fileID: 5524048483577137339}
+  - component: {fileID: 8249798990273584160}
   m_Layer: 0
-  m_Name: bonfire
-  m_TagString: Untagged
+  m_Name: Bonfire
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,3 +138,16 @@ CapsuleCollider2D:
   m_Offset: {x: -0.038993962, y: -0.024693368}
   m_Size: {x: 1.3768811, y: 1.16073}
   m_Direction: 1
+--- !u!114 &8249798990273584160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840830684279923704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68fa58214f970164f9e481f5e6732dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buildingStation: {fileID: 11400000, guid: a2b47e87aefee2a4eb7dd1615224c859, type: 2}

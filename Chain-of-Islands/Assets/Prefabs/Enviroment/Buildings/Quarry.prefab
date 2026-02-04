@@ -1630,9 +1630,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6069104137727971184}
+  - component: {fileID: -5660996855719009615}
   m_Layer: 0
   m_Name: Quarry
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1658,6 +1659,19 @@ Transform:
   - {fileID: 7485038360541649668}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5660996855719009615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5386102967515039746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68fa58214f970164f9e481f5e6732dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buildingStation: {fileID: 11400000, guid: e4b696f5b894e7d4bae7d2f772966285, type: 2}
 --- !u!1 &5725657580303233316
 GameObject:
   m_ObjectHideFlags: 0

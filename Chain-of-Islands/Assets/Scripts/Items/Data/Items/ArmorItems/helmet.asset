@@ -15,8 +15,8 @@ MonoBehaviour:
   itemId: helmet
   itemName: "\u0448\u043B\u0435\u043C"
   maxStackSize: 1
-  icon: {fileID: 21300000, guid: de2ad5439aabdbc4ca412a5a88fa9240, type: 3}
-  worldPrefabIcon: {fileID: 21300000, guid: 98929c37b014c20409b44439881fa014, type: 3}
+  icon: {fileID: 943101658, guid: 6b64593f8216c494eb31b308d037c224, type: 3}
+  worldPrefabIcon: {fileID: 943101658, guid: 6b64593f8216c494eb31b308d037c224, type: 3}
   description: shlem
   armor: 1
   armorType: 1

@@ -22,4 +22,4 @@ MonoBehaviour:
   result:
     itemId: sword
     amount: 1
-  requiredStation: {fileID: 11400000, guid: 6aba698cc564f04419f875e1c8a89206, type: 2}
+  requiredStation: {fileID: 11400000, guid: 9ffc0f2833c16be43a51aec340a52bf8, type: 2}

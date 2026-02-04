@@ -15,9 +15,10 @@ public class CraftItem : MonoBehaviour
     }
     public void Craft()
     {
-        if (_craftingSystem != null)
+
+        if (_craftingSystem != null && _craftRecipe != null)
         {
-            var recipeId = _craftRecipe.recipeId;
+            string recipeId = _craftRecipe?.recipeId;
 
             _craftingSystem.CraftItem(recipeId);
         }
