@@ -32,6 +32,6 @@ public class IdleStatePlayer : PlayerState
 
     public void Exit()
     {
-        _animator.SetBool(IsIdleHash, false); // Выключаем анимацию бега
+        _animator.SetBool(IsIdleHash, false);
     }
 }

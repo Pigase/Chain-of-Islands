@@ -83,7 +83,7 @@ public class PlayerVisualStateMachine : MonoBehaviour
 
     private void PlayerAttack()
     {
-       // ChangeState(Attack);
+       ChangeState(Attack);
     }
 
     private IEnumerator Invulnerability(float secondsForShowDamge)

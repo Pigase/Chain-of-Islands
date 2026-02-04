@@ -8,6 +8,7 @@ public class MobAI : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private MobConfig _config;
+    [SerializeField] private Mob _mob;
 
     private Vector3 _startPosition;
 
@@ -36,6 +37,7 @@ public class MobAI : MonoBehaviour
         // Начальное состояние - моб начинает в покое
         ChangeState(Idle);
     }
+
     private void Start()
     {
         _startPosition = transform.position; // Уже установлена из пула!
