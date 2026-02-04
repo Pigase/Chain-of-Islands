@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthComponent : MonoBehaviour
 {
     [SerializeField] private float _maxHealth = 100;
     [SerializeField] private float _currentHealth;
     [SerializeField] private float _timeInvulnerability;
+    [SerializeField] private Slider _healthBar;
     
     private bool _invulnerability = false;
     private bool _isAlive = true;
@@ -26,7 +28,10 @@ public class HealthComponent : MonoBehaviour
     public void ResetHealth()
     {
         _currentHealth = _maxHealth;
+        _invulnerability = false;
+        StopAllCoroutines();
         _isAlive = true;
+        UpdateHealthBar();
     }
 
     public void TakeDamage(float damage)
@@ -37,6 +42,7 @@ public class HealthComponent : MonoBehaviour
 
         _currentHealth -= damage;
         OnDamageTaken?.Invoke(damage, _timeInvulnerability);
+        UpdateHealthBar();  
 
         StartCoroutine(InvulnerabilityCooldown());
 
@@ -53,6 +59,12 @@ public class HealthComponent : MonoBehaviour
         Debug.Log(amount);
         _currentHealth = Mathf.Min(_currentHealth + amount, _maxHealth);
         OnHealed?.Invoke(amount);
+        UpdateHealthBar();
+    }
+
+    private void UpdateHealthBar()
+    {
+        _healthBar.value = _currentHealth;
     }
 
     private IEnumerator InvulnerabilityCooldown()

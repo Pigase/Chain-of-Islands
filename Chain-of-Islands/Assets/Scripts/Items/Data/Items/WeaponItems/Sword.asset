@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: sword
   itemName: sd
   maxStackSize: 1
-  icon: {fileID: 21300000, guid: 103021f69959808408e7a8c8deba1670, type: 3}
-  worldPrefab: {fileID: 0}
+  icon: {fileID: 21300000, guid: a4282bffb3cba0f4886330eeef32a2eb, type: 3}
+  worldPrefabIcon: {fileID: 21300000, guid: a4282bffb3cba0f4886330eeef32a2eb, type: 3}
   description: hj
-  damage: 0
+  damage: 50
