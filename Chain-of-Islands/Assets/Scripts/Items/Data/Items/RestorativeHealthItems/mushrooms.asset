@@ -15,8 +15,8 @@ MonoBehaviour:
   itemId: mushrooms
   itemName: "\u0433\u0440\u0438\u0431\u044B"
   maxStackSize: 30
-  icon: {fileID: 21300000, guid: 9bed1cbe7c78e8943ad4e8801916d1ed, type: 3}
-  worldPrefabIcon: {fileID: 0}
+  icon: {fileID: 2103608369, guid: f60cf8790896cbf4d909854888d674b5, type: 3}
+  worldPrefabIcon: {fileID: 2103608369, guid: f60cf8790896cbf4d909854888d674b5, type: 3}
   description: 
   restorativeHealth: 12
   coolDownHealth: 0

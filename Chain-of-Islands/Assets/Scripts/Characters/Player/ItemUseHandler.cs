@@ -11,7 +11,7 @@ public class ItemUseHandler : MonoBehaviour
 
     private ItemDataBase _itemData;
 
-    public Action SwordAttack;
+    public Action<WeaponItem> Attack;
 
     private void Start()
     {
@@ -80,7 +80,7 @@ public class ItemUseHandler : MonoBehaviour
     {
 
         _damageDealer.SetDamage(sword.damage);
-        SwordAttack?.Invoke();
+        Attack?.Invoke(sword);
 
     }
 }

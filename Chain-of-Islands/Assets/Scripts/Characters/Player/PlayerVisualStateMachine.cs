@@ -35,13 +35,13 @@ public class PlayerVisualStateMachine : MonoBehaviour
     private void OnEnable()
     {
         _player.PlayerGetDamage += ShowDamage;
-        _itemUseHandler.SwordAttack += PlayerAttack;
+        _itemUseHandler.Attack += PlayerAttack;
     }
 
     private void OnDisable()
     {
         _player.PlayerGetDamage -= ShowDamage;
-        _itemUseHandler.SwordAttack -= PlayerAttack;
+        _itemUseHandler.Attack -= PlayerAttack;
     }
 
     // √лавный метод дл€ обновлени€ логики состо€ний
@@ -82,8 +82,10 @@ public class PlayerVisualStateMachine : MonoBehaviour
         StartCoroutine(Invulnerability(timeInvulnerability));
     }
 
-    private void PlayerAttack()
+    private void PlayerAttack(WeaponItem wepon)
     {
+        Attack.SetWeaponAnimations(wepon);
+
        ChangeState(Attack);
     }
 

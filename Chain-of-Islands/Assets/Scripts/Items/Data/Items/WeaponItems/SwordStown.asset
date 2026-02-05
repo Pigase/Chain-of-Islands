@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d22701a0e19a1094a978d52f19bb49e2, type: 3}
-  m_Name: Sword
+  m_Name: SwordStown
   m_EditorClassIdentifier: 
-  itemId: sword
-  itemName: sd
+  itemId: swordStone
+  itemName: Velicki Mech Polkovodca
   maxStackSize: 1
   icon: {fileID: 21300000, guid: a4282bffb3cba0f4886330eeef32a2eb, type: 3}
   worldPrefabIcon: {fileID: 21300000, guid: a4282bffb3cba0f4886330eeef32a2eb, type: 3}
-  description: hj
+  description: Killer Futher
   handAttackConditionName: isAttackStoneSword
-  damage: 50
+  damage: 40
