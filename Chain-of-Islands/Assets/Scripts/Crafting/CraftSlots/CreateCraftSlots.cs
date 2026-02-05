@@ -6,22 +6,35 @@ using UnityEngine;
 
 public class CreateCraftSlots : MonoBehaviour
 {
-    [SerializeField] private Station _station;
     [SerializeField] private RectTransform _content;
     [SerializeField] private CraftSlot _slotPrefab;
+    [SerializeField] private int _poolCount = 20;
+    [SerializeField] private bool _autoExpande = true;
 
-    public event Action<CraftingRecipe> OnGetedRecip;
     public List<CraftSlot> Slot => _slot;
 
+    private Station _station;
+    private PoolMono<CraftSlot> _pool;
     private CraftingSystem _craftingSystem;
+    private BuildingStationManager _buildingStationManager;
     private List<CraftingRecipe> _recipe;
     private List<CraftSlot> _slot;
+
+    public event Action<CraftingRecipe> OnGetedRecip;
 
     private void Start()
     {
         _craftingSystem = GameManager.GetSystem<CraftingSystem>();
+        _buildingStationManager = GameManager.GetSystem<BuildingStationManager>();
+
         _slot = new List<CraftSlot>();
         _recipe = new List<CraftingRecipe>();
+
+        _station = _buildingStationManager.GetStation("Non");
+
+        _pool = new PoolMono<CraftSlot>(_slotPrefab, _poolCount, transform);
+        _pool.autoExpand = _autoExpande;
+
         SlotSelection();
 
         CreateSlots();
@@ -35,7 +48,7 @@ public class CreateCraftSlots : MonoBehaviour
         {
             for (int i = 0; i < countSlots; i++)
             {
-                var slot = Instantiate(_slotPrefab, Vector3.zero, Quaternion.identity);
+                var slot = _pool.GetFreeElement();
                 slot.transform.SetParent(_content);
                 slot.recipe = _recipe[i];
                 Debug.Log(_recipe[i]);

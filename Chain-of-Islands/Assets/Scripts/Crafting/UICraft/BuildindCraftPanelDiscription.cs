@@ -1,13 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CraftDescription : MonoBehaviour
+public class BuildindCraftPanelDiscription : MonoBehaviour
 {
     [Header("Slots Prefab")]
     [SerializeField] private IngridientSlot _prefabIngridientSlot;
@@ -19,13 +17,14 @@ public class CraftDescription : MonoBehaviour
     [SerializeField] private List<Image> _iconResult;
     [Header("Other Component")]
     [SerializeField] private CreateCraftSlots _createCraftSlots;
+    [SerializeField] private StationIdentifier _stationIdentifier;
 
     private int _poolCount = 20;
     private bool _autoExpande = true;
     private PoolMono<IngridientSlot> _pool;
-    private int _lastIconCount;
     private ItemDataBase _itemData;
     private List<IngridientSlot> _iconsByIngridients;
+    private int _lastIconCount;
 
     private void Start()
     {
@@ -42,6 +41,7 @@ public class CraftDescription : MonoBehaviour
             throw new ArgumentNullException(nameof(recipe), "Recipe cannot be null");
 
         Debug.Log(recipe + "CraftDescription");
+
         int recipeIngridient = recipe.ingredients.Count;
 
         for (int i = 0; i < _iconsByIngridients.Count; i++)
@@ -51,12 +51,12 @@ public class CraftDescription : MonoBehaviour
 
         _iconsByIngridients.Clear();
 
-        InformationDisplay(_iconsByIngridients.Count,recipe);
+        CreateSlot(_iconsByIngridients.Count, recipe);
 
         string itemId = recipe.result.itemId;
         Item itemInfo = _itemData.GetItem(itemId);
 
-        for(int i = 0; i < _iconResult.Count; i++)
+        for (int i = 0; i < _iconResult.Count; i++)
         {
             _iconResult[i].gameObject.SetActive(true);
             _iconResult[i].sprite = itemInfo.icon;
@@ -66,7 +66,7 @@ public class CraftDescription : MonoBehaviour
         }
     }
 
-    private void InformationDisplay(int amountSlot, CraftingRecipe recipe)
+    private void CreateSlot(int amountSlot, CraftingRecipe recipe)
     {
         for (int i = 0; i < amountSlot; i++)
         {

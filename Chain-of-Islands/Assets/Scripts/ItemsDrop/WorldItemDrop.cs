@@ -36,11 +36,11 @@ public class WorldItemDrop : MonoBehaviour
 
     private void OnEnable()
     {
-        _healthComponent.OnDeath += SetItems;
+        //_healthComponent.OnDeath += SetItems;
     }
 
     private void OnDisable()
     {
-        _healthComponent.OnDeath += SetItems;
+        //_healthComponent.OnDeath += SetItems;
     }
 }

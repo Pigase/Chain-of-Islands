@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public ItemDataBase itemDataBase;
     public CraftingSystem craftingSystem;
     public SpawnItemWorldPrefab spawnItemWorldPrefab;
+    public BuildingStationManager buildingStationManager;
 
     private void Awake()
     {
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
         itemDataBase.Initialize();
         craftingSystem.Initialize(itemDataBase);
         spawnItemWorldPrefab.Initialize();
+        buildingStationManager.Initialize();
 
         Debug.Log("Все системы инициализированы!");
     }
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
         if (typeof(T) == typeof(ItemDataBase)) return Instance.itemDataBase as T;
         if (typeof(T) == typeof(CraftingSystem)) return Instance.craftingSystem as T;
         if (typeof(T) == typeof(SpawnItemWorldPrefab)) return Instance.spawnItemWorldPrefab as T;
+        if (typeof(T) == typeof(BuildingStationManager)) return Instance.buildingStationManager as T;
         
         return null;
     }
