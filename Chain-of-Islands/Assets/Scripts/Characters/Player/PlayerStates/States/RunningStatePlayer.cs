@@ -6,18 +6,22 @@ public class RunningStatePlayer : PlayerState
 {
     // ’еш параметра аниматора (должен совпадать с именем в Animator Controller)
     private static readonly int IsRunningHash = Animator.StringToHash("isRunning");
+    private static readonly int IsRunningHandHash = Animator.StringToHash("isRunningHand");
     private PlayerVisualStateMachine _context;
     private Animator _animator;
+    private Animator _handAnimator;
 
-    public RunningStatePlayer(PlayerVisualStateMachine context, Animator animator)
+    public RunningStatePlayer(PlayerVisualStateMachine context, Animator animator, Animator handAnimator)
     {
         _context = context;
         _animator = animator;
+        _handAnimator = handAnimator;
     }
 
     public void Enter()
     {
         _animator.SetBool(IsRunningHash, true); // ¬ключаем анимацию бега
+        _handAnimator.SetBool(IsRunningHandHash, true); // ¬ключаем анимацию бега
     }
 
     public void Update(Vector2 moveDirection)
@@ -34,5 +38,6 @@ public class RunningStatePlayer : PlayerState
     public void Exit()
     {
         _animator.SetBool(IsRunningHash, false); // ¬ключаем анимацию бега
+        _handAnimator.SetBool(IsRunningHandHash, false); // ¬ключаем анимацию бега
     }
 }

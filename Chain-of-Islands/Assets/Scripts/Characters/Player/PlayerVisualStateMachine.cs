@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerVisualStateMachine : MonoBehaviour
 {
     [SerializeField] private Player _player;
+    [SerializeField] private Animator _handAnimator;
     [SerializeField] private ItemUseHandler _itemUseHandler;
 
     private Animator _animator;
@@ -23,9 +24,9 @@ public class PlayerVisualStateMachine : MonoBehaviour
             Debug.LogError("Animator component is missing!", this);
 
         // »нициализаци€ состо€ний с передачей зависимостей
-        Idle = new IdleStatePlayer(this, _animator);
-        Running = new RunningStatePlayer(this, _animator);
-        Attack = new AttackStatePlayer(this, _animator);
+        Idle = new IdleStatePlayer(this, _animator, _handAnimator);
+        Running = new RunningStatePlayer(this, _animator, _handAnimator);
+        Attack = new AttackStatePlayer(this, _animator, _handAnimator);
 
         // Ќачальное состо€ние - персонаж начинает в покое
         ChangeState(Idle);
