@@ -6,14 +6,14 @@ using UnityEngine;
 
 public class CreateCraftSlots : MonoBehaviour
 {
-    [SerializeField] private RectTransform _content;
     [SerializeField] private CraftSlot _slotPrefab;
     [SerializeField] private int _poolCount = 20;
     [SerializeField] private bool _autoExpande = true;
+    [SerializeField] private PlayerCraft _playerCraft;
+    [SerializeField] private BuildingCraftPanel _buildingCraftPanel;
 
     public List<CraftSlot> Slot => _slot;
 
-    private Station _station;
     private PoolMono<CraftSlot> _pool;
     private CraftingSystem _craftingSystem;
     private BuildingStationManager _buildingStationManager;
@@ -30,20 +30,28 @@ public class CreateCraftSlots : MonoBehaviour
         _slot = new List<CraftSlot>();
         _recipe = new List<CraftingRecipe>();
 
-        _station = _buildingStationManager.GetStation("Non");
-
         _pool = new PoolMono<CraftSlot>(_slotPrefab, _poolCount, transform);
         _pool.autoExpand = _autoExpande;
-
-        SlotSelection();
-
-        CreateSlots();
     }
 
-    private void CreateSlots()
+    private void ResetSlot()
     {
-        var countSlots = _recipe.Count;
+        for(int i = 0; i < _slot.Count; i++)
+        {
+            _slot[i].gameObject.SetActive(false);
+        }
 
+        _slot.Clear();
+
+        OnGetRecipe(null);
+    }
+    private void CreateSlots(RectTransform _content,Station station)
+    {
+        SlotSelection(station);
+
+        ResetSlot();
+
+        var countSlots = _recipe.Count;
         if (countSlots > 0)
         {
             for (int i = 0; i < countSlots; i++)
@@ -51,27 +59,38 @@ public class CreateCraftSlots : MonoBehaviour
                 var slot = _pool.GetFreeElement();
                 slot.transform.SetParent(_content);
                 slot.recipe = _recipe[i];
-                Debug.Log(_recipe[i]);
-                slot.OnClicedOnCraft += OnGetRecipe;
                 _slot.Add(slot);
+                slot.OnClicedOnCraft += OnGetRecipe;
+                slot.SetIconSlot();
             }
         }
     }
 
-    private void SlotSelection()
+    private void SlotSelection(Station station)
     {
-        for(int i = 0; i < _craftingSystem.AllRecipes.Count; i++)
+        _recipe.Clear();
+
+        for (int i = 0; i < _craftingSystem.AllRecipes.Count; i++)
         {
-            if (_craftingSystem.AllRecipes[i].requiredStation == _station)
+            if (_craftingSystem.AllRecipes[i].requiredStation == station)
                 _recipe.Add(_craftingSystem.AllRecipes[i]);
         }
     }
 
     private void OnGetRecipe(CraftingRecipe recipe)
     {
-        if (recipe == null)
-            throw new ArgumentNullException(nameof(recipe), "Recipe cannot be null");
-        Debug.Log(recipe + " CreateCraftSlot");
         OnGetedRecip?.Invoke(recipe);
-    } 
+    }
+
+    private void OnEnable()
+    {
+        _playerCraft.OnPlayerStationStarted += CreateSlots;
+        _buildingCraftPanel.OnBuildPanelChanged += CreateSlots;
+    }
+
+    private void OnDisable()
+    {
+        _playerCraft.OnPlayerStationStarted -= CreateSlots;
+        _buildingCraftPanel.OnBuildPanelChanged -= CreateSlots;
+    }
 }

@@ -26,47 +26,49 @@ public class CraftDescription : MonoBehaviour
     private int _lastIconCount;
     private ItemDataBase _itemData;
     private List<IngridientSlot> _iconsByIngridients;
+    private int recipeIngridientCount;
 
     private void Start()
     {
         _itemData = GameManager.GetSystem<ItemDataBase>();
         _iconsByIngridients = new List<IngridientSlot>();
 
-        _pool = new PoolMono<IngridientSlot>(_prefabIngridientSlot, _poolCount, transform);
+        _pool = new PoolMono<IngridientSlot>(_prefabIngridientSlot, _poolCount, _content.transform);
         _pool.autoExpand = _autoExpande;
     }
 
     private void DataPurpose(CraftingRecipe recipe)
     {
-        if (recipe == null)
-            throw new ArgumentNullException(nameof(recipe), "Recipe cannot be null");
-
-        Debug.Log(recipe + "CraftDescription");
-        int recipeIngridient = recipe.ingredients.Count;
-
-        for (int i = 0; i < _iconsByIngridients.Count; i++)
+        if(recipe == null)
         {
-            _iconsByIngridients[i].gameObject.SetActive(false);
+            recipeIngridientCount = 0;
+        }
+        else
+        {
+            recipeIngridientCount = recipe.ingredients.Count;
         }
 
-        _iconsByIngridients.Clear();
+        ResetIngridients();
 
-        InformationDisplay(_iconsByIngridients.Count,recipe);
+        IngridientsIconDisplay(recipeIngridientCount,recipe);
 
+        ResultIconDisplay(_iconResult.Count, recipe);
+    }
+
+    private void ResultIconDisplay(int amount, CraftingRecipe recipe)
+    {
         string itemId = recipe.result.itemId;
         Item itemInfo = _itemData.GetItem(itemId);
 
-        for(int i = 0; i < _iconResult.Count; i++)
+        for (int i = 0; i < amount; i++)
         {
             _iconResult[i].gameObject.SetActive(true);
             _iconResult[i].sprite = itemInfo.icon;
             _descriptionResult.text = itemInfo.description;
-
-            _lastIconCount = recipe.ingredients.Count;
         }
     }
 
-    private void InformationDisplay(int amountSlot, CraftingRecipe recipe)
+    private void IngridientsIconDisplay(int amountSlot, CraftingRecipe recipe)
     {
         for (int i = 0; i < amountSlot; i++)
         {
@@ -79,7 +81,15 @@ public class CraftDescription : MonoBehaviour
             _iconsByIngridients.Add(ingridient);
         }
     }
+    private void ResetIngridients()
+    {
+        for (int i = 0; i < _iconsByIngridients.Count; i++)
+        {
+            _iconsByIngridients[i].gameObject.SetActive(false);
+        }
 
+        _iconsByIngridients.Clear();
+    }
     private void OnEnable()
     {
         _createCraftSlots.OnGetedRecip += DataPurpose;

@@ -21,19 +21,28 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler
         _itemData = GameManager.GetSystem<ItemDataBase>();
         _isInitialized = true;
 
-        if (_isInitialized)
-        {
-            if (recipe == null)
-                throw new ArgumentNullException(nameof(recipe), "Recipe cannot be null");
-
-            var itemInfo = _itemData.GetItem(recipe.result.itemId);
-
-            _icon.sprite = itemInfo.icon;
-        }
+        SetIconSlot();
     }
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log(recipe);
         OnClicedOnCraft?.Invoke(recipe);
+    }
+    private void OnEnable()
+    {
+        SetIconSlot();
+    }
+
+    public void SetIconSlot()
+    {
+        if (_isInitialized)
+        {
+            if (recipe == null)
+                throw new ArgumentNullException(nameof(recipe), "Recipe cannot be null");
+
+            Item itemInfo = _itemData.GetItem(recipe.result.itemId);
+
+            _icon.sprite = itemInfo.icon;
+        }
     }
 }

@@ -96,6 +96,18 @@ public class InventarySystem : MonoBehaviour
         }
     }
 
+    public void SubstractItemFromSlot(InventorySlot slot, int amountItem)
+    {
+        int index = inventory.Slots.IndexOf(slot);
+
+        inventory.Slots[index].itemCount -=  amountItem;
+
+        if (inventory.Slots[index].itemCount <= 0)
+        {
+            RemoveItems(index);
+        }
+    }
+
     public void RemoveItems(int itemIndex)
     {
         if(itemIndex >= 0)
