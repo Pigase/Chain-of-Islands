@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class PlayerCraft : MonoBehaviour
 {
+    [SerializeField] private RectTransform _content;
+
     private string _playerStationId = "Non";
     private BuildingStationManager _buildingStationManager;
     private Station station;
 
-    public event Action OnPlayerStationStarted;
+    public event Action<RectTransform, Station> OnPlayerStationStarted;
 
     private void Start()
     {
-        _buildingStationManager = GetComponent<BuildingStationManager>();
+        _buildingStationManager = GameManager.GetSystem<BuildingStationManager>();
         station = _buildingStationManager.GetStation(_playerStationId);
 
-        OnPlayerStationStarted?.Invoke();
+        OnPlayerStationStarted?.Invoke(_content, station);
     }
-
-
 }

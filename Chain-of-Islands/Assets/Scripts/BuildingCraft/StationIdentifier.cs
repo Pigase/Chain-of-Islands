@@ -6,13 +6,14 @@ using UnityEngine;
 public class StationIdentifier : MonoBehaviour
 {
     private Station _station;
-    private Station _nonStation;
+    private BuildingStationManager _buildingStationManager;
 
     public event Action<Station> OnStationChange;
 
     private void Start()
     {
-        _nonStation.StationId = "Non";
+        _buildingStationManager = GameManager.GetSystem<BuildingStationManager>();
+        _station = _buildingStationManager.GetStation("Non");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,14 +27,13 @@ public class StationIdentifier : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    /*private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Building")
         {
             BuildingStation building = collision.gameObject.GetComponent<BuildingStation>();
-            _station = _nonStation;
 
             OnStationChange?.Invoke(_station);
         }
-    }
+    }*/
 }

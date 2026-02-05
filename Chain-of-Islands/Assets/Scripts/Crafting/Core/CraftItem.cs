@@ -13,9 +13,9 @@ public class CraftItem : MonoBehaviour
     {
         _craftingSystem = GameManager.GetSystem<CraftingSystem>();
     }
+
     public void Craft()
     {
-
         if (_craftingSystem != null && _craftRecipe != null)
         {
             string recipeId = _craftRecipe?.recipeId;
@@ -28,6 +28,7 @@ public class CraftItem : MonoBehaviour
     {
         _craftRecipe = recipe;
     }
+
     private void OnEnable()
     {
         _createCraftSlots.OnGetedRecip += GetRecipe;
