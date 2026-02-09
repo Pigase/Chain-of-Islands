@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 using static UnityEditor.Progress;
 
 public class ItemUseHandler : MonoBehaviour
@@ -10,20 +11,38 @@ public class ItemUseHandler : MonoBehaviour
     [SerializeField] private DamageDealer _damageDealer;
 
     private ItemDataBase _itemData;
+    private InventarySystem _inventarySystem;
+    private InventorySlot _currentInventorySlot;
+    private Item _currentItem;
 
     public Action<WeaponItem> Attack;
 
     private void Start()
     {
         _itemData = GameManager.GetSystem<ItemDataBase>();//надо обьявлять в старте т.к. система только в awake создаеться
+        _inventarySystem = GameManager.GetSystem<InventarySystem>();//надо обьявлять в старте т.к. система только в awake создаеться
     }
 
-    public void UseItem(InventorySlot slot)
+    private void OnEnable()
+    {
+        _health.OnSubjectHealed += SearchForAUsedHealingItem;
+    }
+
+    private void OnDisable()
+    {
+        _health.OnSubjectHealed -= SearchForAUsedHealingItem;
+
+    }
+
+    public void ItemIdentification(InventorySlot slot)
     {
         if (slot.empty)
             return;
 
+        _currentInventorySlot = slot;
         Item item = _itemData.GetItem(slot.itemId);
+
+        _currentItem = item;
 
         switch (item)
         {
@@ -35,13 +54,14 @@ public class ItemUseHandler : MonoBehaviour
 
             case WeaponItem weaponItem:
 
-                UseWeponItem(weaponItem);
+                WeponItemIdentification(weaponItem);
 
                 break;
 
             case ToolItem toolItem:
 
-                // Использование инструмента
+               ToolItemIdentification(toolItem);
+
                 break;
 
             default:
@@ -55,10 +75,10 @@ public class ItemUseHandler : MonoBehaviour
 
     private void UseRestorativeHealthItem(RestorativeHealthItem restorativeHealthItem)
     {
-        _health.Heal(restorativeHealthItem.restorativeHealth);
+        _health.HealFromSubject(restorativeHealthItem.restorativeHealth, restorativeHealthItem.healingRecharge);
     }
 
-    private void UseWeponItem (WeaponItem weaponItem)
+    private void WeponItemIdentification(WeaponItem weaponItem)
     {
         switch (weaponItem)
         {
@@ -76,11 +96,52 @@ public class ItemUseHandler : MonoBehaviour
         }
     }
 
-    private void UseSword (Sword sword)
+    private void ToolItemIdentification(ToolItem toolItem)
+    {
+        switch (toolItem)
+        {
+            case Axe axe:
+
+                UseAxe(axe);
+
+                break;
+
+            default:
+
+
+
+                break;
+        }
+    }
+
+    private void UseSword(Sword sword)
     {
 
         _damageDealer.SetDamage(sword.damage);
         Attack?.Invoke(sword);
 
     }
+
+    private void UseAxe(Axe axe)
+    {
+        //Attack?.Invoke(axe);
+    }
+
+    private void SearchForAUsedHealingItem(float AmountOfHealthHealed)
+    {
+        if (_currentItem == null)
+        {
+            Debug.LogWarning("Current item is null!");
+            return;
+        }
+
+        if (_currentItem is RestorativeHealthItem)
+        {
+        _inventarySystem.SubstractItemFromSlot(_currentInventorySlot);
+        }
+
+        _currentItem = null;
+        _currentInventorySlot = null;
+    }
+
 }

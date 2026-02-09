@@ -19,4 +19,4 @@ MonoBehaviour:
   worldPrefabIcon: {fileID: 304057776, guid: f60cf8790896cbf4d909854888d674b5, type: 3}
   description: 
   restorativeHealth: 10
-  coolDownHealth: 0
+  healingRecharge: 4

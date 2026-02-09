@@ -10,7 +10,7 @@ public class RestorativeHealthItem : Item
 
     [Header("Restorative Health Item Properties")]
     public float restorativeHealth;
-    public int coolDownHealth;
+    public int healingRecharge;
 
     public override Type GetItemType() => typeof(RestorativeHealthItem);
 }

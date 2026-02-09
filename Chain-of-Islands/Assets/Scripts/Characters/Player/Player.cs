@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
 
     private void HandleItemUse(InventorySlot slot)
     {
-        _itemUseHandler.UseItem(slot);
+        _itemUseHandler.ItemIdentification(slot);
     }
     private void TakeDamage(float damage, float timeInvulnerability)
     {

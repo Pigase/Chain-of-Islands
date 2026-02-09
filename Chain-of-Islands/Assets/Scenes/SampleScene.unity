@@ -3826,6 +3826,7 @@ MonoBehaviour:
   craftingSystem: {fileID: 299343977}
   spawnItemWorldPrefab: {fileID: 1802738843}
   buildingStationManager: {fileID: 2093336236}
+  inventarySystem: {fileID: 1373410091}
 --- !u!1 &920541971
 GameObject:
   m_ObjectHideFlags: 0

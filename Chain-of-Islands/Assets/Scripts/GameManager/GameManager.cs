@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public CraftingSystem craftingSystem;
     public SpawnItemWorldPrefab spawnItemWorldPrefab;
     public BuildingStationManager buildingStationManager;
+    public InventarySystem inventarySystem;
 
     private void Awake()
     {
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
         if (typeof(T) == typeof(CraftingSystem)) return Instance.craftingSystem as T;
         if (typeof(T) == typeof(SpawnItemWorldPrefab)) return Instance.spawnItemWorldPrefab as T;
         if (typeof(T) == typeof(BuildingStationManager)) return Instance.buildingStationManager as T;
+        if (typeof(T) == typeof(InventarySystem)) return Instance.inventarySystem as T;
         
         return null;
     }

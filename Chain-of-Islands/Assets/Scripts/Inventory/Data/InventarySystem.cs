@@ -96,7 +96,7 @@ public class InventarySystem : MonoBehaviour
         }
     }
 
-    public void SubstractItemFromSlot(InventorySlot slot, int amountItem)
+    public void SubstractItemFromSlot(InventorySlot slot, int amountItem = 1)
     {
         int index = inventory.Slots.IndexOf(slot);
 

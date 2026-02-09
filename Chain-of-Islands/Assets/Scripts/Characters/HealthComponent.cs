@@ -12,12 +12,13 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] private Slider _healthBar;
     
     private bool _invulnerability = false;
+    private bool _healingRecharge = false;
     private bool _isAlive = true;
 
     // —обыти€ дл€ св€зи с другими системами
     public event Action<float,float> OnDamageTaken; // полученный урон, врем€ неу€звимости
     public event Action OnDeath;
-    public event Action<float> OnHealed;
+    public event Action<float> OnSubjectHealed;
 
     public float MaxHealth => _maxHealth;
     public float CurrentHealth => _currentHealth;
@@ -29,6 +30,7 @@ public class HealthComponent : MonoBehaviour
     {
         _currentHealth = _maxHealth;
         _invulnerability = false;
+        _healingRecharge = false;
         StopAllCoroutines();
         _isAlive = true;
         UpdateHealthBar();
@@ -44,7 +46,7 @@ public class HealthComponent : MonoBehaviour
         OnDamageTaken?.Invoke(damage, _timeInvulnerability);
         UpdateHealthBar();  
 
-        StartCoroutine(InvulnerabilityCooldown());
+        StartCoroutine(InvulnerabilityRecharge());
 
         if (_currentHealth <= 0)
         {
@@ -54,12 +56,19 @@ public class HealthComponent : MonoBehaviour
         }
     }
 
-    public void Heal(float amount)
+    public void HealFromSubject(float amount, float timeToHealingRecharge = 0)
     {
+        if (!_isAlive || _healingRecharge)
+            return;
+
+        _healingRecharge = true;
+
         Debug.Log(amount);
         _currentHealth = Mathf.Min(_currentHealth + amount, _maxHealth);
-        OnHealed?.Invoke(amount);
+        OnSubjectHealed?.Invoke(amount);
         UpdateHealthBar();
+
+        StartCoroutine(HealingRecharge(timeToHealingRecharge));
     }
 
     private void UpdateHealthBar()
@@ -67,9 +76,15 @@ public class HealthComponent : MonoBehaviour
         _healthBar.value = _currentHealth;
     }
 
-    private IEnumerator InvulnerabilityCooldown()
+    private IEnumerator InvulnerabilityRecharge()
     {
         yield return new WaitForSeconds(_timeInvulnerability);
         _invulnerability = false; // —брасываем через врем€
+    }
+
+    private IEnumerator HealingRecharge(float timeToHealingRecharge)
+    {
+        yield return new WaitForSeconds(timeToHealingRecharge);
+        _healingRecharge = false; // —брасываем через врем€
     }
 }
