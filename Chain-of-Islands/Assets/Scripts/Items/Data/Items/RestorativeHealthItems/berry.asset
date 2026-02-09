@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4d1dd97bdc52314eb94763685dbf07f, type: 3}
-  m_Name: berry
+  m_Name: Berry
   m_EditorClassIdentifier: 
   itemId: berry
-  itemName: "\u044F\u0433\u043E\u0434\u044B"
+  itemName: "\u042F\u0433\u043E\u0434\u044B"
   maxStackSize: 30
   icon: {fileID: 304057776, guid: f60cf8790896cbf4d909854888d674b5, type: 3}
   worldPrefabIcon: {fileID: 304057776, guid: f60cf8790896cbf4d909854888d674b5, type: 3}
-  description: 
-  restorativeHealth: 10
+  description: "\u041A\u043E\u0437\u043B\u0438\u043D\u044B\u0439 \u043F\u043E\u043C\u0435\u0442"
+  restorativeHealth: 5
   healingRecharge: 4

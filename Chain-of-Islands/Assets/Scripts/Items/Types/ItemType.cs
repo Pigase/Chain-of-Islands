@@ -8,5 +8,6 @@ public enum ItemType
     Weapon,
     Tool,
     Armor,
-    Health
+    Health,
+    Equipment
 }

@@ -2255,12 +2255,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 836d61da710a5034984ce1ddf26d7941, type: 2}
   - {fileID: 11400000, guid: 45e6077d4b6712b4aadbc38da3468231, type: 2}
   - {fileID: 11400000, guid: 77708c9c75e385c4f929ad862e105b14, type: 2}
-  - {fileID: 11400000, guid: f8d6781948f4f1740b0c9827a2b79926, type: 2}
   - {fileID: 11400000, guid: a53dc67c63af61045b31aa3b713819c2, type: 2}
   - {fileID: 11400000, guid: b152d121d36a35d41a822b6a0b632148, type: 2}
   - {fileID: 11400000, guid: 5cd37ada102f09c4aa1ba46ec1eb1758, type: 2}
   - {fileID: 11400000, guid: 955b6cf205a04984fa79bb38d8a2b34b, type: 2}
   - {fileID: 11400000, guid: b09b4dd31a02b6e46af37af5871a9769, type: 2}
+  - {fileID: 11400000, guid: bedbc7a0833e3b04e95f6af97fafaec3, type: 2}
 --- !u!1 &595166315
 GameObject:
   m_ObjectHideFlags: 0
@@ -7092,7 +7092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4e090c38da4da4381c088a79c51629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemIdAdd: sword
+  itemIdAdd: swordStone
   itemIdRemove: 
   countAdd: 1
   countRemove: 0

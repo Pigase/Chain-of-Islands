@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements.Experimental;
+using static UnityEditor.IMGUI.Controls.PrimitiveBoundsHandle;
 using static UnityEditor.Progress;
 
 public class ItemUseHandler : MonoBehaviour
@@ -15,7 +16,7 @@ public class ItemUseHandler : MonoBehaviour
     private InventorySlot _currentInventorySlot;
     private Item _currentItem;
 
-    public Action<WeaponItem> Attack;
+    public Action<EquipmentItem> UseEquipment;
 
     private void Start()
     {
@@ -106,6 +107,12 @@ public class ItemUseHandler : MonoBehaviour
 
                 break;
 
+            case Pickaxe pickaxe:
+
+                UsePickaxe(pickaxe);
+
+                break;
+
             default:
 
 
@@ -118,13 +125,18 @@ public class ItemUseHandler : MonoBehaviour
     {
 
         _damageDealer.SetDamage(sword.damage);
-        Attack?.Invoke(sword);
+        UseEquipment?.Invoke(sword);
 
     }
 
     private void UseAxe(Axe axe)
     {
-        //Attack?.Invoke(axe);
+        UseEquipment?.Invoke(axe);
+    }
+
+    private void UsePickaxe(Pickaxe pickaxe)
+    {
+        UseEquipment?.Invoke(pickaxe);
     }
 
     private void SearchForAUsedHealingItem(float AmountOfHealthHealed)

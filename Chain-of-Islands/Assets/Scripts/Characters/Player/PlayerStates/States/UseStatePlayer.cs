@@ -4,17 +4,16 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class AttackStatePlayer : PlayerState
+public class UseStatePlayer : PlayerState
 {
     private PlayerVisualStateMachine _context; // Ссылка на StateMachine для смены состояний
     private Animator _animator;
     private Animator _handAnimator;
-    private WeaponItem _currentWepon;
-    private int _currentBodyAttackHash;
-    private int _currentHandAttackHash;
+    private EquipmentItem _currentEquipment;
+    private int _currentBodyUseEquipmentHash;
+    private int _currentHandUseEquipmentHash;
 
-
-    public AttackStatePlayer(PlayerVisualStateMachine context, Animator animator, Animator handAnimator)
+    public UseStatePlayer(PlayerVisualStateMachine context, Animator animator, Animator handAnimator)
     {
         _context = context;
         _animator = animator;
@@ -22,28 +21,28 @@ public class AttackStatePlayer : PlayerState
     }
 
     // Метод для установки анимаций текущего оружия
-    public void SetWeaponAnimations(WeaponItem weapon)
+    public void SetEqipmentAnimations(EquipmentItem equipment)
     {
-        if (weapon == null)
+        if (equipment == null)
         {
             Debug.LogError("Cannot set null weapon!");
             return;
         }
-        if (weapon == _currentWepon)
+        if (equipment == _currentEquipment)
         {
             return;
         }
 
-        _currentBodyAttackHash = Animator.StringToHash(weapon.bodyAttackConditionName);
-        _currentHandAttackHash = Animator.StringToHash(weapon.handAttackConditionName);
+        _currentBodyUseEquipmentHash = Animator.StringToHash(equipment.bodyUseEquipmentConditionName);
+        _currentHandUseEquipmentHash = Animator.StringToHash(equipment.handAttackConditionName);
 
-        _currentWepon = weapon;
+        _currentEquipment = equipment;
     }
 
     public void Enter()
     {
-        _animator.SetBool(_currentBodyAttackHash, true);
-        _handAnimator.SetBool(_currentHandAttackHash, true);
+        _animator.SetBool(_currentBodyUseEquipmentHash, true);
+        _handAnimator.SetBool(_currentHandUseEquipmentHash, true);
     }
 
     public void Update(Vector2 moveDirection)
@@ -53,8 +52,8 @@ public class AttackStatePlayer : PlayerState
 
     public void Exit()
     {
-        _animator.SetBool(_currentBodyAttackHash, false);
-        _handAnimator.SetBool(_currentHandAttackHash, false);
+        _animator.SetBool(_currentBodyUseEquipmentHash, false);
+        _handAnimator.SetBool(_currentHandUseEquipmentHash, false);
     }
 
     private void CheckState(Vector2 moveDirection)
@@ -62,7 +61,7 @@ public class AttackStatePlayer : PlayerState
         AnimatorStateInfo state = _animator.GetCurrentAnimatorStateInfo(0);
 
         // Проверяем по имени текущей анимации
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsName(_currentWepon.bodyAttackAnimationName) &&  state.normalizedTime >= 1.0f)
+        if (_animator.GetCurrentAnimatorStateInfo(0).IsName(_currentEquipment.bodyUseEquipmentAnimationName) &&  state.normalizedTime >= 1.0f)
         {
             ChooseNextState(moveDirection);
         }

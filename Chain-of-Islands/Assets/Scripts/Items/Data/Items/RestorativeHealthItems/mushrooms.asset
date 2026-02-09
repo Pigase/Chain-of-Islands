@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4d1dd97bdc52314eb94763685dbf07f, type: 3}
-  m_Name: mushrooms
+  m_Name: Mushrooms
   m_EditorClassIdentifier: 
   itemId: mushrooms
-  itemName: "\u0433\u0440\u0438\u0431\u044B"
+  itemName: "\u0413\u0440\u0438\u0431\u044B"
   maxStackSize: 30
   icon: {fileID: 2103608369, guid: f60cf8790896cbf4d909854888d674b5, type: 3}
   worldPrefabIcon: {fileID: 2103608369, guid: f60cf8790896cbf4d909854888d674b5, type: 3}
-  description: 
+  description: "\u041F\u0440\u0438\u044F\u0442\u043D\u043E\u0435 \u043F\u043E\u0441\u043B\u0435\u0432\u043A\u0443\u0441\u0438\u0435"
   restorativeHealth: 12
-  coolDownHealth: 0
+  healingRecharge: 7

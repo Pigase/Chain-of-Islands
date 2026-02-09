@@ -14,7 +14,7 @@ public class PlayerVisualStateMachine : MonoBehaviour
     // —осто€ни€ - свойства дл€ безопасного доступа извне
     public IdleStatePlayer Idle { get; private set; }
     public RunningStatePlayer Running { get; private set; }
-    public AttackStatePlayer Attack { get; private set; }
+    public UseStatePlayer Use { get; private set; }
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class PlayerVisualStateMachine : MonoBehaviour
         // »нициализаци€ состо€ний с передачей зависимостей
         Idle = new IdleStatePlayer(this, _animator, _handAnimator);
         Running = new RunningStatePlayer(this, _animator, _handAnimator);
-        Attack = new AttackStatePlayer(this, _animator, _handAnimator);
+        Use = new UseStatePlayer(this, _animator, _handAnimator);
 
         // Ќачальное состо€ние - персонаж начинает в покое
         ChangeState(Idle);
@@ -35,13 +35,13 @@ public class PlayerVisualStateMachine : MonoBehaviour
     private void OnEnable()
     {
         _player.PlayerGetDamage += ShowDamage;
-        _itemUseHandler.Attack += PlayerAttack;
+        _itemUseHandler.UseEquipment += PlayerUseEquipment;
     }
 
     private void OnDisable()
     {
         _player.PlayerGetDamage -= ShowDamage;
-        _itemUseHandler.Attack -= PlayerAttack;
+        _itemUseHandler.UseEquipment -= PlayerUseEquipment;
     }
 
     // √лавный метод дл€ обновлени€ логики состо€ний
@@ -82,11 +82,11 @@ public class PlayerVisualStateMachine : MonoBehaviour
         StartCoroutine(Invulnerability(timeInvulnerability));
     }
 
-    private void PlayerAttack(WeaponItem wepon)
+    private void PlayerUseEquipment(EquipmentItem equipment)
     {
-        Attack.SetWeaponAnimations(wepon);
+        Use.SetEqipmentAnimations(equipment);
 
-       ChangeState(Attack);
+       ChangeState(Use);
     }
 
     private IEnumerator Invulnerability(float secondsForShowDamge)
