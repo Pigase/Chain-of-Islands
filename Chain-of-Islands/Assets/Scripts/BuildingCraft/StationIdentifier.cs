@@ -9,6 +9,8 @@ public class StationIdentifier : MonoBehaviour
     private BuildingStationManager _buildingStationManager;
 
     public event Action<Station> OnStationChange;
+    public event Action OnExitedFromBuildingTrigger;
+    public event Action OnEnterFromBuildingTrigger;
 
     private void Start()
     {
@@ -18,22 +20,22 @@ public class StationIdentifier : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Building")
+        if(collision.CompareTag("Building"))
         {
             BuildingStation building = collision.gameObject.GetComponent<BuildingStation>();
             _station = building.buildingStation;
 
             OnStationChange?.Invoke(_station);
+            OnEnterFromBuildingTrigger?.Invoke();
         }
     }
 
-    /*private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Building")
+        if (collision.CompareTag("Building"))
         {
             BuildingStation building = collision.gameObject.GetComponent<BuildingStation>();
-
-            OnStationChange?.Invoke(_station);
+            OnExitedFromBuildingTrigger?.Invoke();
         }
-    }*/
+    }
 }

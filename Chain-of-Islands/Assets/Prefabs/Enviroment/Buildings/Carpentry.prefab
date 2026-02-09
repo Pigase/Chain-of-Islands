@@ -130,6 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8254294967324534473}
   - component: {fileID: -1548560035488652819}
+  - component: {fileID: 2932052958143688286}
   m_Layer: 0
   m_Name: Carpentry
   m_TagString: Building
@@ -169,6 +170,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buildingStation: {fileID: 11400000, guid: e1b7323a088a9a149afa28897610ff08, type: 2}
+--- !u!58 &2932052958143688286
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515858163598483626}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.36, y: 0.61}
+  serializedVersion: 2
+  m_Radius: 2.24
 --- !u!1 &3004215219731319511
 GameObject:
   m_ObjectHideFlags: 0

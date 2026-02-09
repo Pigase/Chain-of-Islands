@@ -1631,6 +1631,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6069104137727971184}
   - component: {fileID: -5660996855719009615}
+  - component: {fileID: -2654552780990123613}
   m_Layer: 0
   m_Name: Quarry
   m_TagString: Building
@@ -1672,6 +1673,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buildingStation: {fileID: 11400000, guid: e4b696f5b894e7d4bae7d2f772966285, type: 2}
+--- !u!58 &-2654552780990123613
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5386102967515039746}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.3}
+  serializedVersion: 2
+  m_Radius: 2.43
 --- !u!1 &5725657580303233316
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,15 +34,6 @@ public class CreateCraftSlots : MonoBehaviour
         _pool.autoExpand = _autoExpande;
     }
 
-    private void ResetPreviousSlot()
-    {
-        for(int i = 0; i < _slot.Count; i++)
-        {
-            _slot[i].gameObject.SetActive(false);
-        }
-
-        _slot.Clear();
-    }
     private void CreateSlots(RectTransform _content,Station station)
     {
         SlotSelection(station);
@@ -62,6 +53,16 @@ public class CreateCraftSlots : MonoBehaviour
                 slot.SetIconSlot();
             }
         }
+    }
+
+    private void ResetPreviousSlot()
+    {
+        for (int i = 0; i < _slot.Count; i++)
+        {
+            _slot[i].gameObject.SetActive(false);
+        }
+
+        _slot.Clear();
     }
 
     private void SlotSelection(Station station)

@@ -9,16 +9,12 @@ using UnityEngine.UI;
 
 public class CraftDescription : MonoBehaviour
 {
-    [Header("Slots Prefab")]
     [SerializeField] private IngridientSlot _prefabIngridientSlot;
-    [Header("Content")]
     [SerializeField] private RectTransform _content;
-    [Header("Text Result")]
     [SerializeField] private TextMeshProUGUI _descriptionResult;
-    [Header("Icons Result")]
     [SerializeField] private List<Image> _iconResult;
-    [Header("Other Component")]
     [SerializeField] private CreateCraftSlots _createCraftSlots;
+    [SerializeField] private ButtonExitFromBuildingPanel _buttonExitFromBuildingPanel;
 
     private int _poolCount = 20;
     private bool _autoExpande = true;
@@ -55,12 +51,12 @@ public class CraftDescription : MonoBehaviour
         ResultIconDisplay(_iconResult.Count, recipe);
     }
 
-    private void ResultIconDisplay(int amount, CraftingRecipe recipe)
+    private void ResultIconDisplay(int iconAmount, CraftingRecipe recipe)
     {
         string itemId = recipe.result.itemId;
         Item itemInfo = _itemData.GetItem(itemId);
 
-        for (int i = 0; i < amount; i++)
+        for (int i = 0; i < iconAmount; i++)
         {
             _iconResult[i].gameObject.SetActive(true);
             _iconResult[i].sprite = itemInfo.icon;
@@ -81,6 +77,7 @@ public class CraftDescription : MonoBehaviour
             _iconsByIngridients.Add(ingridient);
         }
     }
+
     private void ResetIngridients()
     {
         for (int i = 0; i < _iconsByIngridients.Count; i++)
@@ -90,9 +87,23 @@ public class CraftDescription : MonoBehaviour
 
         _iconsByIngridients.Clear();
     }
+
+    private void ResetDescription()
+    {
+        ResetIngridients();
+
+        for (int i = 0; i < _iconResult.Count; i++)
+        {
+            _iconResult[i].gameObject.SetActive(false);
+            _iconResult[i].sprite = null;
+            _descriptionResult.text = null;
+        }
+    }
+
     private void OnEnable()
     {
         _createCraftSlots.OnGetedRecip += DataPurpose;
+        _buttonExitFromBuildingPanel.OnExitedFromCraftPanel += ResetDescription;
     }
 
     private void OnDisable()
