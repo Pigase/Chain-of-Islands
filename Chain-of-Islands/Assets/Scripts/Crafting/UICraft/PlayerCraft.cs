@@ -20,4 +20,9 @@ public class PlayerCraft : MonoBehaviour
 
         OnPlayerStationStarted?.Invoke(_content, station);
     }
+
+    private void OnEnable()
+    {
+        OnPlayerStationStarted?.Invoke(_content, station);
+    }
 }

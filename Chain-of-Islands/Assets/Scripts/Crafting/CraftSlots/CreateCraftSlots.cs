@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class CreateCraftSlots : MonoBehaviour
 {
-    [SerializeField] private CraftSlot _slotPrefab;
     [SerializeField] private int _poolCount = 20;
     [SerializeField] private bool _autoExpande = true;
+    [SerializeField] private CraftSlot _slotPrefab;
     [SerializeField] private PlayerCraft _playerCraft;
-    [SerializeField] private BuildingCraftPanel _buildingCraftPanel;
+    [SerializeField] private BuildingCraftPanel _buildingCraftPanel;    
 
     public List<CraftSlot> Slot => _slot;
 
@@ -34,7 +34,7 @@ public class CreateCraftSlots : MonoBehaviour
         _pool.autoExpand = _autoExpande;
     }
 
-    private void ResetSlot()
+    private void ResetPreviousSlot()
     {
         for(int i = 0; i < _slot.Count; i++)
         {
@@ -42,14 +42,12 @@ public class CreateCraftSlots : MonoBehaviour
         }
 
         _slot.Clear();
-
-        OnGetRecipe(null);
     }
     private void CreateSlots(RectTransform _content,Station station)
     {
         SlotSelection(station);
 
-        ResetSlot();
+        ResetPreviousSlot();
 
         var countSlots = _recipe.Count;
         if (countSlots > 0)
@@ -59,7 +57,7 @@ public class CreateCraftSlots : MonoBehaviour
                 var slot = _pool.GetFreeElement();
                 slot.transform.SetParent(_content);
                 slot.recipe = _recipe[i];
-                _slot.Add(slot);
+                 _slot.Add(slot);
                 slot.OnClicedOnCraft += OnGetRecipe;
                 slot.SetIconSlot();
             }

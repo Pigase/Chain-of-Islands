@@ -6,12 +6,11 @@ using UnityEngine;
 public class BuildingCraftPanel : MonoBehaviour
 {
     [SerializeField] private RectTransform _content;
-    [SerializeField] private StationKeeper _stationKeeper;
 
     private Station _station;
-    private bool active = false;
 
     public event Action<RectTransform,Station> OnBuildPanelChanged;
+    public event Func<Station> OnBuildPanelOnEnable;
 
     private void PanelChaged()
     {
@@ -21,10 +20,10 @@ public class BuildingCraftPanel : MonoBehaviour
     private void GetStation(Station station)
     {
         Debug.Log("GetStation");
-        if(_station == null || _station !=  station)
+        if(station != null)
         {
             _station = station;
-            Debug.Log($"Panel Script  Station: {station}");
+            Debug.Log($"Panel Script  Station: {station.StationId}");
             PanelChaged();
         }
     }
@@ -32,6 +31,7 @@ public class BuildingCraftPanel : MonoBehaviour
     private void OnEnable()
     {
         Debug.Log("Enable");
-        GetStation(_stationKeeper.station);
+        _station = OnBuildPanelOnEnable?.Invoke();
+        GetStation(_station);
     }
 }
