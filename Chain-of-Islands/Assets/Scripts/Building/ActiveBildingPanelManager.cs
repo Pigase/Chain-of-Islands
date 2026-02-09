@@ -6,23 +6,25 @@ using UnityEngine;
 public class ActiveBildingPanelManager : MonoBehaviour
 {
     [SerializeField] private StationIdentifier _stationIdentifier;
-    [SerializeField] private TestBuildingCraft _testBuildingCraft;
     [SerializeField] private GameObject _buildingCraftButton;
 
-    private void ButtonActivate(Station station)
+    private void ButtonActivate()
     {
         _buildingCraftButton.SetActive(true);
     }
-
+    private void ButtonNotActivate()
+    {
+        _buildingCraftButton.SetActive(false);
+    }
     private void OnEnable()
     {
-        _stationIdentifier.OnStationChange += ButtonActivate;
-        _testBuildingCraft.OnTestChengedStation += ButtonActivate;
+        _stationIdentifier.OnEnterFromBuildingTrigger += ButtonActivate;
+        _stationIdentifier.OnExitedFromBuildingTrigger += ButtonNotActivate;
     }
 
     private void OnDisable()
     {
-        _stationIdentifier.OnStationChange -= ButtonActivate;
-        _testBuildingCraft.OnTestChengedStation -= ButtonActivate;
+        _stationIdentifier.OnEnterFromBuildingTrigger -= ButtonActivate;
+        _stationIdentifier.OnExitedFromBuildingTrigger -= ButtonNotActivate;
     }
 }

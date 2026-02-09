@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 4126050257120082884}
   - component: {fileID: 1679308114102097691}
   m_Layer: 0
-  m_Name: Workbench
+  m_Name: workbench
   m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
