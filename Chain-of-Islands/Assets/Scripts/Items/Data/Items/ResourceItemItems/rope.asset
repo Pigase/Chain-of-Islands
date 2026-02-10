@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: rope
   itemName: "\u0432\u0435\u0440\u0435\u0432\u043A\u0430"
-  maxStackSize: 54
-  icon: {fileID: 0}
-  worldPrefab: {fileID: 0}
-  canBeUsedInCrafting: 1
+  maxStackSize: 15
+  icon: {fileID: 1866557749, guid: 87770d9bb192915418dff09d86560c60, type: 3}
+  worldPrefabIcon: {fileID: 1866557749, guid: 87770d9bb192915418dff09d86560c60, type: 3}
+  description: 
+  canBeUsedInCrafting: 0
   canBeUsedInBuilding: 0

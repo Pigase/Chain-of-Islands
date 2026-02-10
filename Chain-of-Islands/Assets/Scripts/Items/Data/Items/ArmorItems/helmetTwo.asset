@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "\u0448\u043B\u0435\u043C2"
   maxStackSize: 1
   icon: {fileID: 0}
-  worldPrefab: {fileID: 0}
+  worldPrefabIcon: {fileID: 0}
   description: 
   armor: 0
   armorType: 1

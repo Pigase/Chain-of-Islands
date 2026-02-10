@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: grass
   itemName: "\u0442\u0440\u0430\u0432\u0430"
-  maxStackSize: 34
-  icon: {fileID: 21300000, guid: 69c62414bafcc2547a74f2fee89a062e, type: 3}
-  worldPrefabIcon: {fileID: 21300000, guid: 69c62414bafcc2547a74f2fee89a062e, type: 3}
-  description: gggg
-  canBeUsedInCrafting: 1
+  maxStackSize: 30
+  icon: {fileID: -445632314, guid: be0e16513af47ab4796ef1d7ab20d707, type: 3}
+  worldPrefabIcon: {fileID: -445632314, guid: be0e16513af47ab4796ef1d7ab20d707, type: 3}
+  description: 
+  canBeUsedInCrafting: 0
   canBeUsedInBuilding: 0

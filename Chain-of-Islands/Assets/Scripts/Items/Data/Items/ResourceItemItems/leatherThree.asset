@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d9953401e3044438e2104b4959565e, type: 3}
   m_Name: LeatherThree
   m_EditorClassIdentifier: 
-  itemId: leatherThree
-  itemName: "\u043A\u043E\u0436\u04303"
-  icon: {fileID: 0}
-  worldPrefab: {fileID: 0}
-  maxStackSize: 0
-  itemType: 0
-  resourceType: 0
+  itemId: leatherTree
+  itemName: "\u043A\u043E\u0436\u0430 3"
+  maxStackSize: 15
+  icon: {fileID: -1735521268, guid: 2c5f122d9c38f9344af21eab79d75e85, type: 3}
+  worldPrefabIcon: {fileID: -1735521268, guid: 2c5f122d9c38f9344af21eab79d75e85, type: 3}
+  description: 
+  canBeUsedInCrafting: 0
+  canBeUsedInBuilding: 0
