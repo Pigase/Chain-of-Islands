@@ -5,9 +5,6 @@ using UnityEngine;
 
 public abstract class WeaponItem : EquipmentItem
 {
-    [Header("WeaponItem Properties")]
-
-    public int damage;
 
     public override ItemType ItemType => ItemType.Weapon;
 

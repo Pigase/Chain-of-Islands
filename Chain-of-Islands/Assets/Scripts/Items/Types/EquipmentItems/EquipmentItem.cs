@@ -10,6 +10,7 @@ public class EquipmentItem : Item
 
     [Header("EquipmentItem Properties")]
 
+    public int damage;
     public string handAttackConditionName;   // "isAttackStoneSword", "isAttackGoldÑlub"
 
     public override ItemType ItemType => ItemType.Equipment;

@@ -211,6 +211,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 4141140331455328746}
+  _acceptedTypeNames:
+  - Axe
+  _tier: 1
 --- !u!70 &8665530726026715678
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

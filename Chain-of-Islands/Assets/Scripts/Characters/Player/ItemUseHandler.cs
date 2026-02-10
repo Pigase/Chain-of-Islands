@@ -124,7 +124,7 @@ public class ItemUseHandler : MonoBehaviour
     private void UseSword(Sword sword)
     {
 
-        _damageDealer.SetDamage(sword.damage);
+        _damageDealer.SetParametrsToUseEquipment(sword.damage, sword);
         UseEquipment?.Invoke(sword);
 
     }
@@ -132,11 +132,14 @@ public class ItemUseHandler : MonoBehaviour
     private void UseAxe(Axe axe)
     {
         UseEquipment?.Invoke(axe);
+        _damageDealer.SetParametrsToUseEquipment(axe.damage, axe);
     }
 
     private void UsePickaxe(Pickaxe pickaxe)
     {
         UseEquipment?.Invoke(pickaxe);
+        _damageDealer.SetParametrsToUseEquipment(pickaxe.damage, pickaxe);
+
     }
 
     private void SearchForAUsedHealingItem(float AmountOfHealthHealed)

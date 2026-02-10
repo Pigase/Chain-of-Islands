@@ -19,5 +19,6 @@ MonoBehaviour:
   worldPrefabIcon: {fileID: -226865032, guid: f60cf8790896cbf4d909854888d674b5, type: 3}
   description: "\u043C\u0430\u0439\u043D\u043A\u0440\u0430\u0444\u0442\u0435\u0440\u0441\u043A\u0430\u044F
     \u0448\u0442\u0443\u043A\u0430"
+  damage: 50
   handAttackConditionName: isMiningHand
   tier: 1

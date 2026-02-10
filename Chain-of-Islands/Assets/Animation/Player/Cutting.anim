@@ -28,9 +28,9 @@ AnimationClip:
       value: {fileID: 78554371, guid: 325a649eb68b90047a8d807d3163af58, type: 3}
     - time: 0.25
       value: {fileID: 1977719656, guid: 325a649eb68b90047a8d807d3163af58, type: 3}
-    - time: 0.35
+    - time: 0.33333334
       value: {fileID: 1063866023, guid: 325a649eb68b90047a8d807d3163af58, type: 3}
-    - time: 0.4
+    - time: 0.41666666
       value: {fileID: 1630272186, guid: 325a649eb68b90047a8d807d3163af58, type: 3}
     - time: 0.5
       value: {fileID: -1230056043, guid: 325a649eb68b90047a8d807d3163af58, type: 3}
@@ -96,4 +96,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.5
+    functionName: PolygonColliderOn
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 2
+    messageOptions: 0
+  - time: 0.5833333
+    functionName: PolygonColliderOff
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 2
+    messageOptions: 0
