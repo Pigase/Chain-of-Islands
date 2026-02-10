@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8d9953401e3044438e2104b4959565e, type: 3}
-  m_Name: woodThree
+  m_Name: WoodThree
   m_EditorClassIdentifier: 
   itemId: woodThree
   itemName: " \u0434\u0435\u0440\u0435\u0432\u043E3"

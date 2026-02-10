@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8d9953401e3044438e2104b4959565e, type: 3}
-  m_Name: stoneTwo
+  m_Name: StoneTwo
   m_EditorClassIdentifier: 
   itemId: stoneTwo
   itemName: "\u0431\u0443\u043B\u044B\u0436\u043D\u0438\u043A"

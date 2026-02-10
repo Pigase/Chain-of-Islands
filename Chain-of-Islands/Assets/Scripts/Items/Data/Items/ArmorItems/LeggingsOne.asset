@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00aab7bec5a53464da4f93a7c2ee2ec5, type: 3}
-  m_Name: helmet
+  m_Name: LeggingsOne
   m_EditorClassIdentifier: 
-  itemId: helmet
-  itemName: "\u0448\u043B\u0435\u043C"
+  itemId: leggingsOne
+  itemName: "\u043F\u043E\u043D\u043E\u0436\u0438"
   maxStackSize: 1
-  icon: {fileID: 943101658, guid: 6b64593f8216c494eb31b308d037c224, type: 3}
-  worldPrefabIcon: {fileID: 943101658, guid: 6b64593f8216c494eb31b308d037c224, type: 3}
-  description: shlem
-  armor: 1
-  armorType: 1
+  icon: {fileID: 21300000, guid: b2e47434c0e9371458c9b3fd7441c3fe, type: 3}
+  worldPrefabIcon: {fileID: 0}
+  description: leg
+  armor: 0
+  armorType: 3
