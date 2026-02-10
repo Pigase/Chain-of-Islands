@@ -1116,11 +1116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInventary: {fileID: 1373410094}
-  allRecipes:
-  - {fileID: 11400000, guid: 7ef79bb98860eb549bb33f418ed817b6, type: 2}
-  - {fileID: 11400000, guid: bbb383077302d814089114a19d5e6735, type: 2}
-  - {fileID: 11400000, guid: 4c785ec8ad1c76d458b2ffcee0d4e600, type: 2}
-  - {fileID: 11400000, guid: 4ef6e4d0ce9d67249bb2b13201b5a3bd, type: 2}
+  allRecipes: []
 --- !u!4 &299343978
 Transform:
   m_ObjectHideFlags: 0

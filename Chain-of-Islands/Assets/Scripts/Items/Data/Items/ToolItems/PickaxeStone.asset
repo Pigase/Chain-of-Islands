@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66eb448d9b6df744689309354e5d5ffa, type: 3}
-  m_Name: PickaxeStown
+  m_Name: PickaxeStone
   m_EditorClassIdentifier: 
-  itemId: pickaxeStown
+  itemId: pickaxeStone
   itemName: "\u041A\u0430\u043C\u0435\u043D\u043D\u0430\u044F \u043A\u0438\u0440\u043A\u0430"
   maxStackSize: 1
   icon: {fileID: -226865032, guid: f60cf8790896cbf4d909854888d674b5, type: 3}

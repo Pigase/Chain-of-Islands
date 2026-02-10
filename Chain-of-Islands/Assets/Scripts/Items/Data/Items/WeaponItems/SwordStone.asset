@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d22701a0e19a1094a978d52f19bb49e2, type: 3}
-  m_Name: SwordStown
+  m_Name: SwordStone
   m_EditorClassIdentifier: 
   itemId: swordStone
   itemName: "\u041A\u0430\u043C\u0435\u043D\u043D\u044B\u0439 \u043C\u0435\u0447"
