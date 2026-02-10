@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: MeatOne
   m_EditorClassIdentifier: 
   itemId: meatOne
-  itemName: "\u043C\u044F\u0441\u043E1"
-  maxStackSize: 22
-  icon: {fileID: 0}
-  worldPrefab: {fileID: 0}
-  canBeUsedInCrafting: 1
+  itemName: "\u043C\u044F\u0441\u043E 1"
+  maxStackSize: 50
+  icon: {fileID: 2031359268, guid: f60cf8790896cbf4d909854888d674b5, type: 3}
+  worldPrefabIcon: {fileID: 0}
+  description: 
+  canBeUsedInCrafting: 0
   canBeUsedInBuilding: 0

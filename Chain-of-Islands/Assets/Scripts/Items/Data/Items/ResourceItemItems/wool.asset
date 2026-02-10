@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: wool
   itemName: "\u0448\u0435\u0440\u0441\u0442\u044C"
+  maxStackSize: 15
   icon: {fileID: 0}
-  worldPrefab: {fileID: 0}
-  maxStackSize: 0
-  itemType: 0
-  resourceType: 0
+  worldPrefabIcon: {fileID: 0}
+  description: 
+  canBeUsedInCrafting: 0
+  canBeUsedInBuilding: 0

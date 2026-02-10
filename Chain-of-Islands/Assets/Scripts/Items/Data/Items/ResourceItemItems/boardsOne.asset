@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: BoardsOne
   m_EditorClassIdentifier: 
   itemId: boardsOne
-  itemName: "\u0434\u043E\u0441\u043A\u04381"
-  maxStackSize: 34
-  icon: {fileID: 21300000, guid: 1c4bbb00765618f43a7440ad9b90e31b, type: 3}
-  worldPrefab: {fileID: 0}
-  canBeUsedInCrafting: 1
-  canBeUsedInBuilding: 1
+  itemName: "\u0434\u043E\u0441\u043A\u0438 \u0441\u043E\u0441\u043D\u044B"
+  maxStackSize: 30
+  icon: {fileID: -47015404, guid: 87770d9bb192915418dff09d86560c60, type: 3}
+  worldPrefabIcon: {fileID: -47015404, guid: 87770d9bb192915418dff09d86560c60, type: 3}
+  description: 
+  canBeUsedInCrafting: 0
+  canBeUsedInBuilding: 0

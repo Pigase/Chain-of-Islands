@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: stoneOne
   itemName: "\u043A\u0430\u043C\u0435\u043D\u044C"
-  icon: {fileID: 21300000, guid: 15121993d9a621940932ef5de9e329c5, type: 3}
-  worldPrefab: {fileID: 6095553757919726751, guid: cfd2f0c014f18134192d2ca15edc4fce, type: 3}
   maxStackSize: 30
-  itemType: 0
-  resourceType: 1
+  icon: {fileID: 0}
+  worldPrefabIcon: {fileID: 0}
+  description: 
+  canBeUsedInCrafting: 0
+  canBeUsedInBuilding: 0
