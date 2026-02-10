@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8d9953401e3044438e2104b4959565e, type: 3}
-  m_Name: grass
+  m_Name: Grass
   m_EditorClassIdentifier: 
   itemId: grass
   itemName: "\u0442\u0440\u0430\u0432\u0430"

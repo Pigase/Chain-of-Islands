@@ -106,6 +106,7 @@ public class InventarySystem : MonoBehaviour
         {
             RemoveItems(index);
         }
+        IInventaryChange?.Invoke();
     }
 
     public void RemoveItems(int itemIndex)

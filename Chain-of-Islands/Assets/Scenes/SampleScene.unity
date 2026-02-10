@@ -5154,7 +5154,6 @@ MonoBehaviour:
   HotInventaryContentPanel: {fileID: 1046268299}
   ArmorInventaryContentPanel: {fileID: 1788999238}
   inventory: {fileID: 1373410094}
-  inventorySystem: {fileID: 1373410091}
 --- !u!224 &1373410093
 RectTransform:
   m_ObjectHideFlags: 0
