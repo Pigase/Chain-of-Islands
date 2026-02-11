@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6603312863268045498}
   - component: {fileID: 1288894196255885097}
   - component: {fileID: 5517784665466306847}
+  - component: {fileID: -6658766419639735420}
+  - component: {fileID: 7377538475030466621}
   m_Layer: 0
   m_Name: small stone
   m_TagString: Untagged
@@ -119,4 +121,46 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.09, y: 0.15}
   serializedVersion: 2
-  m_Radius: 0.26
+  m_Radius: 0.38
+--- !u!114 &-6658766419639735420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2630334984489463860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a46cf9dbda85d48b822538090b1639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _discardedItems:
+  - Item: {fileID: 11400000, guid: bbbfae994c8ea8042a4c93c750843bf7, type: 2}
+    amount: 2
+--- !u!50 &7377538475030466621
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2630334984489463860}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
