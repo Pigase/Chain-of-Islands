@@ -15,8 +15,8 @@ MonoBehaviour:
   itemId: stoneOne
   itemName: "\u043A\u0430\u043C\u0435\u043D\u044C"
   maxStackSize: 30
-  icon: {fileID: 0}
-  worldPrefabIcon: {fileID: 0}
+  icon: {fileID: -782566937, guid: f60cf8790896cbf4d909854888d674b5, type: 3}
+  worldPrefabIcon: {fileID: -782566937, guid: f60cf8790896cbf4d909854888d674b5, type: 3}
   description: 
   canBeUsedInCrafting: 0
   canBeUsedInBuilding: 0

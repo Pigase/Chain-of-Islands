@@ -121,7 +121,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.09, y: 0.15}
   serializedVersion: 2
-  m_Radius: 0.38
+  m_Radius: 0.33
 --- !u!114 &-6658766419639735420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _discardedItems:
-  - Item: {fileID: 11400000, guid: bbbfae994c8ea8042a4c93c750843bf7, type: 2}
+  - Item: {fileID: 11400000, guid: 572360095a8999e4f9b46de44fa372ad, type: 2}
     amount: 2
 --- !u!50 &7377538475030466621
 Rigidbody2D:

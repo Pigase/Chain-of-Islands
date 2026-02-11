@@ -7,19 +7,79 @@ public class Collector : MonoBehaviour
 {
     public List<StackDiscardedItems> collectoredItems;
 
+    private InventarySystem _inventarySystem;
+    private List<CollectibleObject> collectibleObjects;
+
+    public event Action<List<StackDiscardedItems>> OnCollected;
+    public event Action<bool> IsZoneEntered;
     public event Action<List<StackDiscardedItems>> OnCollectoredItems;
 
-    private InventarySystem _inventarySystem;
-
-    private void OnEnable()
+    private void Start()
     {
         _inventarySystem = GameManager.GetSystem<InventarySystem>();
+        collectibleObjects = new List<CollectibleObject>();
+    }
 
-        for(int i = 0; i < collectoredItems.Count; i++)
+    public void Collectore()
+    {
+        CollectibleObject currentCollectibleObject = null;
+
+        if(collectibleObjects != null)
         {
-            _inventarySystem.AddItems(collectoredItems[i].Item.itemId, collectoredItems[i].amount);
-            Debug.Log("Collector");
+            currentCollectibleObject = CalculationCurrentObject(collectibleObjects);
+
+            collectoredItems = currentCollectibleObject._discardedItems;
+
+            for (int i = 0; i < collectoredItems.Count; i++)
+            {
+                _inventarySystem.AddItems(collectoredItems[i].Item.itemId, collectoredItems[i].amount);
+            }
+            currentCollectibleObject.Collect();
         }
-        gameObject.SetActive(false);
+    }
+
+    private CollectibleObject CalculationCurrentObject(List<CollectibleObject> collectibleObjects)
+    {
+        if(collectibleObjects.Count > 1)
+        {
+            float minDistance = Mathf.Infinity;
+            float distance;
+            CollectibleObject currentObject = null;
+            foreach (var item in collectibleObjects)
+            {
+                distance = PlayerService.FindDistanceToPlayer(item.transform.position);
+
+                if(distance <= minDistance)
+                {
+                    minDistance = distance;
+                    currentObject = item;
+                }
+
+            }
+            return currentObject;
+        }
+        return collectibleObjects[0];
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<CollectibleObject>())
+        {
+            collectibleObjects.Add(collision.GetComponent<CollectibleObject>());
+            IsZoneEntered?.Invoke(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log(collectibleObjects.Count);
+        if (collision.GetComponent<CollectibleObject>())
+        {
+            if(collectibleObjects.Count <= 1)
+            {
+                IsZoneEntered?.Invoke(false);
+            }
+            collectibleObjects.Remove(collision.GetComponent<CollectibleObject>());
+        }
     }
 }

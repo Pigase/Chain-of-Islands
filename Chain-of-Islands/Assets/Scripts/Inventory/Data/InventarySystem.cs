@@ -64,6 +64,7 @@ public class InventarySystem : MonoBehaviour
                     ostatok -= addAmount;
                 }
             }
+            Debug.Log("Add item");
             IInventaryChange?.Invoke();
         }
     }
