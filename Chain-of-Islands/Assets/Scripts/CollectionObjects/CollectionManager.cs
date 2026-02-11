@@ -4,31 +4,21 @@ using UnityEngine;
 
 public class CollectionManager : MonoBehaviour
 {
-    [SerializeField] private ZoneEntryIdentifier _zoneEntryIdentifier;
-    [SerializeField] private GameObject _collectibleButton;
     [SerializeField] private Collector _collector;
-
-    private void Start()
-    {
-    }
+    [SerializeField] private GameObject _collectibleButton;
 
     private void ActiveButton(bool IsEntered)
     {
         _collectibleButton.SetActive(IsEntered);
     }
 
-    public void ActiveCollector()
-    {
-        _collector.gameObject.SetActive(true);
-    }
-
     private void OnEnable()
     {
-        _zoneEntryIdentifier.IsZoneEntered += ActiveButton;
+        _collector.IsZoneEntered += ActiveButton;
     }
 
     private void OnDisable()
     {
-        _zoneEntryIdentifier.IsZoneEntered -= ActiveButton;
+        _collector.IsZoneEntered -= ActiveButton;
     }
 }

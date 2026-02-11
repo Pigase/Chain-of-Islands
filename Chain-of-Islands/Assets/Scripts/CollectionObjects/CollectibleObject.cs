@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class CollectibleObject : MonoBehaviour
 {
-    [SerializeField] private List<StackDiscardedItems> _discardedItems;
+    public List<StackDiscardedItems> _discardedItems;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Collect()
     {
-        if(collision.GetComponent<Collector>())
-        {
-            collision.GetComponent<Collector>().collectoredItems = _discardedItems;
-            Debug.Log("Object False");
-            gameObject.SetActive(false);
-
-        }
+        gameObject.SetActive(false);
     }
 }
