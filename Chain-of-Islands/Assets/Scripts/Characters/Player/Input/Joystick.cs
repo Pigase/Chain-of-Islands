@@ -5,8 +5,8 @@ using System;
 
 public class Joystick : MonoBehaviour
 {
-    [SerializeField] private GameObject _bigJoystick;
-    [SerializeField] private GameObject _smallJoystick;
+    [SerializeField] private UnityEngine.GameObject _bigJoystick;
+    [SerializeField] private UnityEngine.GameObject _smallJoystick;
 
     [SerializeField] private float _radius = 1f; // радиус большого джостика
     [SerializeField] private float _joystickZoneWidth = 3f; // Ўирина зоны действи€ спавна джойстика

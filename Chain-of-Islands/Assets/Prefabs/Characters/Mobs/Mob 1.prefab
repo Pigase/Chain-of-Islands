@@ -654,9 +654,10 @@ GameObject:
   - component: {fileID: 555915618170818871}
   - component: {fileID: 8170646112396174951}
   - component: {fileID: 528887013880897910}
-  - component: {fileID: 6400087765880144221}
+  - component: {fileID: 3052852013245362994}
   - component: {fileID: 7586755305311512650}
   - component: {fileID: -687278868646515301}
+  - component: {fileID: 5592675298003467958}
   m_Layer: 0
   m_Name: Mob 1
   m_TagString: Mob
@@ -733,7 +734,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6400087765880144221
+--- !u!114 &3052852013245362994
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -742,7 +743,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7901005621848070842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a861ef06deda1b24bb00d226fcb09ce8, type: 3}
+  m_Script: {fileID: 11500000, guid: 268b4f780794ac64d8c990a029dce3fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _mobAI: {fileID: 7586755305311512650}
@@ -772,7 +773,7 @@ MonoBehaviour:
     atackDistance: 1
     damageDealt: 5
     stoppingDistance: 0.5
-  _mob: {fileID: 6400087765880144221}
+  _mob: {fileID: 0}
 --- !u!114 &-687278868646515301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -789,6 +790,18 @@ MonoBehaviour:
   _currentHealth: 0
   _timeInvulnerability: 1
   _healthBar: {fileID: 8772400636215282150}
+--- !u!114 &5592675298003467958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7901005621848070842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6f992789d32acf44adf63524938bf6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8017645045086665064
 GameObject:
   m_ObjectHideFlags: 0

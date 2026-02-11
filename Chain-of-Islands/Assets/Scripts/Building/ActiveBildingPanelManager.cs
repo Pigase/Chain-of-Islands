@@ -6,7 +6,7 @@ using UnityEngine;
 public class ActiveBildingPanelManager : MonoBehaviour
 {
     [SerializeField] private StationIdentifier _stationIdentifier;
-    [SerializeField] private GameObject _buildingCraftButton;
+    [SerializeField] private UnityEngine.GameObject _buildingCraftButton;
 
     private void ButtonActivate()
     {

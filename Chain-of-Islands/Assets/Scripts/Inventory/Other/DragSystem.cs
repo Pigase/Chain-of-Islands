@@ -15,7 +15,7 @@ public class DragSystem : MonoBehaviour, IPointerClickHandler, IBeginDragHandler
     private Transform originalParent;
     private Transform topLevelParent;
     private int originalSiblingIndex;
-    private GameObject clickedObject;
+    private UnityEngine.GameObject clickedObject;
 
     public event Action<UIInventorySlot> OnClickedOnSlot;
 

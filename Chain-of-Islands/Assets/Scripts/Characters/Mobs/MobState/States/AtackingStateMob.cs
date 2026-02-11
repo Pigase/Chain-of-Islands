@@ -16,7 +16,7 @@ public class AtackingStateMob : MobState
     private Vector3 _currentPosition;
 
     private MobAI _context;
-    private GameObject _player;
+    private UnityEngine.GameObject _player;
 
     public AtackingStateMob(MobAI context, Animator animator, MobConfig config)
     {

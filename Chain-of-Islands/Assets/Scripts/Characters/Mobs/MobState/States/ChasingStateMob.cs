@@ -15,7 +15,7 @@ public class ChasingStateMob : MobState
 
     private MobAI _context;
     private NavMeshAgent _navMeshAgent;
-    private GameObject _player;
+    private UnityEngine.GameObject _player;
 
     public ChasingStateMob(MobAI context, Animator animator, NavMeshAgent navMeshAgent, MobConfig config)
     {

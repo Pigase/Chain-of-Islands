@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Mover
 {
-    private GameObject _targetObject; // Ссылка на GameObject для перемещения
+    private UnityEngine.GameObject _targetObject; // Ссылка на GameObject для перемещения
 
     // Конструктор - сохраняем ссылку на объект для перемещения
-    public Mover(GameObject _targetGameObject)
+    public Mover(UnityEngine.GameObject _targetGameObject)
     {
         _targetObject = _targetGameObject;
     }

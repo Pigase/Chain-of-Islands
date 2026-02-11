@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActivatingCollidersInAnimations : MonoBehaviour
 {
-    [SerializeField] private GameObject _targetObject; // Перетащи сюда объект с двумя коллайдерами
+    [SerializeField] private UnityEngine.GameObject _targetObject; // Перетащи сюда объект с двумя коллайдерами
     private PolygonCollider2D[] _attackColliders;
 
 

@@ -17,7 +17,7 @@ public class IdleStateMob : MobState
     private float _distanceToPlayer;
 
     private MobAI _context;
-    private GameObject _player;
+    private UnityEngine.GameObject _player;
 
     public IdleStateMob(MobAI context, Animator animator, MobConfig config)
     {

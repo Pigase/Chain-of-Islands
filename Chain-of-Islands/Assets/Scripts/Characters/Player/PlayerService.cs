@@ -6,7 +6,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public static class PlayerService
 {
-    public static GameObject PlayerGameObject
+    public static UnityEngine.GameObject PlayerGameObject
     {
         get
         {
@@ -16,7 +16,7 @@ public static class PlayerService
         }
     }
 
-    private static GameObject _playerGameObject;
+    private static UnityEngine.GameObject _playerGameObject;
     private static float _distanceToPlayer;
 
     public static float FindDistanceToPlayer(Vector3 objectPosition)
@@ -35,7 +35,7 @@ public static class PlayerService
 
     private static void FindPlayer()
     {
-        _playerGameObject = GameObject.FindWithTag("Player");
+        _playerGameObject = UnityEngine.GameObject.FindWithTag("Player");
 
         if (PlayerGameObject == null)
             Debug.LogError("Player not found!");

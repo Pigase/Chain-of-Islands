@@ -20,7 +20,7 @@ public class RoamingStateMob : MobState
 
     private MobAI _context;
     private NavMeshAgent _navMeshAgent;
-    private GameObject _player;
+    private UnityEngine.GameObject _player;
 
 
     public RoamingStateMob(MobAI context, Animator animator, NavMeshAgent navMeshAgent, Vector3 startPosition, MobConfig config)
