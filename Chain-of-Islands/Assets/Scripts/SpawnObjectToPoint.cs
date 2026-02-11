@@ -29,6 +29,8 @@ public class SpawnObjectToPoint : MonoBehaviour
         _currentObject = obj;
         _currentObject.transform.position = transform.position;
         _currentObjectHealth = _currentObject.GetComponent<HealthComponent>();
+        _currentObjectHealth.ResetHealth();
+
 
         if (_currentObjectHealth != null)
         {

@@ -13,7 +13,6 @@ public class Mob : MonoBehaviour
     {
         _sprite.color = Color.white;
         StopAllCoroutines();
-        _health.ResetHealth();
         _health.OnDeath += MobDie;
         _health.OnDamageTaken += MobTakeDamage;
     }

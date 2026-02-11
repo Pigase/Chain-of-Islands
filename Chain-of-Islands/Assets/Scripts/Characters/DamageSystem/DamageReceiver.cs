@@ -1,16 +1,25 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DamageReceiver : MonoBehaviour
 {
     [SerializeField] private HealthComponent _health;
+    [SerializeField] private DamageProcessor _damageProcessor;
     [SerializeField] private string[] _acceptedTypeNames = {"Sword"}; // "Sword", "Axe", "Pickaxe"
     [SerializeField] private int _tier = 0;
 
     public void TakeDamage(float damage, Item item)
     {
+        // ПРОЦЕССИНГ УРОНА - ключевой момент!
+        float finalDamage = damage;
+        if (_damageProcessor != null)
+        {
+            finalDamage = _damageProcessor.ProcessDamage(damage);
+        }
+
         if (item == null)//т.к. моб не имеет предметов он бьет и так
         {
-            _health.TakeDamage(damage);
+            _health.TakeDamage(finalDamage);
             return;
         }
 
@@ -33,8 +42,8 @@ public class DamageReceiver : MonoBehaviour
                 return;
             }    
 
-            Debug.Log($"Correct tool used: {item.itemName}, damage: {damage}");
-            _health.TakeDamage(damage);
+            Debug.Log($"Correct tool used: {item.itemName}, damage: {finalDamage}");
+            _health.TakeDamage(finalDamage);
         }
 
         else

@@ -1565,6 +1565,8 @@ GameObject:
   - component: {fileID: 403213514}
   - component: {fileID: 403213516}
   - component: {fileID: 403213517}
+  - component: {fileID: 403213518}
+  - component: {fileID: 403213519}
   m_Layer: 7
   m_Name: PlayerDamageReceiver
   m_TagString: Untagged
@@ -1635,9 +1637,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 1220451672}
+  _damageProcessor: {fileID: 403213518}
   _acceptedTypeNames:
   - Sword
   _tier: 0
+--- !u!114 &403213518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403213513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4710bf0f9ef023146b835d39063b1dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &403213519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403213513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115bf2fa0155b2b47843b88d47ef97bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _physicalResistance: 20
 --- !u!1 &429891058
 GameObject:
   m_ObjectHideFlags: 0
