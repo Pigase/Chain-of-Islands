@@ -9,25 +9,33 @@ public class InventarySystem : MonoBehaviour
 {
     [SerializeField] private TestInventary testInventary;
     [SerializeField] private UIInventory uiInventary;
-    [SerializeField] private Inventory inventory;
     [SerializeField] private DroppingZone _droppingZone;
     [SerializeField] private DestroyZone _destroyZone;
     [SerializeField] private CraftingSystem _craftingSystem;
 
+    public Inventory Inventory => inventory;
+
+    private Inventory inventory;
+    private ItemDataBase itemData;
+    private int fillableSlots;
+    private List<int> armorSlotsIndex;
+
     public event Action IInventaryChange;
 
-    private int fillableSlots;
-
-    private void Start()
+    public void Initialize()
     {
+        inventory = new Inventory();
+        itemData = GameManager.GetSystem<ItemDataBase>();
+        armorSlotsIndex = new List<int>();
         fillableSlots = inventory.maxSlots - inventory.armorSlotsCount;
+        armorSlotsIndex = uiInventary.ArmorSlotsIndexs;
+
     }
 
     public void AddItems(string itemId, int count)
     {
         if (itemId != null)
         {
-            ItemDataBase itemData = GameManager.GetSystem<ItemDataBase>();
             var itemInfo = itemData.GetItem(itemId);
 
             if (itemInfo == null) return;
@@ -64,27 +72,62 @@ public class InventarySystem : MonoBehaviour
                     ostatok -= addAmount;
                 }
             }
-            Debug.Log("Add item");
             IInventaryChange?.Invoke();
         }
+    }
+
+    public List<InventorySlot> GetArmorSlots()
+    {
+
+        armorSlotsIndex = uiInventary.ArmorSlotsIndexs;
+
+        List<InventorySlot> armorSlots = new List<InventorySlot>();
+
+        for (int i = 0; i < armorSlotsIndex.Count; i++)
+        {
+            armorSlots.Add(inventory.Slots[armorSlotsIndex[i]]);
+        }
+        return armorSlots;
+    }
+
+    public bool IsCanAddItem(string itemId)
+    {
+        Item iteminfo = itemData.GetItem(itemId);
+
+        bool can = false;
+
+        for(int i = 0; i < fillableSlots; i ++)
+        {
+            if (inventory.Slots[i].empty)
+            {
+                can = true;
+                return can;
+            }
+            if (!inventory.Slots[i].empty && inventory.Slots[i].itemId == itemId && inventory.Slots[i].itemCount < iteminfo.maxStackSize)
+            {
+                can = true;
+                return can;
+            }
+        }
+        return false;
     }
 
     public void SubtractItems(string itemId, int count)
     {
         if (itemId != null)
         {
-            for (int i = 0; i < inventory.Slots.Count && count > 0; i++)
+            for (int i = 0; i < Inventory.Slots.Count && count > 0; i++)
             {
-                var slot = inventory.Slots[i];
+                var slot = Inventory.Slots[i];
 
                 if (slot.itemId == itemId)
                 {
                     if (slot.itemCount <= count)
                     {
                         count -= slot.itemCount;
-                        inventory.Slots[i].itemId = null;
-                        inventory.Slots[i].empty = true;
-                        inventory.Slots[i].itemCount = 0;
+                        Inventory.Slots[i].itemId = null;
+                        Inventory.Slots[i].empty = true;
+                        Inventory.Slots[i].itemCount = 0;
                     }
                     else
                     {
@@ -99,24 +142,24 @@ public class InventarySystem : MonoBehaviour
 
     public void SubstractItemFromSlot(InventorySlot slot, int amountItem = 1)
     {
-        int index = inventory.Slots.IndexOf(slot);
+        int index = Inventory.Slots.IndexOf(slot);
 
-        inventory.Slots[index].itemCount -=  amountItem;
+        Inventory.Slots[index].itemCount -=  amountItem;
 
-        if (inventory.Slots[index].itemCount <= 0)
+        if (Inventory.Slots[index].itemCount <= 0)
         {
             RemoveItems(index);
         }
         IInventaryChange?.Invoke();
     }
 
-    public void RemoveItems(int itemIndex)
+    public void RemoveItems(int slotIndex)
     {
-        if(itemIndex >= 0)
+        if(slotIndex >= 0)
         {
-            inventory.Slots[itemIndex].itemId = null;
-            inventory.Slots[itemIndex].empty = true;
-            inventory.Slots[itemIndex].itemCount = 0;
+            Inventory.Slots[slotIndex].itemId = null;
+            Inventory.Slots[slotIndex].empty = true;
+            Inventory.Slots[slotIndex].itemCount = 0;
         }
         IInventaryChange?.Invoke();
     }
@@ -124,9 +167,9 @@ public class InventarySystem : MonoBehaviour
     public void ItemSwap(int indexOneSlot, int indexTwoSlot)
     {
         
-        var item = inventory.Slots[indexOneSlot];
-        inventory.Slots[indexOneSlot] = inventory.Slots[indexTwoSlot];
-        inventory.Slots[indexTwoSlot] = item;
+        var item = Inventory.Slots[indexOneSlot];
+        Inventory.Slots[indexOneSlot] = Inventory.Slots[indexTwoSlot];
+        Inventory.Slots[indexTwoSlot] = item;
         IInventaryChange?.Invoke();
     }
 

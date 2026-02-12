@@ -14,10 +14,11 @@ public class UIInventory : MonoBehaviour
     [SerializeField] private RectTransform InventaryContentPanel;
     [SerializeField] private RectTransform HotInventaryContentPanel;
     [SerializeField] private RectTransform ArmorInventaryContentPanel;
-    [SerializeField] private Inventory inventory;
 
     public List<UIInventorySlot> inventorySlots => slots;
+    public List<int> ArmorSlotsIndexs => armorSlotsIndexs;
 
+    private Inventory inventory;
     private List<int> armorSlotsIndexs;
     private InventarySystem inventorySystem;
     private ItemDataBase itemDataBase;
@@ -26,10 +27,16 @@ public class UIInventory : MonoBehaviour
     public event Action<int, int> OnItemsSwapped;
     public event Action<UIInventorySlot> OnSlotClicked;
 
-    private void Start()
+    private void OnEnable()
+    {
+        Initialize();
+    }
+
+    private void Initialize()
     {
         itemDataBase = GameManager.GetSystem<ItemDataBase>();
         inventorySystem = GameManager.GetSystem<InventarySystem>();
+        inventory = inventorySystem.Inventory;
 
         slots = new List<UIInventorySlot>();
         armorSlotsIndexs = new List<int>();
@@ -41,9 +48,12 @@ public class UIInventory : MonoBehaviour
 
     public void RefreshAllSlots()
     {
-        for (int i = 0; i < slots.Count; i++)
+        if(slots != null)
         {
-            slots[i]?.RefreshSlotUI(inventory.Slots[i]);
+            for (int i = 0; i < slots.Count; i++)
+            {
+                slots[i]?.RefreshSlotUI(inventory.Slots[i]);
+            }
         }
     }
 
@@ -141,6 +151,7 @@ public class UIInventory : MonoBehaviour
             slots.Add(slot);
             int slotIndex = slots.IndexOf(slot);
             armorSlotsIndexs.Add(slotIndex);
+            Debug.Log("CreateArmorSlot " + armorSlotsIndexs.Count);
         }
     }
 

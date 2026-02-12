@@ -23,7 +23,15 @@ public class UIInventorySlot : MonoBehaviour, IDropHandler
 
     private void Awake()
     {
+    }
+    private void Start()
+    {
         itemData = GameManager.GetSystem<ItemDataBase>();
+    }
+
+    private void OnEnable()
+    {
+
     }
 
     public void RefreshSlotUI(InventorySlot slot)
@@ -37,6 +45,7 @@ public class UIInventorySlot : MonoBehaviour, IDropHandler
             _iconItem.sprite = itemInfo?.icon;
         }
     }
+
 
     public void OnDrop(PointerEventData eventData)
     {

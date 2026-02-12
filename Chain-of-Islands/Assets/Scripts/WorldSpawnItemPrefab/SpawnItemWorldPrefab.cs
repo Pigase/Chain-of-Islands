@@ -25,7 +25,8 @@ public class SpawnItemWorldPrefab : MonoBehaviour
             {
                 Debug.Log("CreatePrefab");
                 var dropItem = _worldPool.GetFreeElement();
-                dropItem.SpriteRenderer.sprite = item.worldPrefabIcon;
+                dropItem.GetComponent<SelectableItem>().item = item;
+                dropItem.SpriteRenderer.sprite = item.worldPrefabIcon;  
                 DropPosition(itemDroppingPosition, dropItem, radiusDrop);
             }
         }

@@ -9,6 +9,7 @@ public class ClickHandler : MonoBehaviour
     [SerializeField] private UIInventory _uiInventory;
     [SerializeField] private SlotInfoFinder _slotInfoFinder;
 
+    private InventarySystem _inventarySystem;
     private int _selectedHotbarIndex = 0;
     private int _lastSelectedIndex = 0;
 
@@ -26,14 +27,15 @@ public class ClickHandler : MonoBehaviour
 
     private void Start()
     {
+        _inventarySystem = GameManager.GetSystem<InventarySystem>();
         SelectSlot(_selectedHotbarIndex);
-        OnClicedOnHotSlot?.Invoke(_slotInfoFinder.InventorySlotInUISlot(_slotInfoFinder.SlotByIndex(_selectedHotbarIndex)));
+        OnClicedOnHotSlot?.Invoke(_inventarySystem.Inventory.Slots[_selectedHotbarIndex]);
     }
 
     public void SelectHotSlotRefresh()
     {
         SelectSlot(_selectedHotbarIndex);
-        OnClicedOnHotSlot?.Invoke(_slotInfoFinder.InventorySlotInUISlot(_slotInfoFinder.SlotByIndex(_selectedHotbarIndex)));
+        OnClicedOnHotSlot?.Invoke(_inventarySystem.Inventory.Slots[_selectedHotbarIndex]);
 
         _lastSelectedIndex = _selectedHotbarIndex;
     }
@@ -42,7 +44,7 @@ public class ClickHandler : MonoBehaviour
     {
         if(clickedSlot != null)
         {
-            int slotIndex = _slotInfoFinder.SlotIndexFind(clickedSlot);
+            int slotIndex = _uiInventory.inventorySlots.IndexOf(clickedSlot);
 
             if (_lastSelectedIndex == slotIndex)
                 return;

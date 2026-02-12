@@ -740,6 +740,7 @@ GameObject:
   - component: {fileID: 284291650}
   - component: {fileID: 284291651}
   - component: {fileID: 284291652}
+  - component: {fileID: 284291653}
   m_Layer: 0
   m_Name: PlayerPhysicsCollider
   m_TagString: Untagged
@@ -822,6 +823,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectoredItems: []
+--- !u!114 &284291653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284291648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 580efd8ee1b771143b03b7b849fd1b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &295313350
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,7 +1144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fd1271fb4a6454ebb611b57634ed83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInventary: {fileID: 1373410094}
   allRecipes: []
 --- !u!4 &299343978
 Transform:
@@ -4771,8 +4783,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1373410093}
   - {fileID: 542521338}
+  - {fileID: 1373410093}
   - {fileID: 299343978}
   - {fileID: 1802738842}
   - {fileID: 2093336237}
@@ -5041,7 +5053,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1373410093}
-  - component: {fileID: 1373410094}
   - component: {fileID: 1373410091}
   - component: {fileID: 1373410092}
   - component: {fileID: 1373410095}
@@ -5067,7 +5078,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testInventary: {fileID: 1969685498}
   uiInventary: {fileID: 1373410092}
-  inventory: {fileID: 1373410094}
   _droppingZone: {fileID: 2032400185}
   _destroyZone: {fileID: 1590496739}
   _craftingSystem: {fileID: 299343977}
@@ -5089,7 +5099,6 @@ MonoBehaviour:
   InventaryContentPanel: {fileID: 1165074743}
   HotInventaryContentPanel: {fileID: 1046268299}
   ArmorInventaryContentPanel: {fileID: 1788999238}
-  inventory: {fileID: 1373410094}
 --- !u!224 &1373410093
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5109,20 +5118,6 @@ RectTransform:
   m_AnchoredPosition: {x: 538.9257, y: 958.8504}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1373410094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1373410090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eac9f9850c05274185b9e18642ac85c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hotInventarySlotsCount: 5
-  inventarySlotsCount: 15
 --- !u!114 &1373410095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5150,7 +5145,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uIInventory: {fileID: 1373410092}
-  _inventory: {fileID: 1373410094}
 --- !u!1 &1431969976
 GameObject:
   m_ObjectHideFlags: 0
@@ -7749,7 +7743,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 2005062612}
+  - {fileID: 916432436}
   - {fileID: 1220451668}
   - {fileID: 200151258}
   - {fileID: 2108282341}
-  - {fileID: 916432436}

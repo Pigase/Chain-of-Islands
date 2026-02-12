@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     {
         itemDataBase.Initialize();
         craftingSystem.Initialize(itemDataBase);
+        inventarySystem.Initialize();
         spawnItemWorldPrefab.Initialize();
         buildingStationManager.Initialize();
 

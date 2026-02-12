@@ -7,13 +7,16 @@ using UnityEngine;
 public class SlotInfoFinder : MonoBehaviour
 {
     [SerializeField] private UIInventory _uIInventory;
-    [SerializeField] private Inventory _inventory;
 
+    private InventarySystem _inventarySystem;
+    private Inventory _inventory;
     private ItemDataBase itemData;
 
     private void Start()
     {
         itemData = GameManager.GetSystem<ItemDataBase>();
+        _inventarySystem = GameManager.GetSystem<InventarySystem>();
+        _inventory = _inventarySystem.Inventory;
     }
 
     public int SlotIndexFind(UIInventorySlot slot)
@@ -26,26 +29,6 @@ public class SlotInfoFinder : MonoBehaviour
         var slotIndex = _uIInventory.inventorySlots.IndexOf(slot);
         
         return slotIndex;
-    }
-
-    public int ItemCountInSlot(UIInventorySlot slot)
-    {
-        if (slot == null)
-        {
-            throw new ArgumentNullException(nameof(slot), "Slot cannot be null");
-        }
-
-        return _inventory.Slots[SlotIndexFind(slot)].itemCount;
-    }
-
-    public string ItemIdInSlot(UIInventorySlot slot)
-    {
-        if (slot == null)
-        {
-            throw new ArgumentNullException(nameof(slot), "Slot cannot be null");
-        }
-
-        return _inventory.Slots[SlotIndexFind(slot)].itemId;
     }
 
     public bool IsHotbarSlot(UIInventorySlot slot)
@@ -76,11 +59,10 @@ public class SlotInfoFinder : MonoBehaviour
         {
             throw new ArgumentNullException(nameof(slot), "Slot cannot be null");
         }
-        var item = itemData.GetItem(ItemIdInSlot(slot));
+        var item = itemData.GetItem(_inventory.Slots[SlotIndexFind(slot)].itemId);
         return item;
     }
     
-
     public bool IsEmptySlot(UIInventorySlot slot)
     {
         if (slot == null)

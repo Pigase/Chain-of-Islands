@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using static UnityEditor.Progress;
 
-public class Inventory: MonoBehaviour
+public class Inventory
 {
     private List<InventorySlot> slots = new List<InventorySlot>();
     public List<InventorySlot> Slots => slots;
@@ -14,14 +15,15 @@ public class Inventory: MonoBehaviour
     public int inventarySlotsCount = 10;
     public int armorSlotsCount { get; private set; } = 3;
 
-    private void Awake()
+    public Inventory()
     {
+        Debug.Log("Create Inventory slot");
+
         maxSlots = hotInventarySlotsCount + inventarySlotsCount + armorSlotsCount;
 
-        for(int i = 0; i < maxSlots; i++)
+        for (int i = 0; i < maxSlots; i++)
         {
             InventorySlot newSlot = new InventorySlot();
-
             slots.Add(newSlot);
         }
     }
