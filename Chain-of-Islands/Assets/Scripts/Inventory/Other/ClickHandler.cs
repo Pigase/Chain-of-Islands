@@ -14,6 +14,7 @@ public class ClickHandler : MonoBehaviour
     private int _lastSelectedIndex = 0;
 
     public event Action<InventorySlot> OnClicedOnHotSlot;
+    public event Action<InventorySlot> OnClicedOnSlot;
 
     private void OnEnable()
     {
@@ -35,9 +36,8 @@ public class ClickHandler : MonoBehaviour
     public void SelectHotSlotRefresh()
     {
         SelectSlot(_selectedHotbarIndex);
-        OnClicedOnHotSlot?.Invoke(_inventarySystem.Inventory.Slots[_selectedHotbarIndex]);
-
         _lastSelectedIndex = _selectedHotbarIndex;
+        OnClicedOnHotSlot?.Invoke(_inventarySystem.Inventory.Slots[_selectedHotbarIndex]);
     }
 
     private void HandleSlotClick(UIInventorySlot clickedSlot)
@@ -59,7 +59,7 @@ public class ClickHandler : MonoBehaviour
                 OnClicedOnHotSlot?.Invoke(_slotInfoFinder.InventorySlotInUISlot(clickedSlot));
                 return;
             }
-            OnClicedOnHotSlot?.Invoke(_slotInfoFinder.InventorySlotInUISlot(clickedSlot));
+            OnClicedOnSlot?.Invoke(_slotInfoFinder.InventorySlotInUISlot(clickedSlot));
         }
     }
 

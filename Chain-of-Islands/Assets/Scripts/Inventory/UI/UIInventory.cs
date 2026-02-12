@@ -34,6 +34,7 @@ public class UIInventory : MonoBehaviour
 
     private void Initialize()
     {
+        Debug.Log("En");
         itemDataBase = GameManager.GetSystem<ItemDataBase>();
         inventorySystem = GameManager.GetSystem<InventarySystem>();
         inventory = inventorySystem.Inventory;

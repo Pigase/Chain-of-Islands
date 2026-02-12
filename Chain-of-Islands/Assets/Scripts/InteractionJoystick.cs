@@ -14,11 +14,13 @@ public class InteractionJoystick : MonoBehaviour
     private void OnEnable()
     {
         _hotInventory.OnClicedOnHotSlot += SaveCurrentItemInHotInventary;
+        _hotInventory.OnClicedOnSlot += SaveCurrentItemInHotInventary;
     }
 
     private void OnDisable()
     {
         _hotInventory.OnClicedOnHotSlot -= SaveCurrentItemInHotInventary;
+        _hotInventory.OnClicedOnSlot -= SaveCurrentItemInHotInventary;
     }
 
     public void UseItem()
