@@ -1678,7 +1678,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115bf2fa0155b2b47843b88d47ef97bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _physicalResistance: 20
+  _armor: 10
+  _isPlayer: 1
 --- !u!1 &429891058
 GameObject:
   m_ObjectHideFlags: 0
@@ -2413,6 +2414,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5ead0e750857930448a2f31ad2080b54, type: 2}
   - {fileID: 11400000, guid: e656389b3ae10484b8774d0bf4ce4540, type: 2}
   - {fileID: 11400000, guid: d4fc0e2dffcb0244fbb61794b2821c04, type: 2}
+  - {fileID: 11400000, guid: 5114c862d4cc0f94a99af2408771f514, type: 2}
 --- !u!1 &547382408
 GameObject:
   m_ObjectHideFlags: 0

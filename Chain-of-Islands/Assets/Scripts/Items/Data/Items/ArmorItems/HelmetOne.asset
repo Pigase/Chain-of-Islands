@@ -18,5 +18,5 @@ MonoBehaviour:
   icon: {fileID: 943101658, guid: 6b64593f8216c494eb31b308d037c224, type: 3}
   worldPrefabIcon: {fileID: 943101658, guid: 6b64593f8216c494eb31b308d037c224, type: 3}
   description: shlem
-  armor: 1
+  armor: 5
   armorType: 1

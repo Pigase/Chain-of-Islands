@@ -18,5 +18,5 @@ MonoBehaviour:
   icon: {fileID: -1482849952, guid: be0e16513af47ab4796ef1d7ab20d707, type: 3}
   worldPrefabIcon: {fileID: 0}
   description: nagrudn
-  armor: 0
+  armor: 10
   armorType: 2

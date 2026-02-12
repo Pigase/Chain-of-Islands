@@ -18,5 +18,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: b2e47434c0e9371458c9b3fd7441c3fe, type: 3}
   worldPrefabIcon: {fileID: 0}
   description: leg
-  armor: 0
+  armor: 10
   armorType: 3
