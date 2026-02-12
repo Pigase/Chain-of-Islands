@@ -72,9 +72,4 @@ public class SlotInfoFinder : MonoBehaviour
 
         return _inventory.Slots[SlotIndexFind(slot)].empty;
     }
-
-    public UIInventorySlot SlotByIndex(int index)
-    {
-        return _uIInventory.inventorySlots[index]; 
-    }
 }
