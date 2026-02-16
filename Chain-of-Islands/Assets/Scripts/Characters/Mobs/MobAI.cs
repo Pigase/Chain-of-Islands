@@ -28,21 +28,18 @@ public class MobAI : MonoBehaviour
 
         if (_animator == null)
             Debug.LogError("Animator component is missing!", this);
-
-        // Инициализация состояний с передачей зависимостей
-        Idle = new IdleStateMob(this, _animator, _config);
-        Chasing = new ChasingStateMob(this, _animator, _navMeshAgent, _config);
-        Atacking = new AtackingStateMob(this, _animator, _config);
-
-        // Начальное состояние - моб начинает в покое
-        ChangeState(Idle);
     }
 
     private void Start()
     {
         _startPosition = transform.position; // Уже установлена из пула!
 
+        // Инициализация состояний с передачей зависимостей
+        Idle = new IdleStateMob(this, _animator, _config);
+        Chasing = new ChasingStateMob(this, _animator, _navMeshAgent, _config);
+        Atacking = new AtackingStateMob(this, _animator, _config);
         Roaming = new RoamingStateMob(this, _animator, _navMeshAgent, _startPosition, _config);
+
         ChangeState(Idle);
     }
 

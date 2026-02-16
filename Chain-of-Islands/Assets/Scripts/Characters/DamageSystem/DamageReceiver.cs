@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DamageReceiver : MonoBehaviour
@@ -11,26 +10,39 @@ public class DamageReceiver : MonoBehaviour
 
     public void TakeDamage(float damage, Item item)
     {
-        // ПРОЦЕССИНГ УРОНА - ключевой момент!
+        // ПРОЦЕССИНГ УРОНА
         float finalDamage = damage;
         if (_damageProcessor != null)
         {
             finalDamage = _damageProcessor.ProcessDamage(damage);
         }
 
-        if (item == null)//т.к. моб не имеет предметов он бьет и так
+        // Проверка: можно ли нанести урон?
+        if (!CanDealDamage(item))
         {
-            if (_isPlayer)
-            {
-                _health.TakeDamage(finalDamage);
-                return;
-            }
-
-            Debug.Log("Item is null");
+            return;
         }
 
-        bool typeAccepted = false;
+        // НАНОСИМ УРОН ТОЛЬКО ЗДЕСЬ (ОДИН РАЗ!)
+        Debug.Log($"Dealing {finalDamage} damage to {(item == null ? "mob attack" : item.itemName)}");
+        _health.TakeDamage(finalDamage);
+    }
 
+    private bool CanDealDamage(Item item)
+    {
+        // Если атакует моб (item == null)
+        if (item == null)
+        {
+            if (!_isPlayer)
+            {
+                Debug.Log("Mob attacking mob? Skipping damage");
+                return false; // Мобы не наносят урон друг другу (или настраивай под свою логику)
+            }
+            return true; // Моб атакует игрока - можно наносить урон
+        }
+
+        // Проверка типа оружия
+        bool typeAccepted = false;
         foreach (var typeName in _acceptedTypeNames)
         {
             if (item.GetType().Name == typeName)
@@ -40,21 +52,20 @@ public class DamageReceiver : MonoBehaviour
             }
         }
 
-        if (typeAccepted)
+        if (!typeAccepted)
         {
-            if (item is ToolItem tool && _tier > tool.tier)
-            {
-                Debug.Log($"Tool tier too low! Required: {_tier}, Got: {tool.tier}");
-                return;
-            }
-
-            Debug.Log($"Correct tool used: {item.itemName}, damage: {finalDamage}");
-            _health.TakeDamage(finalDamage);
+            Debug.Log($"Wrong tool type! Accepted: {string.Join(", ", _acceptedTypeNames)}, Got: {item.GetType().Name}");
+            return false;
         }
 
-        else
+        // Проверка тира оружия
+        if (item is ToolItem tool && _tier > tool.tier)
         {
-            Debug.Log($"Wrong tool type! Accepted Type Names: {_acceptedTypeNames}, Got: {item.GetType().Name}");
+            Debug.Log($"Tool tier too low! Required: {_tier}, Got: {tool.tier}");
+            return false;
         }
+
+        Debug.Log($"Correct tool used: {item.itemName}");
+        return true;
     }
 }

@@ -21,7 +21,7 @@ public class InventarySystem : MonoBehaviour
     private List<int> armorSlotsIndex;
 
     public event Action IInventaryChange;
-    public event Action<InventorySlot> OnArmorSlotChanged;
+    public event Action<List<InventorySlot>> OnArmorSlotChanged;
 
     public void Initialize()
     {
@@ -175,13 +175,19 @@ public class InventarySystem : MonoBehaviour
 
         for (int i = 0; i < uiInventary.ArmorSlotsIndexs.Count; i++)
         {
-            if (indexOneSlot == uiInventary.ArmorSlotsIndexs[i])
+            if (indexOneSlot == uiInventary.ArmorSlotsIndexs[i] || indexTwoSlot == uiInventary.ArmorSlotsIndexs[i])
             {
-                OnArmorSlotChanged?.Invoke(inventory.Slots[indexOneSlot]);
-            }
-            if (indexTwoSlot == uiInventary.ArmorSlotsIndexs[i])
-            {
-                OnArmorSlotChanged?.Invoke(inventory.Slots[indexTwoSlot]);
+
+                armorSlotsIndex = uiInventary.ArmorSlotsIndexs;
+
+                List<InventorySlot> armorSlots = new List<InventorySlot>();
+
+                for (int j = 0; j < armorSlotsIndex.Count; j++)
+                {
+                    Debug.Log("ArmorSlot");
+                    armorSlots.Add(inventory.Slots[armorSlotsIndex[j]]);
+                }
+                OnArmorSlotChanged?.Invoke(armorSlots);
             }
         }
     }
