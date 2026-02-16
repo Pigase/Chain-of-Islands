@@ -1653,6 +1653,7 @@ MonoBehaviour:
   _acceptedTypeNames:
   - Sword
   _tier: 0
+  _isPlayer: 1
 --- !u!114 &403213518
 MonoBehaviour:
   m_ObjectHideFlags: 0

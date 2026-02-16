@@ -5,8 +5,9 @@ public class DamageReceiver : MonoBehaviour
 {
     [SerializeField] private HealthComponent _health;
     [SerializeField] private DamageProcessor _damageProcessor;
-    [SerializeField] private string[] _acceptedTypeNames = {"Sword"}; // "Sword", "Axe", "Pickaxe"
+    [SerializeField] private string[] _acceptedTypeNames = { "Sword" }; // "Sword", "Axe", "Pickaxe"
     [SerializeField] private int _tier = 0;
+    [SerializeField] private bool _isPlayer = false;
 
     public void TakeDamage(float damage, Item item)
     {
@@ -19,8 +20,13 @@ public class DamageReceiver : MonoBehaviour
 
         if (item == null)//т.к. моб не имеет предметов он бьет и так
         {
-            _health.TakeDamage(finalDamage);
-            return;
+            if (_isPlayer)
+            {
+                _health.TakeDamage(finalDamage);
+                return;
+            }
+
+            Debug.Log("Item is null");
         }
 
         bool typeAccepted = false;
@@ -38,9 +44,9 @@ public class DamageReceiver : MonoBehaviour
         {
             if (item is ToolItem tool && _tier > tool.tier)
             {
-                Debug.Log($"Tool tier too low! Required: {_tier}, Got: {tool.tier}"); 
+                Debug.Log($"Tool tier too low! Required: {_tier}, Got: {tool.tier}");
                 return;
-            }    
+            }
 
             Debug.Log($"Correct tool used: {item.itemName}, damage: {finalDamage}");
             _health.TakeDamage(finalDamage);
