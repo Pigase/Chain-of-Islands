@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Collector : MonoBehaviour
 {
-    public List<StackDiscardedItems> collectoredItems;
+    private List<StackDiscardedItems> collectoredItems;
 
     private InventarySystem _inventarySystem;
     private List<CollectibleObject> collectibleObjects;
