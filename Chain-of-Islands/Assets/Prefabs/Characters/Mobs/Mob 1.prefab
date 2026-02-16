@@ -1078,6 +1078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: -687278868646515301}
+  _damageProcessor: {fileID: 0}
   _acceptedTypeNames:
   - Sword
   _tier: 0
