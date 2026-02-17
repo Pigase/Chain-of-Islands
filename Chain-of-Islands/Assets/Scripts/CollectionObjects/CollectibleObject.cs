@@ -1,25 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CollectibleObject : MonoBehaviour
 {
-    [SerializeField] private HealthComponent healthComponent;
-
     public List<StackDiscardedItems> _discardedItems;
 
-    private void OnEnable()
-    {
-        healthComponent.OnDeath += Collect;
-    }
-    private void OnDisable()
-    {
-        healthComponent.OnDeath -= Collect;
-    }
+    public event Action OnCollected;
 
     public void Collect()
     {
-        healthComponent.TakeDamage(100);
+        OnCollected?.Invoke();
         gameObject.SetActive(false);
     }
 }
