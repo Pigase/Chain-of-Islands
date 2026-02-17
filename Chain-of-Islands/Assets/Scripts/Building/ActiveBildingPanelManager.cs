@@ -6,25 +6,38 @@ using UnityEngine;
 public class ActiveBildingPanelManager : MonoBehaviour
 {
     [SerializeField] private StationIdentifier _stationIdentifier;
+    [SerializeField] private BuildingOpener _buildingOpener;
     [SerializeField] private UnityEngine.GameObject _buildingCraftButton;
+    [SerializeField] private UnityEngine.GameObject _buildingOpenerButton;
+    [SerializeField] private UnityEngine.GameObject _buildingOpenerPanel;
 
-    private void ButtonActivate()
+    private void CraftButtonActivate(bool active)
     {
-        _buildingCraftButton.SetActive(true);
+        _buildingCraftButton.SetActive(active);
     }
-    private void ButtonNotActivate()
+
+    private void  OpenerButtonActivate(bool active)
     {
-        _buildingCraftButton.SetActive(false);
+        _buildingOpenerButton.SetActive(active);
+    }
+
+    private void PanelInstallation()
+    {
+        _buildingCraftButton.gameObject.SetActive(true);
+        _buildingOpenerButton.gameObject.SetActive(false);
+        _buildingOpenerPanel.gameObject.SetActive(false);
     }
     private void OnEnable()
     {
-        _stationIdentifier.OnEnterFromBuildingTrigger += ButtonActivate;
-        _stationIdentifier.OnExitedFromBuildingTrigger += ButtonNotActivate;
+        _stationIdentifier.IsEnterFromBuildingTrigger += CraftButtonActivate;
+        _stationIdentifier.IsEnterFromCloseBuildingTrigger += OpenerButtonActivate;
+        _buildingOpener.OnOpenedBuilding += PanelInstallation;
     }
 
     private void OnDisable()
     {
-        _stationIdentifier.OnEnterFromBuildingTrigger -= ButtonActivate;
-        _stationIdentifier.OnExitedFromBuildingTrigger -= ButtonNotActivate;
+        _stationIdentifier.IsEnterFromBuildingTrigger -= CraftButtonActivate;
+        _stationIdentifier.IsEnterFromCloseBuildingTrigger -= OpenerButtonActivate;
+        _buildingOpener.OnOpenedBuilding -= PanelInstallation;
     }
 }

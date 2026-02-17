@@ -26181,6 +26181,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 135549035}
     m_Modifications:
+    - target: {fileID: -1548560035488652819, guid: 642a650b6add12e438e34771cc490ecc, type: 3}
+      propertyPath: IsBuildingOpen
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 515858163598483626, guid: 642a650b6add12e438e34771cc490ecc, type: 3}
       propertyPath: m_Name
       value: Carpentry
@@ -26673,6 +26677,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1218940005042490225, guid: e043345b10e969d4ab4128e48c590035, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430678994469917986, guid: e043345b10e969d4ab4128e48c590035, type: 3}
+      propertyPath: IsBuildingOpen
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6415819250841867887, guid: e043345b10e969d4ab4128e48c590035, type: 3}
@@ -29787,6 +29795,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 135549035}
     m_Modifications:
+    - target: {fileID: 1408267198322375318, guid: 002517900d0823c4aa34159bcd32b23b, type: 3}
+      propertyPath: IsBuildingOpen
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2597690027144624765, guid: 002517900d0823c4aa34159bcd32b23b, type: 3}
       propertyPath: m_Name
       value: weaving
@@ -29884,6 +29896,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1679308114102097691, guid: 2a43a6df813ad504a9a18bfce355aa7e, type: 3}
+      propertyPath: IsBuildingOpen
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4999444108991301342, guid: 2a43a6df813ad504a9a18bfce355aa7e, type: 3}
       propertyPath: m_Name
       value: workbench
@@ -29905,6 +29921,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 135549035}
     m_Modifications:
+    - target: {fileID: -5660996855719009615, guid: b03afe0a3756e604f9aae0ba3a89c6da, type: 3}
+      propertyPath: IsBuildingOpen
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5386102967515039746, guid: b03afe0a3756e604f9aae0ba3a89c6da, type: 3}
       propertyPath: m_Name
       value: Quarry

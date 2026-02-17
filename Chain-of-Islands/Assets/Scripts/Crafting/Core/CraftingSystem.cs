@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class CraftingSystem : MonoBehaviour
 {
-    [SerializeField] private Inventory playerInventary;
+    private Inventory playerInventory;
+    private InventarySystem _inventarySystem;
 
     [Header("Все рецепты крафтов")]
     [SerializeField] private List<CraftingRecipe> allRecipes;
@@ -22,6 +23,8 @@ public class CraftingSystem : MonoBehaviour
     public void Initialize(ItemDataBase db)
     {
         itemDataBase = db;
+        _inventarySystem = GameManager.GetSystem<InventarySystem>();
+        playerInventory = _inventarySystem.Inventory;
         InitializeCraftingSystem();
     }
 
@@ -93,11 +96,11 @@ public class CraftingSystem : MonoBehaviour
 
         CraftingRecipe recipe = recipeMap[recipeId];
 
-        for(int i = 0;i < playerInventary.Slots.Count; i++)
+        for(int i = 0;i < playerInventory.Slots.Count; i++)
         {
             foreach (var ingredient in recipe.ingredients)
             {
-                if (playerInventary.Slots[i].itemId == ingredient.itemId && playerInventary.Slots[i].itemCount >= ingredient.amount)
+                if (playerInventory.Slots[i].itemId == ingredient.itemId && playerInventory.Slots[i].itemCount >= ingredient.amount)
                     countRecipeItem++;
             }
         }

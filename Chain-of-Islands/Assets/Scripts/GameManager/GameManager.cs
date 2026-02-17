@@ -32,8 +32,8 @@ public class GameManager : MonoBehaviour
     private void InitializeGame()
     {
         itemDataBase.Initialize();
-        craftingSystem.Initialize(itemDataBase);
         inventarySystem.Initialize();
+        craftingSystem.Initialize(itemDataBase);
         spawnItemWorldPrefab.Initialize();
         buildingStationManager.Initialize();
 

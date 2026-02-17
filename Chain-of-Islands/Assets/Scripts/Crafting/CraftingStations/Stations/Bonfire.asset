@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75f73ee93b8bf0540ac9088aabc33cf2, type: 3}
   m_Name: Bonfire
   m_EditorClassIdentifier: 
-  ingredients:
-  - itemId: 
-    amount: 0
+  ingredients: []
   StationId: Bonfire
   StationName: 
   description: 

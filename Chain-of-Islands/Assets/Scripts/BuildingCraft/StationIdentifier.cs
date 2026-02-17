@@ -5,28 +5,30 @@ using UnityEngine;
 
 public class StationIdentifier : MonoBehaviour
 {
-    private Station _station;
-    private BuildingStationManager _buildingStationManager;
+    private BuildingStation _building;
 
-    public event Action<Station> OnStationChange;
-    public event Action OnExitedFromBuildingTrigger;
-    public event Action OnEnterFromBuildingTrigger;
-
-    private void Start()
-    {
-        _buildingStationManager = GameManager.GetSystem<BuildingStationManager>();
-        _station = _buildingStationManager.GetStation("Non");
-    }
+    public event Action<BuildingStation> OnStationChange;
+    public event Action<bool> IsEnterFromBuildingTrigger;
+    public event Action<bool> IsEnterFromCloseBuildingTrigger;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Building"))
         {
             BuildingStation building = collision.gameObject.GetComponent<BuildingStation>();
-            _station = building.buildingStation;
+            _building = building;
+            OnStationChange?.Invoke(_building);
 
-            OnStationChange?.Invoke(_station);
-            OnEnterFromBuildingTrigger?.Invoke();
+            if (building.IsBuildingOpen)
+            {
+                Debug.Log("true");
+                IsEnterFromBuildingTrigger?.Invoke(true);
+            }
+            if(!building.IsBuildingOpen)
+            {
+                Debug.Log("false");
+                IsEnterFromCloseBuildingTrigger?.Invoke(true);
+            }
         }
     }
 
@@ -35,7 +37,8 @@ public class StationIdentifier : MonoBehaviour
         if (collision.CompareTag("Building"))
         {
             BuildingStation building = collision.gameObject.GetComponent<BuildingStation>();
-            OnExitedFromBuildingTrigger?.Invoke();
+            IsEnterFromBuildingTrigger?.Invoke(false);
+            IsEnterFromCloseBuildingTrigger?.Invoke(false);
         }
     }
 }

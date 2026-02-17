@@ -7,30 +7,38 @@ public class StationKeeper : MonoBehaviour
 {
     [SerializeField] private StationIdentifier _stationIdentifier;
     [SerializeField] private BuildingCraftPanel _buildingCraftPanel;
+    [SerializeField] private BuildingOpener _buildingOpener;
 
     public Station station => _station;
 
+    private BuildingStation _building;
     private Station _station;
 
-    private void SetStation(Station station)
+    private void SetBuilding(BuildingStation building)
     {
-        _station = station;
+        _building = building;
     }
 
     private Station GiveStation()
     {
-        return _station;
+        _station = _building.buildingStation;
+        return station;
     }
-
-    public void OnEnable()
+    private BuildingStation GiveBuilding()
     {
-        _stationIdentifier.OnStationChange += SetStation;
+        return _building;
+    }
+    private void OnEnable()
+    {
+        _stationIdentifier.OnStationChange += SetBuilding;
         _buildingCraftPanel.OnBuildPanelOnEnable += GiveStation;
+        _buildingOpener.OnRequestedBuilding += GiveBuilding;
     }
 
-    public void OnDisable()
+    private void OnDisable()
     {
         _buildingCraftPanel.OnBuildPanelOnEnable -= GiveStation;
-        _stationIdentifier.OnStationChange -= SetStation;
+        _stationIdentifier.OnStationChange -= SetBuilding;
+        _buildingOpener.OnRequestedBuilding -= GiveBuilding;
     }
 }
