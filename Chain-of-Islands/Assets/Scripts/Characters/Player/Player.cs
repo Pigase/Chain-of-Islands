@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private Vector2 _moveDirectionPlayer; // Направление движения от джойстика
     private Mover _mover; // Кастомный класс для перемещения
     private Rigidbody2D _rb;
+    private bool _isStateWithNoMove;
 
     public Action<float> PlayerGetDamage;
 
@@ -42,8 +43,12 @@ public class Player : MonoBehaviour
         // Получаем направление движения от джойстика
         _moveDirectionPlayer = _joystick.FindingDirection();
 
-        // Передаем направление в Mover для перемещения объекта
-        _mover.MoveObjectInDerection(_speedPlayer, _moveDirectionPlayer, _rb);
+        // Двигаемся только если НЕ в атаке
+        if (!_isStateWithNoMove)
+        {
+            // Передаем направление в Mover для перемещения объекта
+            _mover.MoveObjectInDerection(_speedPlayer, _moveDirectionPlayer, _rb);
+        }
 
         //Передаем направление в PlayerVisualStateMachine дял верного отображение спрайтов и выбора состояния
         _playerVisualStateMachine.ChooseState(_moveDirectionPlayer);
@@ -53,18 +58,26 @@ public class Player : MonoBehaviour
     {
         _health.OnDamageTaken += TakeDamage;
         _interactionJoystick.ButtonPressed += HandleItemUse;
+        _playerVisualStateMachine.OnStateWithNoMoveChanged += SetStateWithNoMove;
     }
 
     private void OnDisable()
     {
         _health.OnDamageTaken -= TakeDamage;
         _interactionJoystick.ButtonPressed -= HandleItemUse;
+        _playerVisualStateMachine.OnStateWithNoMoveChanged += SetStateWithNoMove;
+    }
+
+    private void SetStateWithNoMove(bool isStateWithNoMove)
+    {
+        _isStateWithNoMove = isStateWithNoMove;
     }
 
     private void HandleItemUse(InventorySlot slot)
     {
         _itemUseHandler.ItemIdentification(slot);
     }
+
     private void TakeDamage(float damage, float timeInvulnerability)
     {
         PlayerGetDamage?.Invoke(timeInvulnerability);

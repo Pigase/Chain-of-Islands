@@ -74,4 +74,14 @@ public class MobAI : MonoBehaviour
             );
         }
     }
+
+    public void ResetAnimator()
+    {
+        // Сбрасываем все параметры аниматора
+        _animator.Rebind(); // Полный сброс аниматора
+        _animator.Update(0f); // Принудительное обновление
+
+        // Перезапускаем состояние Idle
+        ChangeState(Idle);
+    }
 }

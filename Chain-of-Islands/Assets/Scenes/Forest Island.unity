@@ -835,6 +835,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8166707121627417110, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
       propertyPath: m_Name
       value: bush with berries 1 (11)
@@ -890,6 +898,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4221605479549830765, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8166707121627417110, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
@@ -2821,6 +2837,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8166707121627417110, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
       propertyPath: m_Name
       value: bush with berries 1 (8)
@@ -2933,6 +2957,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4221605479549830765, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8166707121627417110, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
@@ -3352,6 +3384,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4221605479549830765, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8166707121627417110, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
@@ -5280,6 +5320,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4221605479549830765, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8166707121627417110, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
@@ -24204,7 +24252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabObjectToSpawn: {fileID: 5592675298003467958, guid: a036f1a3bb168be4f951b1b45d28ac1c, type: 3}
-  _respawnTime: 30
+  _respawnTime: 7
   _poolCount: 20
   _autoExpand: 1
   _spawnPoints:
@@ -24999,6 +25047,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8166707121627417110, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
       propertyPath: m_Name
       value: bush with berries 1 (2)
@@ -25111,6 +25167,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4221605479549830765, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8166707121627417110, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
@@ -25437,6 +25501,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4221605479549830765, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8166707121627417110, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
@@ -60730,6 +60802,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8166707121627417110, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
       propertyPath: m_Name
       value: bush with berries 1 (13)
@@ -61077,6 +61157,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8166707121627417110, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
       propertyPath: m_Name
       value: bush with berries 1
@@ -61310,6 +61398,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8166707121627417110, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
       propertyPath: m_Name
       value: bush with berries 1 (1)
@@ -61365,6 +61461,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4221605479549830765, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8166707121627417110, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
@@ -61913,6 +62017,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4221605479549830765, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8166707121627417110, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
@@ -62498,6 +62610,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4221605479549830765, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400014025188457244, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8166707121627417110, guid: 0f309ee08b2dfba4599760ba91402565, type: 3}

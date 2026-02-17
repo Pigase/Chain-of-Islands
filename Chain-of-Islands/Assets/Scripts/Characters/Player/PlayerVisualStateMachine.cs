@@ -10,6 +10,7 @@ public class PlayerVisualStateMachine : MonoBehaviour
 
     private Animator _animator;
     private PlayerState _currentState; // Текущее активное состояние
+    public System.Action<bool> OnStateWithNoMoveChanged; // Событие изменения состояния атаки
 
     // Состояния - свойства для безопасного доступа извне
     public IdleStatePlayer Idle { get; private set; }
@@ -60,6 +61,10 @@ public class PlayerVisualStateMachine : MonoBehaviour
         _currentState?.Exit();     // Выход из текущего состояния
         _currentState = newState;  // Смена состояния
         _currentState?.Enter();    // Вход в новое состояние
+
+        // Оповещаем об изменении состояния атаки
+        bool StateWithNoMove = (newState == Use);
+        OnStateWithNoMoveChanged?.Invoke(StateWithNoMove);
     }
 
     // Визуальный метод - поворот спрайта в зависимости от направления

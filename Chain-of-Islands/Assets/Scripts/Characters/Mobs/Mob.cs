@@ -15,6 +15,12 @@ public class Mob : MonoBehaviour
         StopAllCoroutines();
         _health.OnDeath += MobDie;
         _health.OnDamageTaken += MobTakeDamage;
+
+        // —брасываем аниматор перед деактивацией
+        if (_mobAI != null)
+        {
+            _mobAI.ResetAnimator(); // если есть доступ к аниматору
+        }
     }
 
     private void OnDisable()
