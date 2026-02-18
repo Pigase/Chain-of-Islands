@@ -1631,6 +1631,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6069104137727971184}
   - component: {fileID: -5660996855719009615}
+  - component: {fileID: 342308888076366205}
   - component: {fileID: -2654552780990123613}
   m_Layer: 0
   m_Name: Quarry
@@ -1673,6 +1674,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buildingStation: {fileID: 11400000, guid: e4b696f5b894e7d4bae7d2f772966285, type: 2}
+  IsBuildingOpen: 0
+--- !u!114 &342308888076366205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5386102967515039746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29d0ee25565f9bc4194ecefac6f55770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buildingStation: {fileID: -5660996855719009615}
+  alpha: 0.3
 --- !u!58 &-2654552780990123613
 CircleCollider2D:
   m_ObjectHideFlags: 0

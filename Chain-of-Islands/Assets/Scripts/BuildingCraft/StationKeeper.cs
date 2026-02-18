@@ -7,6 +7,7 @@ public class StationKeeper : MonoBehaviour
 {
     [SerializeField] private StationIdentifier _stationIdentifier;
     [SerializeField] private BuildingCraftPanel _buildingCraftPanel;
+    [SerializeField] private BuildingOpenerPanelDescription _buildingOpenerPanel;
     [SerializeField] private BuildingOpener _buildingOpener;
 
     public Station station => _station;
@@ -33,6 +34,12 @@ public class StationKeeper : MonoBehaviour
         _stationIdentifier.OnStationChange += SetBuilding;
         _buildingCraftPanel.OnBuildPanelOnEnable += GiveStation;
         _buildingOpener.OnRequestedBuilding += GiveBuilding;
+        _buildingOpenerPanel.OnBuildingOpenerPanelOnEnable += GiveBuilding;
+    }
+
+    private BuildingStation _buildingOpenerPanel_OnBuildingOpenerPanelOnEnable()
+    {
+        throw new NotImplementedException();
     }
 
     private void OnDisable()
@@ -40,5 +47,6 @@ public class StationKeeper : MonoBehaviour
         _buildingCraftPanel.OnBuildPanelOnEnable -= GiveStation;
         _stationIdentifier.OnStationChange -= SetBuilding;
         _buildingOpener.OnRequestedBuilding -= GiveBuilding;
+        _buildingOpenerPanel.OnBuildingOpenerPanelOnEnable -= GiveBuilding;
     }
 }

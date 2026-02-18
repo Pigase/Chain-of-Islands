@@ -74,6 +74,7 @@ public class CraftDescription : MonoBehaviour
             ingridient.transform.SetParent(_content);
             ingridient.transform.localScale = Vector3.one;
             ingridient.icon.sprite = ingridientInfo.icon;
+            ingridient.text.text = recipe.ingredients[i].amount <= 1 ? "" : recipe.ingredients[i].amount.ToString();
             _iconsByIngridients.Add(ingridient);
         }
     }

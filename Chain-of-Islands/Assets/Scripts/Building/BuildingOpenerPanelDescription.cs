@@ -19,7 +19,7 @@ public class BuildingOpenerPanelDescription : MonoBehaviour
     
     public event Func<BuildingStation> OnBuildingOpenerPanelOnEnable;
 
-    private void Start()
+    private void Awake()
     {
         _itemData = GameManager.GetSystem<ItemDataBase>();
         _iconsByIngridients = new List<IngridientSlot>();
@@ -61,6 +61,8 @@ public class BuildingOpenerPanelDescription : MonoBehaviour
             ingridient.transform.SetParent(_content);
             ingridient.transform.localScale = Vector3.one;
             ingridient.icon.sprite = ingridientInfo.icon;
+            ingridient.text.text = building.buildingStation.ingredients[i].amount <= 1 ? "" : building.buildingStation.ingredients[i].amount.ToString();
+
             _iconsByIngridients.Add(ingridient);
         }
     }

@@ -24,7 +24,7 @@ public class BuildingOpener : MonoBehaviour
 
         if(IsCanOpenBuilding())
         {
-            _building.IsBuildingOpen = true;
+            _building.BuildingOpen();
 
             foreach (var ingredient in _building.buildingStation.ingredients)
             {

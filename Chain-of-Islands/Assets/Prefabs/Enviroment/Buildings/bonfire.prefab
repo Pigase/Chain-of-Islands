@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5524048483577137339}
   - component: {fileID: 8249798990273584160}
   - component: {fileID: 2946918183454779749}
+  - component: {fileID: -567651724996389524}
   m_Layer: 0
   m_Name: bonfire
   m_TagString: Building
@@ -152,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buildingStation: {fileID: 11400000, guid: a2b47e87aefee2a4eb7dd1615224c859, type: 2}
+  IsBuildingOpen: 0
 --- !u!58 &2946918183454779749
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -187,3 +189,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.15
+--- !u!114 &-567651724996389524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840830684279923704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29d0ee25565f9bc4194ecefac6f55770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buildingStation: {fileID: 8249798990273584160}
+  alpha: 0.397
