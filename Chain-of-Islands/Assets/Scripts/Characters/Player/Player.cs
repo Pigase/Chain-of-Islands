@@ -40,18 +40,21 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        // Получаем направление движения от джойстика
-        _moveDirectionPlayer = _joystick.FindingDirection();
-
-        // Двигаемся только если НЕ в атаке
-        if (!_isStateWithNoMove)
+        if (_health.IsAlive)
         {
-            // Передаем направление в Mover для перемещения объекта
-            _mover.MoveObjectInDerection(_speedPlayer, _moveDirectionPlayer, _rb);
-        }
+            // Получаем направление движения от джойстика
+            _moveDirectionPlayer = _joystick.FindingDirection();
 
+            // Двигаемся только если НЕ в атаке
+            if (!_isStateWithNoMove)
+            {
+                // Передаем направление в Mover для перемещения объекта
+                _mover.MoveObjectInDerection(_speedPlayer, _moveDirectionPlayer, _rb);
+            }
+        }
         //Передаем направление в PlayerVisualStateMachine дял верного отображение спрайтов и выбора состояния
         _playerVisualStateMachine.ChooseState(_moveDirectionPlayer);
+
     }
 
     private void OnEnable()

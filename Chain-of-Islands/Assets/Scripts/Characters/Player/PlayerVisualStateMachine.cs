@@ -7,6 +7,7 @@ public class PlayerVisualStateMachine : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private Animator _handAnimator;
     [SerializeField] private ItemUseHandler _itemUseHandler;
+    [SerializeField] private HealthComponent _healthComponent;
 
     private Animator _animator;
     private PlayerState _currentState; // “екущее активное состо€ние
@@ -16,6 +17,7 @@ public class PlayerVisualStateMachine : MonoBehaviour
     public IdleStatePlayer Idle { get; private set; }
     public RunningStatePlayer Running { get; private set; }
     public UseStatePlayer Use { get; private set; }
+    public DeadStatePlayer Death { get; private set; }
 
     private void Awake()
     {
@@ -28,19 +30,21 @@ public class PlayerVisualStateMachine : MonoBehaviour
         Idle = new IdleStatePlayer(this, _animator, _handAnimator);
         Running = new RunningStatePlayer(this, _animator, _handAnimator);
         Use = new UseStatePlayer(this, _animator, _handAnimator);
-
+        Death = new DeadStatePlayer(this, _animator, _handAnimator, _healthComponent);
         // Ќачальное состо€ние - персонаж начинает в покое
         ChangeState(Idle);
     }
 
     private void OnEnable()
     {
+        _healthComponent.OnDeath += PlayerDied;
         _player.PlayerGetDamage += ShowDamage;
         _itemUseHandler.UseEquipment += PlayerUseEquipment;
     }
 
     private void OnDisable()
     {
+        _healthComponent.OnDeath -= PlayerDied;
         _player.PlayerGetDamage -= ShowDamage;
         _itemUseHandler.UseEquipment -= PlayerUseEquipment;
     }
@@ -87,6 +91,10 @@ public class PlayerVisualStateMachine : MonoBehaviour
         StartCoroutine(Invulnerability(timeInvulnerability));
     }
 
+    private void PlayerDied()
+    {
+        ChangeState(Death);
+    }
     private void PlayerUseEquipment(EquipmentItem equipment)
     {
         Use.SetEqipmentAnimations(equipment);

@@ -11,13 +11,11 @@ public class IdleStatePlayer : PlayerState
     private Animator _animator;
     private Animator _handAnimator;
 
-
     public IdleStatePlayer(PlayerVisualStateMachine context, Animator animator, Animator handAnimator)
     {
         _context = context;
         _animator = animator;
         _handAnimator = handAnimator;
-
     }
 
     public void Enter()
