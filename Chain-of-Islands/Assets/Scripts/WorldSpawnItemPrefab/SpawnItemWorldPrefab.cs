@@ -17,28 +17,15 @@ public class SpawnItemWorldPrefab : MonoBehaviour
         _worldPool.Initialize();
     }
 
-    public void SpawnItem(Item item,int amount, Transform itemDroppingPosition, float radiusDrop)
+    public void SpawnItem(Item item, Vector2 spawnPosition)
     {
         if(item != null)
         {
-            for (int i = 0; i < amount; i++)
-            {
-                Debug.Log("CreatePrefab");
-                var dropItem = _worldPool.GetFreeElement();
-                dropItem.GetComponent<SelectableItem>().item = item;
-                dropItem.SpriteRenderer.sprite = item.worldPrefabIcon;  
-                DropPosition(itemDroppingPosition, dropItem, radiusDrop);
-            }
+            Debug.Log("CreatePrefab");
+            var dropItem = _worldPool.GetFreeElement();
+            dropItem.GetComponent<SelectableItem>().item = item;
+            dropItem.SpriteRenderer.sprite = item.worldPrefabIcon;
+            dropItem.transform.position = spawnPosition;
         }
-    }
-
-    private void DropPosition(Transform itemDroppingPosition, ItemPrefab item, float radiusDrop)
-    {
-        item.transform.position = itemDroppingPosition.position;
-
-        Vector2 randomOffset = Random.insideUnitCircle * radiusDrop;
-        Vector3 dropPos = itemDroppingPosition.position + new Vector3(randomOffset.x, 1f, randomOffset.y);
-
-        item.transform.position = dropPos;
     }
 }
