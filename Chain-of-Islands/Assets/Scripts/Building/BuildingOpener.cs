@@ -8,6 +8,7 @@ public class BuildingOpener : MonoBehaviour
     private BuildingStation _building;
     private InventarySystem _inventarySystem;
     private Inventory _playerInventory;
+    private Dictionary<string, int> allItems = new Dictionary<string, int>();
 
     public event Func<BuildingStation> OnRequestedBuilding;
     public event Action OnOpenedBuilding;
@@ -37,15 +38,34 @@ public class BuildingOpener : MonoBehaviour
 
     private bool IsCanOpenBuilding()
     {
+        allItems.Clear();
+
         int countRecipeItem = 0;
 
         for (int i = 0; i < _playerInventory.Slots.Count; i++)
         {
-            foreach (var ingredient in _building.buildingStation.ingredients)
+            var slot = _playerInventory.Slots[i];
+
+            if (slot.empty) continue;
+
+            if (allItems.ContainsKey(_playerInventory.Slots[i].itemId))
             {
-                if (_playerInventory.Slots[i].itemId == ingredient.itemId && _playerInventory.Slots[i].itemCount >= ingredient.amount)
-                    countRecipeItem++;
+                allItems[_playerInventory.Slots[i].itemId] += _playerInventory.Slots[i].itemCount;
             }
+            if (!allItems.ContainsKey(_playerInventory.Slots[i].itemId))
+            {
+                allItems.Add(_playerInventory.Slots[i].itemId, _playerInventory.Slots[i].itemCount);
+            }
+        }
+
+        for (int i = 0; i < _building.buildingStation.ingredients.Count; i++)
+        {
+            ItemStack currentIngredient = _building.buildingStation.ingredients[i];
+
+            if (!allItems.ContainsKey(currentIngredient.itemId) || allItems[currentIngredient.itemId] < currentIngredient.amount)
+                continue;
+
+            countRecipeItem++;
         }
 
         if (countRecipeItem >= _building.buildingStation.ingredients.Count)
