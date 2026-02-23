@@ -14,7 +14,7 @@ public class WorldItemDrop : MonoBehaviour
     [SerializeField] private HealthComponent _healthComponent;
     [SerializeField] private float _radiusDrop;
 
-    private Transform _itemDroppingPosition;
+    private Vector2 _itemDroppingPosition;
 
     public Action ResourcesAreSpawned;
 
@@ -25,7 +25,7 @@ public class WorldItemDrop : MonoBehaviour
     {
         _spawnItemWorldPrefab = GameManager.GetSystem<SpawnItemWorldPrefab>();
 
-        _itemDroppingPosition = transform;
+        _itemDroppingPosition = transform.position;
     }
 
     private void OnEnable()
@@ -43,15 +43,15 @@ public class WorldItemDrop : MonoBehaviour
         var items = _dispensingItems;
         for(int i = 0; i < items.Count; i++)
         {
-            DropItem(items[i].Item, items[i].amount, _itemDroppingPosition, _radiusDrop);
+            DropItem(items[i].Item, items[i].amount, _itemDroppingPosition);
         }
 
         ResourcesAreSpawned?.Invoke();
     }
 
-    private void DropItem(Item item, int amount, Transform itemDroppingPosition, float radiusDrop)
+    private void DropItem(Item item, int amount, Vector2 itemDroppingPosition)
     {
-        _spawnItemWorldPrefab.SpawnItem(item,amount,itemDroppingPosition,radiusDrop);
+        _spawnItemWorldPrefab.SpawnItem(item,itemDroppingPosition);
     }
 
 
