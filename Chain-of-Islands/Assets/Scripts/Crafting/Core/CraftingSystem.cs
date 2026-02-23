@@ -16,6 +16,7 @@ public class CraftingSystem : MonoBehaviour
 
     private ItemDataBase itemDataBase;
     private Dictionary<string, CraftingRecipe> recipeMap;
+    private Dictionary<string,int> allItems = new Dictionary<string, int>();
 
     public event Action<string,int> OnCraftedItemAdded;
     public event Action<string,int> OnCraftedItemSubtract;
@@ -89,20 +90,38 @@ public class CraftingSystem : MonoBehaviour
 
     public bool CanCraftRecipe(string recipeId)
     {
-        int countRecipeItem = 0;
+        allItems.Clear();
 
+        int countRecipeItem = 0;
+        
         if (!recipeMap.ContainsKey(recipeId))
             return false;
 
+        for(int i = 0; i < playerInventory.Slots.Count; i++)
+        {
+            var slot = playerInventory.Slots[i];
+
+            if (slot.empty) continue;
+
+            if (allItems.ContainsKey(playerInventory.Slots[i].itemId))
+            {
+                allItems[playerInventory.Slots[i].itemId] += playerInventory.Slots[i].itemCount;
+            }
+            if (!allItems.ContainsKey(playerInventory.Slots[i].itemId))
+            {
+                allItems.Add(playerInventory.Slots[i].itemId, playerInventory.Slots[i].itemCount);
+            }
+        }
         CraftingRecipe recipe = recipeMap[recipeId];
 
-        for(int i = 0;i < playerInventory.Slots.Count; i++)
+        for (int i = 0; i < recipe.ingredients.Count; i++)
         {
-            foreach (var ingredient in recipe.ingredients)
-            {
-                if (playerInventory.Slots[i].itemId == ingredient.itemId && playerInventory.Slots[i].itemCount >= ingredient.amount)
-                    countRecipeItem++;
-            }
+            ItemStack currentIngredient = recipe.ingredients[i];
+
+            if (!allItems.ContainsKey(currentIngredient.itemId) || allItems[currentIngredient.itemId] < currentIngredient.amount)
+                continue;
+
+            countRecipeItem++;
         }
 
         if(countRecipeItem >= recipe.ingredients.Count)
@@ -111,12 +130,12 @@ public class CraftingSystem : MonoBehaviour
         return false;
     }
 
-    public bool CraftItem(string recipeId)
+    public void CraftItem(string recipeId)
     {
         if (!CanCraftRecipe(recipeId))
         {
             Debug.Log($"Не удалось скрафтить {recipeId}: не хватает материалов");
-            return false;
+            return;
         }
 
         CraftingRecipe recipe = recipeMap[recipeId];
@@ -130,7 +149,6 @@ public class CraftingSystem : MonoBehaviour
 
         Debug.Log($"Скрафтен: {recipe.result.itemId} x{recipe.result.amount}");
 
-        return true;
     }
 
     public List<CraftingRecipe> GetRecipesForStation(Station station)

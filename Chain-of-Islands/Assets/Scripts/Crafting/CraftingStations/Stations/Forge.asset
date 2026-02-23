@@ -15,6 +15,16 @@ MonoBehaviour:
   ingredients:
   - itemId: grass
     amount: 4
+  - itemId: axeStone
+    amount: 1
+  - itemId: swordStone
+    amount: 1
+  - itemId: swordStone
+    amount: 1
+  - itemId: swordStone
+    amount: 1
+  - itemId: swordStone
+    amount: 1
   StationId: Forge
   StationName: 
   description: 

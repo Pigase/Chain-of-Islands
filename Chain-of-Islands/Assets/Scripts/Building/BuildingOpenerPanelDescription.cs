@@ -14,7 +14,6 @@ public class BuildingOpenerPanelDescription : MonoBehaviour
     private bool _autoExpande = true;
     private PoolMono<IngridientSlot> _pool;
     private List<IngridientSlot> _iconsByIngridients;
-
     private BuildingStation _building;
     
     public event Func<BuildingStation> OnBuildingOpenerPanelOnEnable;
@@ -36,6 +35,7 @@ public class BuildingOpenerPanelDescription : MonoBehaviour
     }
     private void DataPurpose(BuildingStation building)
     {
+        if (building == null) return;
         ResetIngridients();
 
         IngridientsIconDisplay(_building.buildingStation.ingredients.Count, building);
