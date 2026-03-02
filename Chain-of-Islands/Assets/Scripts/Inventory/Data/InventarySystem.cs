@@ -206,8 +206,6 @@ public class InventarySystem : MonoBehaviour
         testInventary.OnItemRemove += SubtractItems;
         testInventary.OnItemTest += DebugSlotInfo;
         uiInventary.OnItemsSwapped += ItemSwap;
-        _droppingZone.OnDroppedItemIndex += RemoveItems;
-        _destroyZone.OnItemDroppedInDestroyZone += RemoveItems;
         _craftingSystem.OnCraftedItemSubtract += SubtractItems;
         _craftingSystem.OnCraftedItemAdded += AddItems;
     }
@@ -218,8 +216,6 @@ public class InventarySystem : MonoBehaviour
         testInventary.OnItemRemove -= SubtractItems;
         testInventary.OnItemTest -= DebugSlotInfo;
         uiInventary.OnItemsSwapped -= ItemSwap;
-        _droppingZone.OnDroppedItemIndex -= RemoveItems;
-        _destroyZone.OnItemDroppedInDestroyZone -= RemoveItems;
         _craftingSystem.OnCraftedItemSubtract -= SubtractItems;
         _craftingSystem.OnCraftedItemAdded -= AddItems;
     }

@@ -8,7 +8,7 @@ using static ArmorItem;
 public class UIInventorySlot : MonoBehaviour, IDropHandler
 {
     [SerializeField] private Image _iconItem;
-    [SerializeField] private Image _icon;
+    [SerializeField] private Image _selectionFrame;
     [SerializeField] private TextMeshProUGUI _itemsCount;
 
     public enum SlotType { ArmorSlot,InventarySlot, HotInventarySlot }
@@ -55,11 +55,11 @@ public class UIInventorySlot : MonoBehaviour, IDropHandler
     {
         if (selected)
         {
-            _icon.gameObject.SetActive(true);
+            _selectionFrame.gameObject.SetActive(true);
         }
         else
         {
-            _icon.gameObject.SetActive(false);
+            _selectionFrame.gameObject.SetActive(false);
         }
     }
 }

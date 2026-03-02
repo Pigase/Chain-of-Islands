@@ -1,58 +1,70 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEngine.Rendering.DebugUI;
 using Random = UnityEngine.Random;
 
-public class DroppingZone : MonoBehaviour, IDropHandler
+public class DroppingZone : MonoBehaviour
 {
     [SerializeField] private float radiusDrop;
-    [SerializeField] private DroppingZone droppingZone;
-    [SerializeField] private Transform itemDroppingPosition;
+    [SerializeField] private Transform _playerPosition;
     [SerializeField] private SlotInfoFinder _slotInfoFinder;
+    [SerializeField] private UIInventory _uiInventory;
 
+    private InventarySystem _inventarySystem;
     private SpawnItemWorldPrefab spawnItemWorldPrefab;
-
-    public event Action<int> OnDroppedItemIndex;
-    public event Action<Item,int> OnItemDropped;
 
     private void Start()
     {
+        _inventarySystem = GameManager.GetSystem<InventarySystem>();
         spawnItemWorldPrefab = GameManager.GetSystem<SpawnItemWorldPrefab>();
     }
-
-    public void OnDrop(PointerEventData eventData)
+    private void ItemDrop(UIInventorySlot slot, Vector2 dropPos)
     {
-        Debug.Log("Item In DropZone");
-        var droppItem = eventData?.pointerDrag?.GetComponent<UIInventorySlot>();
-
-        if (droppItem != null && !_slotInfoFinder.IsEmptySlot(droppItem))
+        if (slot != null && !_slotInfoFinder.IsEmptySlot(slot))
         {
-            int indexDroppItem = _slotInfoFinder.SlotIndexFind(droppItem);
-            Item item = _slotInfoFinder.ItemInSlot(droppItem);
-            int itemCount = _slotInfoFinder.InventorySlotInUISlot(droppItem).itemCount;
+            int indexDroppItem = _slotInfoFinder.SlotIndexFind(slot);
+            Item item = _slotInfoFinder.ItemInSlot(slot);
+            int itemCount = _slotInfoFinder.InventorySlotInUISlot(slot).itemCount;
 
-            OnDroppedItemIndex?.Invoke(indexDroppItem);
-            OnItemDropped?.Invoke(item,itemCount);
+            _inventarySystem.RemoveItems(indexDroppItem);
 
-            Vector2 itemPos = Vector2.zero;
-            for(int i = 0; i < itemCount; i++)
+            for (int i = 0; i < itemCount; i++)
             {
-                itemPos = CalculateDropPosition();
+                Vector2 itemPos = CalculateDropPosition(dropPos);
                 spawnItemWorldPrefab.SpawnItem(item, itemPos);
             }
         }
     }
 
-    private Vector2 CalculateDropPosition()
+    private Vector2 CalculateDropPosition(Vector2 dropPos)
     {
-        float xPos = Random.Range(-radiusDrop, radiusDrop);
-        float yPos = Random.Range(-radiusDrop, radiusDrop);
 
-        Vector2 itemPos = new Vector2(xPos,yPos);
+        Vector2 playerPos = _playerPosition.transform.position;
+         
+        Vector2 itemPos = Vector2.zero;
+
+        if (Vector2.Distance(playerPos, dropPos) <= radiusDrop)
+        {
+            itemPos = dropPos;
+            return itemPos;
+        }
+        itemPos = (dropPos - playerPos).normalized * radiusDrop + playerPos;
 
         return itemPos;
+    }
+
+    private void OnEnable()
+    {
+        _uiInventory.OnItemDropedOut += ItemDrop;
+    }
+
+    private void OnDisable()
+    {
+        _uiInventory.OnItemDropedOut -= ItemDrop;
     }
 }

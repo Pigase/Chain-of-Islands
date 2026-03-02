@@ -8,7 +8,12 @@ public class DestroyZone : MonoBehaviour , IDropHandler
 {
     [SerializeField] private SlotInfoFinder _slotInfoFinder;
 
-    public event Action<int> OnItemDroppedInDestroyZone;
+    private InventarySystem _inventarySystem;
+
+    private void Start()
+    {
+        _inventarySystem = GameManager.GetSystem<InventarySystem>();
+    }
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -20,7 +25,7 @@ public class DestroyZone : MonoBehaviour , IDropHandler
         {
             int indexDroppItem = _slotInfoFinder.SlotIndexFind(droppItem);
 
-            OnItemDroppedInDestroyZone?.Invoke(indexDroppItem);
+            _inventarySystem.RemoveItems(indexDroppItem);
         }
     }
 }

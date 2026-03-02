@@ -617,8 +617,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dispensingItems:
-  - Item: {fileID: 11400000, guid: 955b6cf205a04984fa79bb38d8a2b34b, type: 2}
-    amount: 1
+  - Item: {fileID: 11400000, guid: e9c5fa60d681adb49824115a438ca986, type: 2}
+    amount: 20
   _healthComponent: {fileID: 4141140331455328746}
   _radiusDrop: 1
 --- !u!114 &4141140331455328746

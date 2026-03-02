@@ -15,8 +15,8 @@ MonoBehaviour:
   itemId: woodOne
   itemName: "\u0441\u043E\u0441\u043D\u0430"
   maxStackSize: 30
-  icon: {fileID: 0}
-  worldPrefabIcon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 530f1b4d7a44f29489bd3a7820d35040, type: 3}
+  worldPrefabIcon: {fileID: 21300000, guid: 530f1b4d7a44f29489bd3a7820d35040, type: 3}
   description: 
   canBeUsedInCrafting: 0
   canBeUsedInBuilding: 0

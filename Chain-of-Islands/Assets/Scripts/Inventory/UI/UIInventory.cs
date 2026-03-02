@@ -26,6 +26,7 @@ public class UIInventory : MonoBehaviour
 
     public event Action<int, int> OnItemsSwapped;
     public event Action<UIInventorySlot> OnSlotClicked;
+    public event Action<UIInventorySlot,Vector2> OnItemDropedOut;
 
     private void OnEnable()
     {
@@ -70,7 +71,7 @@ public class UIInventory : MonoBehaviour
         OnSlotClicked?.Invoke(ClickedSlot);
     }
 
-    private void HandleItemDrop(UIInventorySlot droppedSlot, UIInventorySlot draggedSlot)
+    private void HandleItemDropOnSlot(UIInventorySlot droppedSlot, UIInventorySlot draggedSlot)
     {
         var droppedSlotIndex = slots.IndexOf(droppedSlot);
         var draggedSlotIndex = slots.IndexOf(draggedSlot);
@@ -101,6 +102,11 @@ public class UIInventory : MonoBehaviour
             OnItemsSwapped?.Invoke(droppedSlotIndex, draggedSlotIndex);
     }
 
+    private void HandleItemDropOut(UIInventorySlot droppedSlot,Vector2 itemPos)
+    {
+        OnItemDropedOut?.Invoke(droppedSlot,itemPos);
+    }
+
     private void CreateHotInventarySlots(int slotsCount)
     {
         for (int i = 0; i < slotsCount; i++)
@@ -108,13 +114,13 @@ public class UIInventory : MonoBehaviour
             var slot = Instantiate(_hotSlotPrefab, Vector3.zero, Quaternion.identity);
             slot.transform.SetParent(HotInventaryContentPanel);
             slot.type = UIInventorySlot.SlotType.HotInventarySlot;
-            slot.OnItemDropped += HandleItemDrop;
+            slot.OnItemDropped += HandleItemDropOnSlot;
             slot.OnSlotSelected += HandleItemClick;
             slot.GetComponent<DragSystem>().OnClickedOnSlot += HandleItemClick;
+            slot.GetComponent<DragSystem>().OnItemCameOutInventory += HandleItemDropOut;
             slots.Add(slot);
         }
     }
-
     private void CreateInventarySlots(int slotsCount)
     {
         for (int i = 0; i < slotsCount; i++)
@@ -122,9 +128,10 @@ public class UIInventory : MonoBehaviour
             var slot = Instantiate(_slotPrefab, Vector3.zero, Quaternion.identity);
             slot.transform.SetParent(InventaryContentPanel);
             slot.type = UIInventorySlot.SlotType.InventarySlot;
-            slot.OnItemDropped += HandleItemDrop;
+            slot.OnItemDropped += HandleItemDropOnSlot;
             slot.OnSlotSelected += HandleItemClick;
             slot.GetComponent<DragSystem>().OnClickedOnSlot += HandleItemClick;
+            slot.GetComponent<DragSystem>().OnItemCameOutInventory += HandleItemDropOut;
             slots.Add(slot);
         }
     }
@@ -146,7 +153,7 @@ public class UIInventory : MonoBehaviour
             slot.transform.SetParent(ArmorInventaryContentPanel);
             slot.type = UIInventorySlot.SlotType.ArmorSlot;
             slot.armorType = armorSlotsToCreate[i];
-            slot.OnItemDropped += HandleItemDrop;
+            slot.OnItemDropped += HandleItemDropOnSlot;
             slot.OnSlotSelected += HandleItemClick;
             slot.GetComponent<DragSystem>().OnClickedOnSlot += HandleItemClick;
             slots.Add(slot);

@@ -512,7 +512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _iconItem: {fileID: 7842309562405605113}
-  _icon: {fileID: 1544356943340884976}
+  _selectionFrame: {fileID: 1544356943340884976}
   _itemsCount: {fileID: 9130811841857889365}
 --- !u!114 &1010041730504905901
 MonoBehaviour:

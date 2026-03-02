@@ -8,6 +8,7 @@ TagManager:
   - Mob
   - Building
   - Item
+  - UiInventory
   layers:
   - Default
   - TransparentFX

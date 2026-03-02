@@ -8,20 +8,18 @@ public class DragSystem : MonoBehaviour, IPointerClickHandler, IBeginDragHandler
 {
     [SerializeField] private Image _image;
 
-    private GraphicRaycaster raycaster;
     private CanvasGroup cg;
     private RectTransform rectTransform;
     private Vector2 startPosition;
     private Transform originalParent;
     private Transform topLevelParent;
     private int originalSiblingIndex;
-    private UnityEngine.GameObject clickedObject;
 
     public event Action<UIInventorySlot> OnClickedOnSlot;
+    public event Action<UIInventorySlot,Vector2> OnItemCameOutInventory;
 
     private void Start()
     {
-        raycaster = GetComponentInParent<GraphicRaycaster>();
         rectTransform = _image?.GetComponent<RectTransform>();
 
         startPosition = _image.rectTransform.position;
@@ -30,14 +28,12 @@ public class DragSystem : MonoBehaviour, IPointerClickHandler, IBeginDragHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        clickedObject = eventData?.pointerCurrentRaycast.gameObject;
-        OnClickedOnSlot?.Invoke(clickedObject?.GetComponent<UIInventorySlot>());
+        OnClickedOnSlot?.Invoke(gameObject?.GetComponent<UIInventorySlot>());
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        clickedObject = eventData.pointerDrag.gameObject;
-        OnClickedOnSlot?.Invoke(clickedObject?.GetComponent<UIInventorySlot>());
+        OnClickedOnSlot?.Invoke(gameObject?.GetComponent<UIInventorySlot>());
 
         originalParent = _image.transform.parent;
         originalSiblingIndex = _image.transform.GetSiblingIndex();
@@ -56,12 +52,34 @@ public class DragSystem : MonoBehaviour, IPointerClickHandler, IBeginDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!IsPointerOverUIElement(eventData))
+        {
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            OnItemCameOutInventory?.Invoke(gameObject?.GetComponent<UIInventorySlot>(),mousePos);
+        }
         _image.transform.SetParent(originalParent);
         _image.transform.SetSiblingIndex(originalSiblingIndex);
         rectTransform.anchoredPosition = startPosition;
 
         cg.blocksRaycasts = true;
         SetImageTransparency(1);
+    }
+
+    private bool IsPointerOverUIElement(PointerEventData eventData)
+    {
+        eventData.position = Input.mousePosition;
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        
+        EventSystem.current.RaycastAll(eventData, results);
+        foreach (RaycastResult result in results)
+        {
+            if (result.gameObject.CompareTag("UiInventory"))
+                return true;
+        }
+
+        return false;
     }
 
     private void SetImageTransparency(float alpha)

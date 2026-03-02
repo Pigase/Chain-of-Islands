@@ -26,6 +26,7 @@ public class SpawnItemWorldPrefab : MonoBehaviour
             dropItem.GetComponent<SelectableItem>().item = item;
             dropItem.SpriteRenderer.sprite = item.worldPrefabIcon;
             dropItem.transform.position = spawnPosition;
+            dropItem._startPosition = spawnPosition;
         }
     }
 }
